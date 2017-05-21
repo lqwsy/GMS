@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.gms.pos.Equipment" table="equipment" catalog="gms" optimistic-lock="version">
+        <id name="iequipmentNo" type="int">
+            <column name="iEquipmentNo" />
+            <generator class="assigned" />
+        </id>
+        <property name="vequipmentName" type="string">
+            <column name="vEquipmentName" length="20" />
+        </property>
+        <property name="vkind" type="string">
+            <column name="vKind" length="20" />
+        </property>
+        <property name="icompensate" type="java.lang.Integer">
+            <column name="iCompensate" />
+        </property>
+        <property name="iifrepair" type="java.lang.Integer">
+            <column name="iifrepair" />
+        </property>
+        <property name="irepair" type="java.lang.Integer">
+            <column name="irepair" />
+        </property>
+        <set name="equipmentrents" table="equipmentrent" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iEquipmentNo" />
+            </key>
+            <one-to-many class="com.gms.pos.Equipmentrent" />
+        </set>
+        <set name="equitmentsuses" table="equitmentsuse" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="equitmentId" not-null="true" />
+            </key>
+            <one-to-many class="com.gms.pos.Equitmentsuse" />
+        </set>
+    </class>
+</hibernate-mapping>

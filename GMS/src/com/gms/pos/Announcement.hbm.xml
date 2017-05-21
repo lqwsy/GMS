@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.gms.pos.Announcement" table="announcement" catalog="gms" optimistic-lock="version">
+        <id name="bannouncementId" type="java.lang.Long">
+            <column name="bAnnouncementId" />
+            <generator class="identity" />
+        </id>
+        <property name="vannouncementTitle" type="string">
+            <column name="vAnnouncementTitle" length="50" />
+        </property>
+        <property name="vannouncementDetails" type="string">
+            <column name="vAnnouncementDetails" length="300" />
+        </property>
+        <property name="dannouncementTime" type="timestamp">
+            <column name="dAnnouncementTime" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

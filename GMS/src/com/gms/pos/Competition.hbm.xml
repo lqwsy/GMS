@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.gms.pos.Competition" table="competition" catalog="gms" optimistic-lock="version">
+        <id name="bcompetitionId" type="java.lang.Long">
+            <column name="bCompetitionId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="competitiontype" class="com.gms.pos.Competitiontype" fetch="select">
+            <column name="iCompetitionType" />
+        </many-to-one>
+        <many-to-one name="userinfo" class="com.gms.pos.Userinfo" fetch="select">
+            <column name="iUserId" />
+        </many-to-one>
+        <property name="dapplyDate" type="timestamp">
+            <column name="dApplyDate" length="19" />
+        </property>
+        <property name="vmainUnit" type="string">
+            <column name="vMainUnit" length="20" />
+        </property>
+        <property name="vcompetitionDetails" type="string">
+            <column name="vCompetitionDetails" length="200" />
+        </property>
+        <property name="vcompetitionState" type="string">
+            <column name="vCompetitionState" length="10" />
+        </property>
+        <property name="vunitAddress" type="string">
+            <column name="vUnitAddress" length="30" />
+        </property>
+        <property name="vlinkMan" type="string">
+            <column name="vLinkMan" length="10" />
+        </property>
+        <property name="vphoneNumber" type="string">
+            <column name="vPhoneNumber" length="11" />
+        </property>
+        <property name="dcompetitionDate" type="timestamp">
+            <column name="dCompetitionDate" length="19" />
+        </property>
+        <set name="spacesuses" table="spacesuse" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bCompetitionId" />
+            </key>
+            <one-to-many class="com.gms.pos.Spacesuse" />
+        </set>
+        <set name="competitioncomments" table="competitioncomment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bCompetitionId" />
+            </key>
+            <one-to-many class="com.gms.pos.Competitioncomment" />
+        </set>
+        <one-to-one name="competitionresult" class="com.gms.pos.Competitionresult"></one-to-one>
+        <set name="equitmentsuses" table="equitmentsuse" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bCompetitionId" />
+            </key>
+            <one-to-many class="com.gms.pos.Equitmentsuse" />
+        </set>
+        <one-to-one name="competitioncost" class="com.gms.pos.Competitioncost"></one-to-one>
+    </class>
+</hibernate-mapping>

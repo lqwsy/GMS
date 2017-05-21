@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.gms.pos.Spacesuse" table="spacesuse" catalog="gms" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="competition" class="com.gms.pos.Competition" fetch="select">
+            <column name="bCompetitionId" />
+        </many-to-one>
+        <many-to-one name="fieldinfo" class="com.gms.pos.Fieldinfo" fetch="select">
+            <column name="lFieldId" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

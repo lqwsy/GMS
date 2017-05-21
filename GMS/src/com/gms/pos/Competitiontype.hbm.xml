@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.gms.pos.Competitiontype" table="competitiontype" catalog="gms" optimistic-lock="version">
+        <id name="icompetitionType" type="java.lang.Integer">
+            <column name="iCompetitionType" />
+            <generator class="identity" />
+        </id>
+        <property name="vcompetitionName" type="string">
+            <column name="vCompetitionName" length="20" />
+        </property>
+        <set name="competitions" table="competition" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iCompetitionType" />
+            </key>
+            <one-to-many class="com.gms.pos.Competition" />
+        </set>
+    </class>
+</hibernate-mapping>

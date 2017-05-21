@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.gms.pos.Equitmentsuse" table="equitmentsuse" catalog="gms" optimistic-lock="version">
+        <id name="bequitmentUsingId" type="java.lang.Long">
+            <column name="bEquitmentUsingId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="competition" class="com.gms.pos.Competition" fetch="select">
+            <column name="bCompetitionId" />
+        </many-to-one>
+        <many-to-one name="equipment" class="com.gms.pos.Equipment" fetch="select">
+            <column name="equitmentId" not-null="true" />
+        </many-to-one>
+        <property name="iequitmentNum" type="java.lang.Integer">
+            <column name="iEquitmentNum" />
+        </property>
+    </class>
+</hibernate-mapping>
