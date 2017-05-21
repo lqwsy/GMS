@@ -5,9 +5,25 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">org.gjt.mm.mysql.Driver</property>
-        <property name="hibernate.connection.password">mysql</property>
+        <property name="hibernate.connection.password"></property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost/gms</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+   		
+   		<mapping resource="com/gms/pos/Announcement.hbm.xml" />
+   		<mapping resource="com/gms/pos/Competition.hbm.xml" />
+   		<mapping resource="com/gms/pos/Competitioncomment.hbm.xml" />
+   		<mapping resource="com/gms/pos/Competitioncost.hbm.xml" />
+   		<mapping resource="com/gms/pos/Competitionreply.hbm.xml" />
+   		<mapping resource="com/gms/pos/Competitionresult.hbm.xml" />
+   		<mapping resource="com/gms/pos/Competitiontype.hbm.xml" />
+   		<mapping resource="com/gms/pos/Equipment.hbm.xml" />
+   		<mapping resource="com/gms/pos/Equipmentrent.hbm.xml" />
+   		<mapping resource="com/gms/pos/Equitmentsuse.hbm.xml" />
+   		<mapping resource="com/gms/pos/Fieldinfo.hbm.xml" />
+   		<mapping resource="com/gms/pos/Filedrentinfo.hbm.xml" />
+   		<mapping resource="com/gms/pos/Roleinfo.hbm.xml" />
+   		<mapping resource="com/gms/pos/Spacesuse.hbm.xml" />
+   		<mapping resource="com/gms/pos/Userinfo.hbm.xml" />
     </session-factory>
 </hibernate-configuration>
