@@ -2,12 +2,12 @@ package com.gms.dao.impl;
 
 import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-import com.gms.dao.IRoleinfo;
+import com.gms.dao.IRoleinfoDao;
 import com.gms.po.Roleinfo;
 
-public class RoleinfoDao extends HibernateDaoSupport implements IRoleinfo {
+public class RoleinfoDaoImpl extends HibernateDaoSupport implements IRoleinfoDao {
 
-	@Override
+	/*@Override
 	public Integer save(Roleinfo roleinfo) {
 		return (Integer) getHibernateTemplate().save(roleinfo);
 	}
@@ -20,7 +20,7 @@ public class RoleinfoDao extends HibernateDaoSupport implements IRoleinfo {
 	@Override
 	public void delete(Roleinfo roleinfo) {
 		getHibernateTemplate().delete(roleinfo);
-	}
+	}*/
 
 	@Override
 	public Roleinfo get(Integer iRoleId) {

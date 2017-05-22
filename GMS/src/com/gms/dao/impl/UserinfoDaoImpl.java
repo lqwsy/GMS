@@ -2,10 +2,10 @@ package com.gms.dao.impl;
 
 import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-import com.gms.dao.IUserinfo;
+import com.gms.dao.IUserinfoDao;
 import com.gms.po.Userinfo;
 
-public class UserinfoDao extends HibernateDaoSupport implements IUserinfo {
+public class UserinfoDaoImpl extends HibernateDaoSupport implements IUserinfoDao {
 	
 	
 	@Override
@@ -31,6 +31,11 @@ public class UserinfoDao extends HibernateDaoSupport implements IUserinfo {
 	@Override
 	public List findAllUser() {
 		return getHibernateTemplate().find("from Userinfo");
+	}
+
+	@Override
+	public List findByName(String vRealName) {
+		return getHibernateTemplate().find("from Userinfo u where u.vRealName = ?",vRealName);
 	}
 	
 	
