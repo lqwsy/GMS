@@ -1,5 +1,5 @@
 package com.gms.action;
 
-public class DD {
+public class Temp {
 
 }
