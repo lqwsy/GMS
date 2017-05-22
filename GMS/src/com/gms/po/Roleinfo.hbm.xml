@@ -1,21 +1,23 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-22 15:22:03 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.gms.pos.Roleinfo" table="roleinfo" catalog="gms" optimistic-lock="version">
+    <class name="com.gms.po.Roleinfo" table="ROLEINFO">
         <id name="iroleId" type="java.lang.Integer">
-            <column name="iRoleID" />
-            <generator class="identity" />
+            <column name="IROLEID" />
+            <generator class="assigned" />
         </id>
-        <property name="vroleName" type="string">
-            <column name="vRoleName" length="20" not-null="true" />
+        <property name="vroleName" type="java.lang.String">
+            <column name="VROLENAME" />
         </property>
-        <set name="userinfos" table="userinfo" inverse="true" lazy="true" fetch="select">
+        <set name="userinfos" table="ROLEINFO" inverse="false" lazy="true">
             <key>
-                <column name="iRoleId" not-null="true" />
+                <column name="IROLEID" />
             </key>
-            <one-to-many class="com.gms.pos.Userinfo" />
+            <element type="string">
+                <column name="USERINFOS" />
+            </element>
         </set>
     </class>
 </hibernate-mapping>

@@ -12,44 +12,16 @@ public class Fieldinfo implements java.io.Serializable {
 	private long lfieldId;
 	private String vfieldName;
 	private String vlocation;
-	private String vtype;
 	private int isize;
 	private boolean benableRent;
 	private int ipeople;
 	private int irentH;
-	private Set spacesuses = new HashSet(0);
+	// private Set spacesuses = new HashSet(0); 场地就不关联赛事信息了
 	private Set filedrentinfos = new HashSet(0);
-
-	public Fieldinfo() {
-	}
-
-	public Fieldinfo(long lfieldId, String vfieldName, String vlocation, int isize, boolean benableRent, int ipeople,
-			int irentH) {
-		this.lfieldId = lfieldId;
-		this.vfieldName = vfieldName;
-		this.vlocation = vlocation;
-		this.isize = isize;
-		this.benableRent = benableRent;
-		this.ipeople = ipeople;
-		this.irentH = irentH;
-	}
-
-	public Fieldinfo(long lfieldId, String vfieldName, String vlocation, String vtype, int isize, boolean benableRent,
-			int ipeople, int irentH, Set spacesuses, Set filedrentinfos) {
-		this.lfieldId = lfieldId;
-		this.vfieldName = vfieldName;
-		this.vlocation = vlocation;
-		this.vtype = vtype;
-		this.isize = isize;
-		this.benableRent = benableRent;
-		this.ipeople = ipeople;
-		this.irentH = irentH;
-		this.spacesuses = spacesuses;
-		this.filedrentinfos = filedrentinfos;
-	}
+	private Fieldtype fieldType;
 
 	public long getLfieldId() {
-		return this.lfieldId;
+		return lfieldId;
 	}
 
 	public void setLfieldId(long lfieldId) {
@@ -57,7 +29,7 @@ public class Fieldinfo implements java.io.Serializable {
 	}
 
 	public String getVfieldName() {
-		return this.vfieldName;
+		return vfieldName;
 	}
 
 	public void setVfieldName(String vfieldName) {
@@ -65,23 +37,15 @@ public class Fieldinfo implements java.io.Serializable {
 	}
 
 	public String getVlocation() {
-		return this.vlocation;
+		return vlocation;
 	}
 
 	public void setVlocation(String vlocation) {
 		this.vlocation = vlocation;
 	}
 
-	public String getVtype() {
-		return this.vtype;
-	}
-
-	public void setVtype(String vtype) {
-		this.vtype = vtype;
-	}
-
 	public int getIsize() {
-		return this.isize;
+		return isize;
 	}
 
 	public void setIsize(int isize) {
@@ -89,7 +53,7 @@ public class Fieldinfo implements java.io.Serializable {
 	}
 
 	public boolean isBenableRent() {
-		return this.benableRent;
+		return benableRent;
 	}
 
 	public void setBenableRent(boolean benableRent) {
@@ -97,7 +61,7 @@ public class Fieldinfo implements java.io.Serializable {
 	}
 
 	public int getIpeople() {
-		return this.ipeople;
+		return ipeople;
 	}
 
 	public void setIpeople(int ipeople) {
@@ -105,27 +69,27 @@ public class Fieldinfo implements java.io.Serializable {
 	}
 
 	public int getIrentH() {
-		return this.irentH;
+		return irentH;
 	}
 
 	public void setIrentH(int irentH) {
 		this.irentH = irentH;
 	}
 
-	public Set getSpacesuses() {
-		return this.spacesuses;
-	}
-
-	public void setSpacesuses(Set spacesuses) {
-		this.spacesuses = spacesuses;
-	}
-
 	public Set getFiledrentinfos() {
-		return this.filedrentinfos;
+		return filedrentinfos;
 	}
 
 	public void setFiledrentinfos(Set filedrentinfos) {
 		this.filedrentinfos = filedrentinfos;
+	}
+
+	public Fieldtype getFieldType() {
+		return fieldType;
+	}
+
+	public void setFieldType(Fieldtype fieldType) {
+		this.fieldType = fieldType;
 	}
 
 }

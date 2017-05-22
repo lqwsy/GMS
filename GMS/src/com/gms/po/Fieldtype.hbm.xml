@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-22 15:22:03 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gms.po.Fieldtype" table="FIELDTYPE">
+        <id name="lFieldTypeId" type="long" >
+            <column name="LFIELDTYPEID" />
+            <generator class="native" />
+        </id>
+        <property name="vFieldTypeName" type="java.lang.String" >
+            <column name="VFIELDTYPENAME" />
+        </property>
+        <set name="fieldinfos" table="FIELDINFO" inverse="false" lazy="true" >
+            <key>
+                <column name="LFIELDTYPEID" />
+            </key>
+            <one-to-many class="com.gms.po.Fieldinfo" />
+        </set>
+    </class>
+</hibernate-mapping>
