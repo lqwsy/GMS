@@ -1,75 +1,69 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-5-22 15:22:03 by Hibernate Tools 3.5.0.Final -->
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="com.gms.po.Userinfo" table="USERINFO">
+    <class name="com.gms.pos.Userinfo" table="userinfo" catalog="gms" optimistic-lock="version">
         <id name="iuserId" type="java.lang.Integer">
-            <column name="IUSERID" />
-            <generator class="assigned" />
+            <column name="iUserId" />
+            <generator class="identity" />
         </id>
-        <many-to-one name="roleinfo" class="com.gms.po.Roleinfo" fetch="join">
-            <column name="ROLEINFO" />
+        <many-to-one name="roleinfo" class="com.gms.pos.Roleinfo" fetch="select">
+            <column name="iRoleId" not-null="true" />
         </many-to-one>
-        <property name="vuserName" type="java.lang.String">
-            <column name="VUSERNAME" />
+        <property name="vuserName" type="string">
+            <column name="vUserName" length="20" not-null="true" />
         </property>
-        <property name="vpassward" type="java.lang.String">
-            <column name="VPASSWARD" />
+        <property name="vpassward" type="string">
+            <column name="vPassward" length="32" not-null="true" />
         </property>
-        <property name="vrealName" type="java.lang.String">
-            <column name="VREALNAME" />
+        <property name="vrealName" type="string">
+            <column name="vRealName" length="10" />
         </property>
         <property name="ivstate" type="java.lang.Integer">
-            <column name="IVSTATE" />
+            <column name="iVState" />
         </property>
-        <property name="vtelephone" type="java.lang.String">
-            <column name="VTELEPHONE" />
+        <property name="vtelephone" type="string">
+            <column name="vTelephone" length="20" />
         </property>
-        <property name="vemail" type="java.lang.String">
-            <column name="VEMAIL" />
+        <property name="vemail" type="string">
+            <column name="vEmail" length="50" />
         </property>
         <property name="iidentifierType" type="java.lang.Integer">
-            <column name="IIDENTIFIERTYPE" />
+            <column name="iIdentifierType" />
         </property>
-        <property name="videntifierCode" type="java.lang.String">
-            <column name="VIDENTIFIERCODE" />
+        <property name="videntifierCode" type="string">
+            <column name="vIdentifierCode" length="30" />
         </property>
-        <property name="videntifierAddress" type="java.lang.String">
-            <column name="VIDENTIFIERADDRESS" />
+        <property name="videntifierAddress" type="string">
+            <column name="vIdentifierAddress" length="500" />
         </property>
-        <property name="dbirthday" type="java.util.Date">
-            <column name="DBIRTHDAY" />
+        <property name="dbirthday" type="timestamp">
+            <column name="dBirthday" length="19" />
         </property>
-        <property name="vcollege" type="java.lang.String">
-            <column name="VCOLLEGE" />
+        <property name="vcollege" type="string">
+            <column name="vCollege" length="20" />
         </property>
-        <property name="vaddress" type="java.lang.String">
-            <column name="VADDRESS" />
+        <property name="vaddress" type="string">
+            <column name="vAddress" length="500" />
         </property>
-        <set name="filedrentinfos" table="USERINFO" inverse="false" lazy="true">
+        <set name="filedrentinfos" table="filedrentinfo" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="IUSERID" />
+                <column name="iUserId" />
             </key>
-            <element type="string">
-                <column name="FILEDRENTINFOS" />
-            </element>
+            <one-to-many class="com.gms.pos.Filedrentinfo" />
         </set>
-        <set name="competitions" table="USERINFO" inverse="false" lazy="true">
+        <set name="competitions" table="competition" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="IUSERID" />
+                <column name="iUserId" />
             </key>
-            <element type="string">
-                <column name="COMPETITIONS" />
-            </element>
+            <one-to-many class="com.gms.pos.Competition" />
         </set>
-        <set name="equipmentrents" table="USERINFO" inverse="false" lazy="true">
+        <set name="equipmentrents" table="equipmentrent" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="IUSERID" />
+                <column name="iBorrowedId" />
             </key>
-            <element type="string">
-                <column name="EQUIPMENTRENTS" />
-            </element>
+            <one-to-many class="com.gms.pos.Equipmentrent" />
         </set>
     </class>
 </hibernate-mapping>
