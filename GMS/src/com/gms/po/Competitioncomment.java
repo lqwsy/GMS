@@ -1,4 +1,4 @@
-package com.gms.pos;
+package com.gms.po;
 // Generated 2017-5-21 12:46:56 by Hibernate Tools 5.2.0.Beta1
 
 import java.util.Date;
