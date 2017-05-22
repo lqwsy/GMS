@@ -5,7 +5,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.gms.dao.IRoleinfo;
 import com.gms.po.Roleinfo;
 
-public class RoleinfoDao extends HibernateDaoSupport implements IRoleinfo {
+public class RoleinfoDaoImpl extends HibernateDaoSupport implements IRoleinfo {
 
 	@Override
 	public Integer save(Roleinfo roleinfo) {

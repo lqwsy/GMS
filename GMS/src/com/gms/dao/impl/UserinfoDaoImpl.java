@@ -5,7 +5,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.gms.dao.IUserinfo;
 import com.gms.po.Userinfo;
 
-public class UserinfoDao extends HibernateDaoSupport implements IUserinfo {
+public class UserinfoDaoImpl extends HibernateDaoSupport implements IUserinfo {
 	
 	
 	@Override
