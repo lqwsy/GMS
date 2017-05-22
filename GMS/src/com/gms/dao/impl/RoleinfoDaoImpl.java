@@ -6,6 +6,7 @@ import com.gms.dao.IRoleinfoDao;
 import com.gms.po.Roleinfo;
 
 public class RoleinfoDaoImpl extends HibernateDaoSupport implements IRoleinfoDao {
+//github.com/lqwsy/GMS.git
 
 	/*@Override
 	public Integer save(Roleinfo roleinfo) {

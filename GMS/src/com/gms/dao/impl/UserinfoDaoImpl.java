@@ -6,6 +6,7 @@ import com.gms.dao.IUserinfoDao;
 import com.gms.po.Userinfo;
 
 public class UserinfoDaoImpl extends HibernateDaoSupport implements IUserinfoDao {
+//github.com/lqwsy/GMS.git
 	
 	
 	@Override
