@@ -6,16 +6,16 @@
     <class name="com.gms.po.Competitionresult" table="competitionresult" catalog="gms" optimistic-lock="version">
         <id name="bcompetitionId" type="long">
             <column name="bCompetitionId" />
-            <generator class="foreign">
-                <param name="property">competition</param>
-            </generator>
+            <generator class="native" />
         </id>
-        <one-to-one name="competition" class="com.gms.po.Competition" constrained="true"></one-to-one>
         <property name="vcompetitorUnit" type="string">
             <column name="vCompetitorUnit" length="20" not-null="true" />
         </property>
         <property name="iscores" type="java.lang.Integer">
             <column name="iScores" />
         </property>
+        <many-to-one name="competition" class="com.gms.po.Competition" fetch="select">
+            <column name="bCompetitionId" not-null="true" />
+        </many-to-one>
     </class>
 </hibernate-mapping>

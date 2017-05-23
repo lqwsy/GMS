@@ -6,7 +6,7 @@ package com.gms.po;
  */
 public class Competitionresult implements java.io.Serializable {
 
-	private long bcompetitionId;
+	private long bcompetitionResultId;
 	private Competition competition;
 	private String vcompetitorUnit;
 	private Integer iscores;
@@ -14,23 +14,26 @@ public class Competitionresult implements java.io.Serializable {
 	public Competitionresult() {
 	}
 
-	public Competitionresult(Competition competition, String vcompetitorUnit) {
+	public Competitionresult(long bcompetitionResultId, Competition competition, String vcompetitorUnit) {
+		this.bcompetitionResultId = bcompetitionResultId;
 		this.competition = competition;
 		this.vcompetitorUnit = vcompetitorUnit;
 	}
 
-	public Competitionresult(Competition competition, String vcompetitorUnit, Integer iscores) {
+	public Competitionresult(long bcompetitionResultId, Competition competition, String vcompetitorUnit,
+			Integer iscores) {
+		this.bcompetitionResultId = bcompetitionResultId;
 		this.competition = competition;
 		this.vcompetitorUnit = vcompetitorUnit;
 		this.iscores = iscores;
 	}
 
-	public long getBcompetitionId() {
-		return this.bcompetitionId;
+	public long getBcompetitionResultId() {
+		return this.bcompetitionResultId;
 	}
 
-	public void setBcompetitionId(long bcompetitionId) {
-		this.bcompetitionId = bcompetitionId;
+	public void setBcompetitionResultId(long bcompetitionResultId) {
+		this.bcompetitionResultId = bcompetitionResultId;
 	}
 
 	public Competition getCompetition() {

@@ -6,7 +6,7 @@
     <class name="com.gms.po.Competitiontype" table="competitiontype" catalog="gms" optimistic-lock="version">
         <id name="icompetitionType" type="java.lang.Integer">
             <column name="iCompetitionType" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
         <property name="vcompetitionName" type="string">
             <column name="vCompetitionName" length="20" />

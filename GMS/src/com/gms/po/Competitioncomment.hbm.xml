@@ -6,7 +6,7 @@
     <class name="com.gms.po.Competitioncomment" table="competitioncomment" catalog="gms" optimistic-lock="version">
         <id name="bcommentId" type="java.lang.Long">
             <column name="bCommentId" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
         <many-to-one name="competition" class="com.gms.po.Competition" fetch="select">
             <column name="bCompetitionId" />

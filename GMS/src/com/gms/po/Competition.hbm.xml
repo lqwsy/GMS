@@ -6,7 +6,7 @@
     <class name="com.gms.po.Competition" table="competition" catalog="gms" optimistic-lock="version">
         <id name="bcompetitionId" type="java.lang.Long">
             <column name="bCompetitionId" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
         <many-to-one name="competitiontype" class="com.gms.po.Competitiontype" fetch="select">
             <column name="iCompetitionType" />
@@ -50,7 +50,12 @@
             </key>
             <one-to-many class="com.gms.po.Competitioncomment" />
         </set>
-        <one-to-one name="competitionresult" class="com.gms.po.Competitionresult"></one-to-one>
+        <set name="competitionresults" table="competitionresult" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bCompetitionId" not-null="true" />
+            </key>
+            <one-to-many class="com.gms.po.Competitionresult" />
+        </set>
         <set name="equitmentsuses" table="equitmentsuse" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="bCompetitionId" />
