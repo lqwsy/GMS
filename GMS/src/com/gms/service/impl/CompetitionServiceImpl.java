@@ -13,9 +13,9 @@ public class CompetitionServiceImpl implements ICompetitionService{
 	}
 
 	@Override
-	public Competition getCompetitionById(Long id) {
+	public Competition getCompetitionById(Long competitionId) {
 		// TODO Auto-generated method stub
-		return competitionDao.get(id);
+		return competitionDao.get(competitionId);
 	}
 
 	@Override
@@ -26,25 +26,25 @@ public class CompetitionServiceImpl implements ICompetitionService{
 	}
 
 	@Override
-	public void verifyCompetition(Long id) {
+	public void verifyCompetition(Long competitionId) {
 		// TODO Auto-generated method stub
-		Competition competition=competitionDao.get(id);
+		Competition competition=competitionDao.get(competitionId);
 		competition.setVcompetitionState(CompetitionState.NORMAL);
 		competitionDao.update(competition);
 	}
 
 	@Override
-	public void delCompetition(Long id) {
+	public void delCompetition(Long competitionId) {
 		// TODO Auto-generated method stub
-		Competition competition=competitionDao.get(id);
+		Competition competition=competitionDao.get(competitionId);
 		competition.setVcompetitionState(CompetitionState.DELETED);
 		competitionDao.update(competition);
 	}
 
 	@Override
-	public void delForeCompetition(Long id) {
+	public void delForeCompetition(Long competitionId) {
 		// TODO Auto-generated method stub
-		Competition competition=competitionDao.get(id);
+		Competition competition=competitionDao.get(competitionId);
 		competitionDao.delete(competition);
 	}
 

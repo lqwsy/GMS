@@ -3,12 +3,12 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="com.gms.pos.Competitionreply" table="competitionreply" catalog="gms" optimistic-lock="version">
+    <class name="com.gms.po.Competitionreply" table="competitionreply" catalog="gms" optimistic-lock="version">
         <id name="breplyId" type="java.lang.Long">
             <column name="bReplyId" />
             <generator class="identity" />
         </id>
-        <many-to-one name="competitioncomment" class="com.gms.pos.Competitioncomment" fetch="select">
+        <many-to-one name="competitioncomment" class="com.gms.po.Competitioncomment" fetch="select">
             <column name="bCommentId" />
         </many-to-one>
         <property name="vreplyContents" type="string">
