@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.gms.po.Fieldrentinfo" table="filedrentinfo" catalog="gms" optimistic-lock="none">
+        <id name="lfieldRentId" type="long">
+            <column name="lFieldRentId" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="fieldinfo" class="com.gms.po.Fieldinfo" fetch="select">
+            <column name="lFieldId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userinfo" class="com.gms.po.Userinfo" fetch="select">
+            <column name="iUserId" />
+        </many-to-one>
+        <property name="dstartTime" type="timestamp">
+            <column name="dStartTime" length="19" not-null="true" />
+        </property>
+        <property name="dendTime" type="timestamp">
+            <column name="dEndTime" length="19" not-null="true" />
+        </property>
+        <property name="irent" type="int">
+            <column name="iRent" not-null="true" />
+        </property>
+        <property name="bstatus" type="java.lang.Boolean">
+            <column name="bStatus" />
+        </property>
+    </class>
+</hibernate-mapping>

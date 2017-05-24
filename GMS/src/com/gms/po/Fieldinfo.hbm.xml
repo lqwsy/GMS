@@ -1,45 +1,41 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-24 20:23:25 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.gms.pos.Fieldinfo" table="fieldinfo" catalog="gms" optimistic-lock="version">
+    <class name="com.gms.po.Fieldinfo" table="FIELDINFO">
         <id name="lfieldId" type="long">
-            <column name="lFieldId" />
-            <generator class="assigned" />
+            <column name="LFIELDID" />
+            <generator class="native" />
         </id>
-        <property name="vfieldName" type="string">
-            <column name="vFieldName" length="30" not-null="true" />
+        <property name="vfieldName" type="java.lang.String">
+            <column name="VFIELDNAME" />
         </property>
-        <property name="vlocation" type="string">
-            <column name="vLocation" length="100" not-null="true" />
-        </property>
-        <property name="vtype" type="string">
-            <column name="vType" length="30" />
+        <property name="vlocation" type="java.lang.String">
+            <column name="VLOCATION" />
         </property>
         <property name="isize" type="int">
-            <column name="iSize" not-null="true" />
+            <column name="ISIZE" />
         </property>
         <property name="benableRent" type="boolean">
-            <column name="bEnableRent" not-null="true" />
+            <column name="BENABLERENT" />
         </property>
         <property name="ipeople" type="int">
-            <column name="iPeople" not-null="true" />
+            <column name="IPEOPLE" />
         </property>
         <property name="irentH" type="int">
-            <column name="iRentH" not-null="true" />
+            <column name="IRENTH" />
         </property>
-        <set name="spacesuses" table="spacesuse" inverse="true" lazy="true" fetch="select">
+        <set name="filedrentinfos" table="FIELDINFO" inverse="false" lazy="true">
             <key>
-                <column name="lFieldId" />
+                <column name="LFIELDID" />
             </key>
-            <one-to-many class="com.gms.pos.Spacesuse" />
+            <element type="string">
+                <column name="FILEDRENTINFOS" />
+            </element>
         </set>
-        <set name="filedrentinfos" table="filedrentinfo" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="lFieldId" not-null="true" />
-            </key>
-            <one-to-many class="com.gms.pos.Filedrentinfo" />
-        </set>
+        <many-to-one name="fieldtype" class="com.gms.po.Fieldtype" fetch="join">
+            <column name="FIELDTYPE" />
+        </many-to-one>
     </class>
 </hibernate-mapping>

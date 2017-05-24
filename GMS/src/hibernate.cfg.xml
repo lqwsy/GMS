@@ -10,20 +10,23 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
    		
-   		<mapping resource="com/gms/pos/Announcement.hbm.xml" />
-   		<mapping resource="com/gms/pos/Competition.hbm.xml" />
-   		<mapping resource="com/gms/pos/Competitioncomment.hbm.xml" />
-   		<mapping resource="com/gms/pos/Competitioncost.hbm.xml" />
-   		<mapping resource="com/gms/pos/Competitionreply.hbm.xml" />
-   		<mapping resource="com/gms/pos/Competitionresult.hbm.xml" />
-   		<mapping resource="com/gms/pos/Competitiontype.hbm.xml" />
-   		<mapping resource="com/gms/pos/Equipment.hbm.xml" />
-   		<mapping resource="com/gms/pos/Equipmentrent.hbm.xml" />
-   		<mapping resource="com/gms/pos/Equitmentsuse.hbm.xml" />
-   		<mapping resource="com/gms/pos/Fieldinfo.hbm.xml" />
-   		<mapping resource="com/gms/pos/Filedrentinfo.hbm.xml" />
-   		<mapping resource="com/gms/pos/Roleinfo.hbm.xml" />
-   		<mapping resource="com/gms/pos/Spacesuse.hbm.xml" />
-   		<mapping resource="com/gms/pos/Userinfo.hbm.xml" />
+   		<mapping resource="com/gms/po/Announcement.hbm.xml" />
+   		<mapping resource="com/gms/po/Competition.hbm.xml" />
+   		<mapping resource="com/gms/po/Competitioncomment.hbm.xml" />
+   		<mapping resource="com/gms/po/Competitioncost.hbm.xml" />
+   		<mapping resource="com/gms/po/Competitionreply.hbm.xml" />
+   		<mapping resource="com/gms/po/Competitionresult.hbm.xml" />
+   		<mapping resource="com/gms/po/Competitiontype.hbm.xml" />
+   		<mapping resource="com/gms/po/Equipment.hbm.xml" />
+   		<mapping resource="com/gms/po/Equipmentrent.hbm.xml" />
+   		<mapping resource="com/gms/po/Equitmentsuse.hbm.xml" />
+   		<mapping resource="com/gms/po/Fieldinfo.hbm.xml" />
+   		<mapping resource="com/gms/po/Filedrentinfo.hbm.xml" />
+   		<mapping resource="com/gms/po/Fieldtype.hbm.xml" />
+   		<mapping resource="com/gms/po/Roleinfo.hbm.xml" />
+   		<mapping resource="com/gms/po/Spacesuse.hbm.xml" />
+   		<mapping resource="com/gms/po/Userinfo.hbm.xml" />
+   		<mapping resource="com/gms/po/Userinfo.hbm.xml" />
+   		
     </session-factory>
 </hibernate-configuration>
