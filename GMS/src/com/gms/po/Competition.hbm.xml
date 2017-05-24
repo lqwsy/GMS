@@ -3,15 +3,15 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="com.gms.pos.Competition" table="competition" catalog="gms" optimistic-lock="version">
+    <class name="com.gms.po.Competition" table="competition" catalog="gms" optimistic-lock="version">
         <id name="bcompetitionId" type="java.lang.Long">
             <column name="bCompetitionId" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
-        <many-to-one name="competitiontype" class="com.gms.pos.Competitiontype" fetch="select">
+        <many-to-one name="competitiontype" class="com.gms.po.Competitiontype" fetch="select">
             <column name="iCompetitionType" />
         </many-to-one>
-        <many-to-one name="userinfo" class="com.gms.pos.Userinfo" fetch="select">
+        <many-to-one name="userinfo" class="com.gms.po.Userinfo" fetch="select">
             <column name="iUserId" />
         </many-to-one>
         <property name="dapplyDate" type="timestamp">
@@ -42,21 +42,26 @@
             <key>
                 <column name="bCompetitionId" />
             </key>
-            <one-to-many class="com.gms.pos.Spacesuse" />
+            <one-to-many class="com.gms.po.Spacesuse" />
         </set>
         <set name="competitioncomments" table="competitioncomment" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="bCompetitionId" />
             </key>
-            <one-to-many class="com.gms.pos.Competitioncomment" />
+            <one-to-many class="com.gms.po.Competitioncomment" />
         </set>
-        <one-to-one name="competitionresult" class="com.gms.pos.Competitionresult"></one-to-one>
+        <set name="competitionresults" table="competitionresult" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bCompetitionId" not-null="true" />
+            </key>
+            <one-to-many class="com.gms.po.Competitionresult" />
+        </set>
         <set name="equitmentsuses" table="equitmentsuse" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="bCompetitionId" />
             </key>
-            <one-to-many class="com.gms.pos.Equitmentsuse" />
+            <one-to-many class="com.gms.po.Equitmentsuse" />
         </set>
-        <one-to-one name="competitioncost" class="com.gms.pos.Competitioncost"></one-to-one>
+        <one-to-one name="competitioncost" class="com.gms.po.Competitioncost"></one-to-one>
     </class>
 </hibernate-mapping>

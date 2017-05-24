@@ -23,7 +23,7 @@ public class Competition implements java.io.Serializable {
 	private Date dcompetitionDate;
 	private Set spacesuses = new HashSet(0);
 	private Set competitioncomments = new HashSet(0);
-	private Competitionresult competitionresult;
+	private Set competitionresults = new HashSet(0);
 	private Set equitmentsuses = new HashSet(0);
 	private Competitioncost competitioncost;
 
@@ -32,8 +32,8 @@ public class Competition implements java.io.Serializable {
 
 	public Competition(Competitiontype competitiontype, Userinfo userinfo, Date dapplyDate, String vmainUnit,
 			String vcompetitionDetails, String vcompetitionState, String vunitAddress, String vlinkMan,
-			String vphoneNumber, Date dcompetitionDate, Set spacesuses, Set competitioncomments,
-			Competitionresult competitionresult, Set equitmentsuses, Competitioncost competitioncost) {
+			String vphoneNumber, Date dcompetitionDate, Set spacesuses, Set competitioncomments, Set competitionresults,
+			Set equitmentsuses, Competitioncost competitioncost) {
 		this.competitiontype = competitiontype;
 		this.userinfo = userinfo;
 		this.dapplyDate = dapplyDate;
@@ -46,7 +46,7 @@ public class Competition implements java.io.Serializable {
 		this.dcompetitionDate = dcompetitionDate;
 		this.spacesuses = spacesuses;
 		this.competitioncomments = competitioncomments;
-		this.competitionresult = competitionresult;
+		this.competitionresults = competitionresults;
 		this.equitmentsuses = equitmentsuses;
 		this.competitioncost = competitioncost;
 	}
@@ -155,12 +155,12 @@ public class Competition implements java.io.Serializable {
 		this.competitioncomments = competitioncomments;
 	}
 
-	public Competitionresult getCompetitionresult() {
-		return this.competitionresult;
+	public Set getCompetitionresults() {
+		return this.competitionresults;
 	}
 
-	public void setCompetitionresult(Competitionresult competitionresult) {
-		this.competitionresult = competitionresult;
+	public void setCompetitionresults(Set competitionresults) {
+		this.competitionresults = competitionresults;
 	}
 
 	public Set getEquitmentsuses() {

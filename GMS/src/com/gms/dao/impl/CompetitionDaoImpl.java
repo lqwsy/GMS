@@ -1,5 +1,7 @@
 package com.gms.dao.impl;
 
+import java.util.List;
+
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.gms.dao.ICompetitionDao;
@@ -29,6 +31,12 @@ public class CompetitionDaoImpl extends HibernateDaoSupport implements ICompetit
 	public Competition get(Long id) {
 		// TODO Auto-generated method stub
 		return getHibernateTemplate().get(Competition.class, id);
+	}
+
+	@Override
+	public List findAll() {
+		// TODO Auto-generated method stub
+		return getHibernateTemplate().find("from Competition");
 	}
 
 }

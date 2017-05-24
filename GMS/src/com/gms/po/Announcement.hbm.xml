@@ -3,10 +3,10 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="com.gms.pos.Announcement" table="announcement" catalog="gms" optimistic-lock="version">
+    <class name="com.gms.po.Announcement" table="announcement" catalog="gms" optimistic-lock="version">
         <id name="bannouncementId" type="java.lang.Long">
             <column name="bAnnouncementId" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
         <property name="vannouncementTitle" type="string">
             <column name="vAnnouncementTitle" length="50" />
