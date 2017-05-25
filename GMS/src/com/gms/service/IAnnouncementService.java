@@ -9,5 +9,5 @@ public interface IAnnouncementService {
 	Long addAnnouncement(Announcement announcement);
 	void deleteAnnouncement(Long announcementId);
 	void updateAnnouncement(Announcement announcement);
-	List getAllAnnouncements();
+	List getAnnouncementsByPage(int page);
 }

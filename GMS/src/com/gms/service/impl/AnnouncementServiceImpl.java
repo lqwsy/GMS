@@ -38,9 +38,10 @@ public class AnnouncementServiceImpl implements IAnnouncementService {
 	}
 
 	@Override
-	public List getAllAnnouncements() {
+	public List getAnnouncementsByPage(int page) {
 		// TODO Auto-generated method stub
-		return announcementDao.findAll();
+		String hql="from Announcement a order by a.dannouncementTime desc";
+		return announcementDao.findByPage(hql, (page-1)*12, 12);
 	}
 
 }

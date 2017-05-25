@@ -18,6 +18,7 @@ import com.gms.service.ISpacesUseService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CompetitionAction extends ActionSupport{
+	private int page;
 	private Competition competition;
 	private Set<Competitionresult> competitionresults;//赛事结果
 	private Spacesuse spacesuse;//赛事场地
@@ -33,6 +34,14 @@ public class CompetitionAction extends ActionSupport{
 	private ICompetitionResultService competitionResultServie;
 	//other module
 	
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
 	public Competition getCompetition() {
 		return competition;
 	}
@@ -191,7 +200,7 @@ public class CompetitionAction extends ActionSupport{
 	
 	//获取所有赛事
 	public String getAllCompetitions(){
-		competitions=(List<Competition>)competitionService.getAllCompetitions();
+		competitions=(List<Competition>)competitionService.getAllCompetitionsByPage(page);
 		return SUCCESS;
 	}
 }

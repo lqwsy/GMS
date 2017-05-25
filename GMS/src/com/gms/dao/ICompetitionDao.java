@@ -9,6 +9,6 @@ public interface ICompetitionDao {
 	void delete(Competition competition);
 	void update(Competition competition);
 	Competition get(Long id);
-	List findCompetitions(String hql);
+	List findByPage(String hql,Object arg,int offset,int pageSize);
 	List findCompetitions(String hql,Object arg);
 }
