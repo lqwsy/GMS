@@ -30,10 +30,11 @@ public class CompetitionServiceImpl implements ICompetitionService{
 	}
 
 	@Override
-	public List getAllCompetitions() {
+	public List getAllCompetitionsByPage(int page) {
 		// TODO Auto-generated method stub
-		String hql="from Competition";
-		return competitionDao.findCompetitions(hql);
+		String hql="from Competition c where c.vcompetitionState!=?";
+		return competitionDao.findByPage(hql, CompetitionState.TO_VERTIFY, 
+				(page-1)*20, 20);
 	}
 
 	@Override

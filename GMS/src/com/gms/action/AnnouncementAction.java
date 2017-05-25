@@ -7,10 +7,19 @@ import com.gms.service.IAnnouncementService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AnnouncementAction extends ActionSupport{
+	private int page;
 	private Announcement announcement;
 	private List<Announcement> announcements;
 	
 	private IAnnouncementService announcementService;
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
 
 	public Announcement getAnnouncement() {
 		return announcement;
@@ -56,7 +65,7 @@ public class AnnouncementAction extends ActionSupport{
 	
 	//获取所有公告
 	public String getAllAnnouncements(){
-		announcements=announcementService.getAllAnnouncements();
+		announcements=announcementService.getAnnouncementsByPage(page);
 		return SUCCESS;
 	}
 }

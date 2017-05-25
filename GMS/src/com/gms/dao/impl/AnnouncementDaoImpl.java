@@ -1,7 +1,11 @@
 package com.gms.dao.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.gms.dao.IAnnouncementDao;
@@ -34,9 +38,21 @@ public class AnnouncementDaoImpl extends HibernateDaoSupport implements IAnnounc
 	}
 
 	@Override
-	public List findAll() {
+	public List findByPage(String hql, int offset, int pageSize) {
 		// TODO Auto-generated method stub
-		return getHibernateTemplate().find("from Announcement");
+		List list=getHibernateTemplate().
+				executeFind(new HibernateCallback(){
+
+			@Override
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				// TODO Auto-generated method stub
+				List result=session.createQuery(hql).
+						setFirstResult(offset).setMaxResults(pageSize).list();
+				return result;
+			}
+			
+		});
+		return list;
 	}
 
 }
