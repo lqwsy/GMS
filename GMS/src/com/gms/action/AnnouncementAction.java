@@ -32,16 +32,19 @@ public class AnnouncementAction extends ActionSupport{
 		this.announcementService = announcementService;
 	}
 
+	//公告发布
 	public String addAnnouncement(){
 		announcementService.addAnnouncement(announcement);
 		return SUCCESS;
 	}
 	
+	//公告删除
 	public String deleteAnnouncement(){
 		announcementService.deleteAnnouncement(announcement.getBannouncementId());
 		return SUCCESS;
 	}
 	
+	//公告更新
 	public String updateAnnouncement(){
 		Announcement announcementPo=announcementService.getAnnouncementById(
 				announcement.getBannouncementId());
@@ -51,6 +54,7 @@ public class AnnouncementAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	//获取所有公告
 	public String getAllAnnouncements(){
 		announcements=announcementService.getAllAnnouncements();
 		return SUCCESS;
