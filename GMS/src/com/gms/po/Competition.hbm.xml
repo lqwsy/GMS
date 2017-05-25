@@ -14,7 +14,7 @@
         <many-to-one name="userinfo" class="com.gms.po.Userinfo" fetch="select">
             <column name="iUserId" />
         </many-to-one>
-        <property name="dapplyDate" type="timestamp">
+        <property name="dapplyDate" type="java.sql.Timestamp">
             <column name="dApplyDate" length="19" />
         </property>
         <property name="vmainUnit" type="string">
@@ -35,10 +35,10 @@
         <property name="vphoneNumber" type="string">
             <column name="vPhoneNumber" length="11" />
         </property>
-        <property name="dcompetitionDate" type="timestamp">
+        <property name="dcompetitionDate" type="java.sql.Timestamp">
             <column name="dCompetitionDate" length="19" />
         </property>
-        <set name="spacesuses" table="spacesuse" inverse="true" lazy="true" fetch="select">
+        <set name="spacesuses" table="spacesuse" cascade="all" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="bCompetitionId" />
             </key>
@@ -50,13 +50,13 @@
             </key>
             <one-to-many class="com.gms.po.Competitioncomment" />
         </set>
-        <set name="competitionresults" table="competitionresult" inverse="true" lazy="true" fetch="select">
+        <set name="competitionresults" table="competitionresult" cascade="all" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="bCompetitionId" not-null="true" />
             </key>
             <one-to-many class="com.gms.po.Competitionresult" />
         </set>
-        <set name="equitmentsuses" table="equitmentsuse" inverse="true" lazy="true" fetch="select">
+        <set name="equitmentsuses" table="equitmentsuse" cascade="all" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="bCompetitionId" />
             </key>

@@ -23,9 +23,17 @@ public class CompetitionServiceImpl implements ICompetitionService{
 	}
 
 	@Override
+	public List getToVerifyCompetitions() {
+		// TODO Auto-generated method stub
+		String hql="from Competition c where c.vcompetitionState=?";
+		return competitionDao.findCompetitions(hql, CompetitionState.TO_VERTIFY);
+	}
+
+	@Override
 	public List getAllCompetitions() {
 		// TODO Auto-generated method stub
-		return competitionDao.findAll();
+		String hql="from Competition";
+		return competitionDao.findCompetitions(hql);
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import com.gms.po.Competition;
 
 public interface ICompetitionService {
 	Competition getCompetitionById(Long competitionId);
+	List getToVerifyCompetitions();
 	List getAllCompetitions();
 	Long addCompetition(Competition competition);
 	void cancelCompetition(Long competitionId);

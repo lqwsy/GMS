@@ -1,7 +1,7 @@
 package com.gms.po;
 // Generated 2017-5-21 12:46:56 by Hibernate Tools 5.2.0.Beta1
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,13 +13,13 @@ public class Competitioncomment implements java.io.Serializable {
 	private Long bcommentId;
 	private Competition competition;
 	private String vcommentDetails;
-	private Date dcommentTime;
+	private Timestamp dcommentTime=new Timestamp(new java.util.Date().getTime());
 	private Set competitionreplies = new HashSet(0);
 
 	public Competitioncomment() {
 	}
 
-	public Competitioncomment(Competition competition, String vcommentDetails, Date dcommentTime,
+	public Competitioncomment(Competition competition, String vcommentDetails, Timestamp dcommentTime,
 			Set competitionreplies) {
 		this.competition = competition;
 		this.vcommentDetails = vcommentDetails;
@@ -51,11 +51,11 @@ public class Competitioncomment implements java.io.Serializable {
 		this.vcommentDetails = vcommentDetails;
 	}
 
-	public Date getDcommentTime() {
+	public Timestamp getDcommentTime() {
 		return this.dcommentTime;
 	}
 
-	public void setDcommentTime(Date dcommentTime) {
+	public void setDcommentTime(Timestamp dcommentTime) {
 		this.dcommentTime = dcommentTime;
 	}
 

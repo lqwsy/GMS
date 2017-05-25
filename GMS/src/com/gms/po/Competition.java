@@ -1,6 +1,7 @@
 package com.gms.po;
 // Generated 2017-5-21 12:46:56 by Hibernate Tools 5.2.0.Beta1
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,14 +14,14 @@ public class Competition implements java.io.Serializable {
 	private Long bcompetitionId;
 	private Competitiontype competitiontype;
 	private Userinfo userinfo;
-	private Date dapplyDate;
+	private Timestamp dapplyDate=new Timestamp(new java.util.Date().getTime());
 	private String vmainUnit;
 	private String vcompetitionDetails;
 	private String vcompetitionState;
 	private String vunitAddress;
 	private String vlinkMan;
 	private String vphoneNumber;
-	private Date dcompetitionDate;
+	private Timestamp dcompetitionDate;
 	private Set spacesuses = new HashSet(0);
 	private Set competitioncomments = new HashSet(0);
 	private Set competitionresults = new HashSet(0);
@@ -30,9 +31,9 @@ public class Competition implements java.io.Serializable {
 	public Competition() {
 	}
 
-	public Competition(Competitiontype competitiontype, Userinfo userinfo, Date dapplyDate, String vmainUnit,
+	public Competition(Competitiontype competitiontype, Userinfo userinfo, Timestamp dapplyDate, String vmainUnit,
 			String vcompetitionDetails, String vcompetitionState, String vunitAddress, String vlinkMan,
-			String vphoneNumber, Date dcompetitionDate, Set spacesuses, Set competitioncomments, Set competitionresults,
+			String vphoneNumber, Timestamp dcompetitionDate, Set spacesuses, Set competitioncomments, Set competitionresults,
 			Set equitmentsuses, Competitioncost competitioncost) {
 		this.competitiontype = competitiontype;
 		this.userinfo = userinfo;
@@ -75,11 +76,11 @@ public class Competition implements java.io.Serializable {
 		this.userinfo = userinfo;
 	}
 
-	public Date getDapplyDate() {
+	public Timestamp getDapplyDate() {
 		return this.dapplyDate;
 	}
 
-	public void setDapplyDate(Date dapplyDate) {
+	public void setDapplyDate(Timestamp dapplyDate) {
 		this.dapplyDate = dapplyDate;
 	}
 
@@ -131,11 +132,11 @@ public class Competition implements java.io.Serializable {
 		this.vphoneNumber = vphoneNumber;
 	}
 
-	public Date getDcompetitionDate() {
+	public Timestamp getDcompetitionDate() {
 		return this.dcompetitionDate;
 	}
 
-	public void setDcompetitionDate(Date dcompetitionDate) {
+	public void setDcompetitionDate(Timestamp dcompetitionDate) {
 		this.dcompetitionDate = dcompetitionDate;
 	}
 

@@ -14,6 +14,12 @@ public class AnnouncementServiceImpl implements IAnnouncementService {
 	}
 
 	@Override
+	public Announcement getAnnouncementById(Long id) {
+		// TODO Auto-generated method stub
+		return announcementDao.get(id);
+	}
+
+	@Override
 	public Long addAnnouncement(Announcement announcement) {
 		// TODO Auto-generated method stub
 		return announcementDao.save(announcement);

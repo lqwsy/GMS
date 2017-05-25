@@ -14,7 +14,7 @@
         <property name="vcommentDetails" type="string">
             <column name="vCommentDetails" length="200" />
         </property>
-        <property name="dcommentTime" type="timestamp">
+        <property name="dcommentTime" type="java.sql.Timestamp">
             <column name="dCommentTime" length="19" />
         </property>
         <set name="competitionreplies" table="competitionreply" inverse="true" lazy="true" fetch="select">

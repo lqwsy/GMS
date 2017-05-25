@@ -14,7 +14,7 @@
         <property name="vreplyContents" type="string">
             <column name="vReplyContents" length="200" />
         </property>
-        <property name="dreplyTime" type="timestamp">
+        <property name="dreplyTime" type="java.sql.Timestamp">
             <column name="dReplyTime" length="19" />
         </property>
     </class>
