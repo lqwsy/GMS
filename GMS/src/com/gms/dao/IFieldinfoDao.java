@@ -9,5 +9,6 @@ public interface IFieldinfoDao {
 	void delete(Fieldinfo fieldinfo);
 	void update(Fieldinfo fieldinfo);
 	Fieldinfo get(long id);
+	List getByFieldtypeId(long fieldtypeId);
 	List getAll();
 }

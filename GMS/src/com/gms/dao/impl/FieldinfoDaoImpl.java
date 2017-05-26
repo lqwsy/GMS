@@ -32,7 +32,12 @@ public class FieldinfoDaoImpl extends HibernateDaoSupport implements IFieldinfoD
 
 	@Override
 	public List getAll() {
-		return getHibernateTemplate().find("from fieldinfo");
+		return getHibernateTemplate().find("from Fieldinfo");
+	}
+
+	@Override
+	public List getByFieldtypeId(long lFieldTypeId) {
+		return getHibernateTemplate().find("from Fieldinfo fi where fi.fieldtype.lFieldTypeId=?");
 	}
 	
 }
