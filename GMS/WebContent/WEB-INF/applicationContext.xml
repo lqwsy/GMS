@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- 数据源配置 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+	    destroy-method="close">
+	    <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+	    <property name="jdbcUrl" value="jdbc:mysql://localhost/gms"/>
+	    <property name="user" value="root"/>
+	    <property name="password" value=""/>
+	    <property name="maxPoolSize" value="40"/>
+	    <property name="minPoolSize" value="1"/>
+	    <property name="initialPoolSize" value="1"/>
+	    <property name="maxIdleTime" value="20"/>
+	</bean>
+	<!-- Hibernate的SessionFactory相关配置 -->
+	<bean id="sessionFactory"
+	    class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	    <property name="dataSource" ref="dataSource"/>
+	    <property name="hibernateProperties">
+	        <value>
+	            hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+	            hibernate.show_sql=true
+	        </value>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>com/gms/po/Announcement.hbm.xml</value>
+                <value>com/gms/po/Competition.hbm.xml</value>
+                <value>com/gms/po/Competitioncomment.hbm.xml</value>
+                <value>com/gms/po/Competitioncost.hbm.xml</value>
+                <value>com/gms/po/Competitionreply.hbm.xml</value>
+                <value>com/gms/po/Competitionresult.hbm.xml</value>
+                <value>com/gms/po/Competitiontype.hbm.xml</value>
+                <value>com/gms/po/Equipment.hbm.xml</value>
+                <value>com/gms/po/Equipmentrent.hbm.xml</value>
+                <value>com/gms/po/Equitmentsuse.hbm.xml</value>
+                <value>com/gms/po/Fieldinfo.hbm.xml</value>
+                <value>com/gms/po/Filedrentinfo.hbm.xml</value>
+                <value>com/gms/po/Fieldtype.hbm.xml</value>
+                <value>com/gms/po/Roleinfo.hbm.xml</value>
+                <value>com/gms/po/Spacesuse.hbm.xml</value>
+                <value>com/gms/po/Userinfo.hbm.xml</value>
+            </list>
+        </property>
+	</bean>
+	
+	<!-- Dao组件配置 -->
+	<bean id="userinfoDao" class="com.gms.dao.impl.UserinfoDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="roleinfoDao" class="com.gms.dao.impl.RoleinfoDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- 业务逻辑组件配置 -->
+	<bean id="userinfoService" class="com.gms.service.impl.UserinfoServiceImpl.java">
+	    <property name="userinfodao" ref="userinfoDao"/>
+	</bean>
+	<bean id="roleinfoService" class="com.gms.service.impl.RoleinfoServiceImpl.java">
+	    <property name="roleinfodao" ref="roleinfoDao"/>
+	</bean>
+
+</beans>
