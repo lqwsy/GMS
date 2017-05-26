@@ -8,7 +8,6 @@
         <property name="hibernate.connection.password"></property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost/gms</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
    		<property name="hbm2ddl.auto">update</property>
    		
    		<mapping resource="com/gms/po/Announcement.hbm.xml" />
@@ -22,7 +21,7 @@
    		<mapping resource="com/gms/po/Equipmentrent.hbm.xml" />
    		<mapping resource="com/gms/po/Equitmentsuse.hbm.xml" />
    		<mapping resource="com/gms/po/Fieldinfo.hbm.xml" />
-   		<mapping resource="com/gms/po/Filedrentinfo.hbm.xml" />
+   		<mapping resource="com/gms/po/Fieldrentinfo.hbm.xml" />
    		<mapping resource="com/gms/po/Fieldtype.hbm.xml" />
    		<mapping resource="com/gms/po/Roleinfo.hbm.xml" />
    		<mapping resource="com/gms/po/Spacesuse.hbm.xml" />

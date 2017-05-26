@@ -8,9 +8,9 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 	    destroy-method="close">
 	    <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-	    <property name="jdbcUrl" value="jdbc:mysql://localhost/gms"/>
+	    <property name="jdbcUrl" value="jdbc:mysql:///gms"/>
 	    <property name="user" value="root"/>
-	    <property name="password" value=""/>
+	    <property name="password" value="123456"/>
 	    <property name="maxPoolSize" value="40"/>
 	    <property name="minPoolSize" value="1"/>
 	    <property name="initialPoolSize" value="1"/>
@@ -39,7 +39,7 @@
                 <value>com/gms/po/Equipmentrent.hbm.xml</value>
                 <value>com/gms/po/Equitmentsuse.hbm.xml</value>
                 <value>com/gms/po/Fieldinfo.hbm.xml</value>
-                <value>com/gms/po/Filedrentinfo.hbm.xml</value>
+                <value>com/gms/po/Fieldrentinfo.hbm.xml</value>
                 <value>com/gms/po/Fieldtype.hbm.xml</value>
                 <value>com/gms/po/Roleinfo.hbm.xml</value>
                 <value>com/gms/po/Spacesuse.hbm.xml</value>
