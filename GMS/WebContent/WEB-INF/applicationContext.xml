@@ -56,6 +56,15 @@
 	<bean id="roleinfoDao" class="com.gms.dao.impl.RoleinfoDaoImpl">
 	    <property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
+	<bean id="fieldtypeDao" class="com.gms.dao.impl.FieldtypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="fieldinfoDao" class="com.gms.dao.impl.FieldinfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="fieldrentinfoDao" class="com.gms.dao.impl.FieldrentinfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 	
 	<!-- 业务逻辑组件配置 -->
 	<bean id="userinfoService" class="com.gms.service.impl.UserinfoServiceImpl">
@@ -63,6 +72,15 @@
 	</bean>
 	<bean id="roleinfoService" class="com.gms.service.impl.RoleinfoServiceImpl">
 	    <property name="roleinfodao" ref="roleinfoDao"/>
+	</bean>
+	<bean id="fieldtypeService" class="com.gms.service.impl.FieldtypeServiceImpl">
+		<property name="fieldtypeDao" ref="fieldtypeDao"/>
+	</bean>
+	<bean id="fieldinfoService" class="com.gms.service.impl.FieldinfoServiceImpl">
+		<property name="fieldinfoDao" ref="fieldinfoDao"/>
+	</bean>
+	<bean id="fieldrentinfoService" class="com.gms.service.impl.FieldrentinfoServiceImpl">
+		<property name="fieldrentinfoDao" ref="fieldrentinfoDao"/>
 	</bean>
 
 </beans>

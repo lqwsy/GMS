@@ -5,15 +5,15 @@
 <hibernate-mapping>
     <class name="com.gms.po.Fieldtype" table="FIELDTYPE">
         <id name="lFieldTypeId" type="long" >
-            <column name="LFIELDTYPEID" />
+            <column name="lFieldtypeId" />
             <generator class="native" />
         </id>
         <property name="vFieldTypeName" type="java.lang.String" >
-            <column name="VFIELDTYPENAME" />
+            <column name="vFieldtypeName" />
         </property>
         <set name="fieldinfos" table="FIELDINFO" inverse="false" lazy="true" >
             <key>
-                <column name="LFIELDTYPEID" />
+                <column name="lFieldTypeId" />
             </key>
             <one-to-many class="com.gms.po.Fieldinfo" />
         </set>
