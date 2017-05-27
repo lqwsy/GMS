@@ -24,4 +24,13 @@ public class Fieldtype {
 		this.vFieldTypeName = vFieldTypeName;
 	}
 
+	public Set<Fieldinfo> getFieldinfos() {
+		return fieldinfos;
+	}
+
+	public void setFieldinfos(Set<Fieldinfo> fieldinfos) {
+		this.fieldinfos = fieldinfos;
+	}
+
+	
 }
