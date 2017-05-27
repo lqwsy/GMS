@@ -5,7 +5,6 @@
 <head>
 <meta charset="utf-8">
 <title></title>
-<link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 
 <body>
@@ -25,7 +24,5 @@
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
 </div>
-<script src="js/jquery-2.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

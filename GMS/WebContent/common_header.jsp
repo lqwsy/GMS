@@ -5,7 +5,6 @@
 <head>
 <meta charset="utf-8">
 <title></title>
-<link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 
 <body>
@@ -88,8 +87,5 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-<script src="js/jquery-2.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

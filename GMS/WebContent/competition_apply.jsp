@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 <head>
@@ -8,11 +10,12 @@
 
 <body>
 <!-- jsp包含头部-->
+<jsp:include page="common_header.jsp"/>
 <div class="container">
 	<div class="row">
     
     	<!--jsp包含导航栏-->
-        
+    	<jsp:include page="common_navi.jsp"/>
         <div class="col-sm-10">
             <div class="page-header"><!-- 包含标题-->
               <h1>赛事申请 <small>信息填写</small></h1>
@@ -53,6 +56,8 @@
             </form>
         </div>
     </div>
+    <!-- jsp包含页面脚部 -->
+    <jsp:include page="common_footer.jsp"/>
 </div>
 
 <script src="js/jquery-2.2.1.min.js"></script>
