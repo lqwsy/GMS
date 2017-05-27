@@ -51,13 +51,13 @@
             <key>
                 <column name="iUserId" />
             </key>
-            <one-to-many class="com.gms.po.Filedrentinfo" />
+            <one-to-many class="com.gms.po.Fieldrentinfo" />
         </set>
         <set name="competitions" table="competition" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="iUserId" />
             </key>
-            <one-to-many class="com.gms.pos.Competition" />
+            <one-to-many class="com.gms.po.Competition" />
         </set>
         <set name="equipmentrents" table="equipmentrent" inverse="true" lazy="true" fetch="select">
             <key>
