@@ -10,5 +10,6 @@ public interface IUserinfoDao {
 	public void update(Userinfo userinfo);
 	public List<Userinfo> findAllUser();
 	public List<Userinfo> findByName(String vRealName);
+	public Userinfo findUserByUserName(String vUserName);
 	Userinfo get(Integer iUserId);
 }

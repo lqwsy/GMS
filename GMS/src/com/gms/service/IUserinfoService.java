@@ -6,6 +6,7 @@ import com.gms.po.Userinfo;
 
 public interface IUserinfoService {
 	Userinfo getUserinfoById(Integer iUserId);
+	Userinfo getUserinfoByUserName(String vUserName);
 	List<Userinfo> getAllUserinfo();
 	Integer addUserinfo(Userinfo userinfo);
 	void delUserinfo(Integer iUserId);
