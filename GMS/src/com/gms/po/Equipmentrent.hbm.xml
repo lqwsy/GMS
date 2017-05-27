@@ -3,15 +3,15 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="com.gms.pos.Equipmentrent" table="equipmentrent" catalog="gms" optimistic-lock="version">
+    <class name="com.gms.po.Equipmentrent" table="equipmentrent" catalog="gms" optimistic-lock="version">
         <id name="irentNo" type="int">
             <column name="iRentNo" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="equipment" class="com.gms.pos.Equipment" fetch="select">
+        <many-to-one name="equipment" class="com.gms.po.Equipment" fetch="select">
             <column name="iEquipmentNo" />
         </many-to-one>
-        <many-to-one name="userinfo" class="com.gms.pos.Userinfo" fetch="select">
+        <many-to-one name="userinfo" class="com.gms.po.Userinfo" fetch="select">
             <column name="iBorrowedId" />
         </many-to-one>
         <property name="iquantity" type="java.lang.Integer">

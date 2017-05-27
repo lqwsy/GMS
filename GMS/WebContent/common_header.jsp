@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 <head>
@@ -86,65 +88,6 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div class="container">
-	<div class="row">
-    	<div class="col-sm-2">
-            <ul class="nav nav-pills nav-stacked">
-              <li role="presentation" class="active"><a href="#">个人中心</a></li>
-              <li role="presentation"><a href="#">Profile</a></li>
-              <li role="presentation"><a href="#">Messages</a></li>
-              <li role="presentation" class="active"><a href="#">场地管理</a></li>
-              <li role="presentation"><a href="#">Profile</a></li>
-              <li role="presentation"><a href="#">Messages</a></li>
-              <li role="presentation" class="active"><a href="#">器材管理</a></li>
-              <li role="presentation"><a href="#">Profile</a></li>
-              <li role="presentation"><a href="#">Messages</a></li>
-              <li role="presentation" class="active"><a href="#">赛事管理</a></li>
-              <li role="presentation"><a href="#">Profile</a></li>
-              <li role="presentation"><a href="#">Messages</a></li>
-            </ul>
-        </div>
-        <div class="col-sm-10">
-        <div class="page-header">
-          <h1>Example page header <small>Subtext for header</small></h1>
-        </div>
-           <form class="form-horizontal">
-              <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
-                <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
-                </div>
-                <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
-                <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall2" placeholder="Small input">
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
-                <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall3" placeholder="Small input">
-                </div>
-                <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
-                <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall4" placeholder="Small input">
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
-                <div class="col-sm-10">
-                  <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-5">
-                  <button type="submit" class="btn btn-default">提交</button>
-                  <button type="submit" class="btn btn-default">取消</button>
-                </div>
-              </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <script src="js/jquery-2.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
