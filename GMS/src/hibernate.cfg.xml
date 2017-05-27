@@ -4,13 +4,14 @@
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!-- <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password"></property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost/gms</property>
-        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.username">root</property> -->
+   		
    		<property name="hbm2ddl.auto">update</property>
    		
-   		<mapping resource="com/gms/po/Announcement.hbm.xml" />
+   		<!-- <mapping resource="com/gms/po/Announcement.hbm.xml" />
    		<mapping resource="com/gms/po/Competition.hbm.xml" />
    		<mapping resource="com/gms/po/Competitioncomment.hbm.xml" />
    		<mapping resource="com/gms/po/Competitioncost.hbm.xml" />
@@ -25,7 +26,7 @@
    		<mapping resource="com/gms/po/Fieldtype.hbm.xml" />
    		<mapping resource="com/gms/po/Roleinfo.hbm.xml" />
    		<mapping resource="com/gms/po/Spacesuse.hbm.xml" />
-   		<mapping resource="com/gms/po/Userinfo.hbm.xml" />
+   		<mapping resource="com/gms/po/Userinfo.hbm.xml" /> -->
    		
     </session-factory>
 </hibernate-configuration>
