@@ -83,4 +83,8 @@
 		<property name="fieldrentinfoDao" ref="fieldrentinfoDao"/>
 	</bean>
 
+	<!-- action类注入配置 -->
+	<bean id="fieldtypeAction" class="com.gms.action.FieldtypeAction" scope="prototype">
+		<property name="fieldtypeService" ref="fieldtypeService"></property>
+	</bean>
 </beans>
