@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 <head>
@@ -8,6 +10,7 @@
 
 <body>
 <!--jsp 包含页面头部-->
+<jsp:include page="common_header.jsp"/>
 <div class="container">
 	<div class="row">
     	<div class="col-sm-9">
@@ -75,6 +78,7 @@
         </div>
     </div>
     <!--jsp 包含页面脚部 -->
+    <jsp:include page="common_footer.jsp"/>
 </div><!--/.container-->
 
 <script src="js/jquery-2.2.1.min.js"></script>
