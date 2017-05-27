@@ -57,10 +57,10 @@
 	</bean>
 	
 	<!-- 业务逻辑组件配置 -->
-	<bean id="userinfoService" class="com.gms.service.impl.UserinfoServiceImpl.java">
+	<bean id="userinfoService" class="com.gms.service.impl.UserinfoServiceImpl">
 	    <property name="userinfodao" ref="userinfoDao"/>
 	</bean>
-	<bean id="roleinfoService" class="com.gms.service.impl.RoleinfoServiceImpl.java">
+	<bean id="roleinfoService" class="com.gms.service.impl.RoleinfoServiceImpl">
 	    <property name="roleinfodao" ref="roleinfoDao"/>
 	</bean>
 
