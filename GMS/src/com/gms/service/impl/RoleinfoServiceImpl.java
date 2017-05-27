@@ -8,24 +8,24 @@ import com.gms.service.IRoleinfoService;
 
 public class RoleinfoServiceImpl implements IRoleinfoService{
 
-	private IRoleinfoDao roledao;
-	
-	public IRoleinfoDao getRoledao() {
-		return roledao;
+	private IRoleinfoDao roleinfodao;
+
+	public IRoleinfoDao getRoleinfodao() {
+		return roleinfodao;
 	}
 
-	public void setRoledao(IRoleinfoDao roledao) {
-		this.roledao = roledao;
+	public void setRoleinfodao(IRoleinfoDao roleinfodao) {
+		this.roleinfodao = roleinfodao;
 	}
 
 	@Override
 	public Roleinfo getRoleinfoById(Integer iRoleId) {
-		return roledao.get(iRoleId);
+		return roleinfodao.get(iRoleId);
 	}
 
 	@Override
 	public List<Roleinfo> getAllRoleinfo() {
-		return roledao.findAllRole();
+		return roleinfodao.findAllRole();
 	}
 	
 }
