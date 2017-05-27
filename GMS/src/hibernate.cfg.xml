@@ -11,6 +11,7 @@
    		
    		<property name="hbm2ddl.auto">update</property>
    		
+   		
    		<!-- <mapping resource="com/gms/po/Announcement.hbm.xml" />
    		<mapping resource="com/gms/po/Competition.hbm.xml" />
    		<mapping resource="com/gms/po/Competitioncomment.hbm.xml" />

@@ -17,7 +17,7 @@ public class Fieldinfo implements java.io.Serializable {
 	private int ipeople;
 	private int irentH;
 	// private Set spacesuses = new HashSet(0);
-	private Set filedrentinfos = new HashSet(0);
+	private Set fieldrentinfos = new HashSet(0);
 	private Fieldtype fieldtype;
 
 	public Fieldinfo() {
@@ -79,12 +79,12 @@ public class Fieldinfo implements java.io.Serializable {
 		this.irentH = irentH;
 	}
 
-	public Set getFiledrentinfos() {
-		return filedrentinfos;
+	public Set getFieldrentinfos() {
+		return fieldrentinfos;
 	}
 
-	public void setFiledrentinfos(Set filedrentinfos) {
-		this.filedrentinfos = filedrentinfos;
+	public void setFieldrentinfos(Set fieldrentinfos) {
+		this.fieldrentinfos = fieldrentinfos;
 	}
 
 	public Fieldtype getFieldtype() {
