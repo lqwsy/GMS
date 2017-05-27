@@ -10,6 +10,14 @@ public class RoleinfoServiceImpl implements IRoleinfoService{
 
 	private IRoleinfoDao roledao;
 	
+	public IRoleinfoDao getRoledao() {
+		return roledao;
+	}
+
+	public void setRoledao(IRoleinfoDao roledao) {
+		this.roledao = roledao;
+	}
+
 	@Override
 	public Roleinfo getRoleinfoById(Integer iRoleId) {
 		return roledao.get(iRoleId);
