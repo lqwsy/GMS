@@ -11,9 +11,13 @@ public class UserinfoServiceImpl implements IUserinfoService{
 
 	private IUserinfoDao userinfodao;
 	
-	public void setIUserinfoDao(IUserinfoDao userinfodao){
+	public IUserinfoDao getUserinfodao() {
+		return userinfodao;
+	}
+
+	public void setUserinfodao(IUserinfoDao userinfodao) {
 		this.userinfodao = userinfodao;
-	};
+	}
 	
 	@Override
 	public Userinfo getUserinfoById(Integer iUserId) {
