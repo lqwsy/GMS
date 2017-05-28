@@ -10,19 +10,19 @@
 	
 	<package name="login-regist" extends="struts-default">
     	<action name="login" class="com.gms.action.UserinfoAction" method="login">
-    		<result name="success">login_success.jsp</result>
-    		<result name="error">login_error.jsp</result>    		    	
+    		<result name="success">index.jsp</result>
+    		<result name="error">login.jsp</result>    		    	
     		<result name="input">login.jsp</result>
 
 		</action>
 		
     	<action name="regist" class="com.gms.action.UserinfoAction" method="regist">
-    		<result name="success">regist_success.jsp</result>    
-    		<result name="error">regist_error.jsp</result>     			
+    		<result name="success">login.jsp</result>    
+    		<result name="error">login.jsp</result>     			
     		<result name="input">login.jsp</result>
 		</action>		
 	</package>
-	
+
 	<package name="field" extends="struts-default" namespace="/field">
 		
 		<action name="Fieldtype-*" class="fieldtypeAction" method="{1}">
@@ -33,10 +33,11 @@
 		        <param name="inputName">inputStream</param>
     		</result>
     		
-    		<result name="ajax" type="json"></result>
+    		<!-- <result name="ajax" type="json"></result> -->
     		<result name="success">${pageContext.request.contextPath}/login_success.jsp</result>
 		</action>
 	
 	</package>
+
 	
 </struts>

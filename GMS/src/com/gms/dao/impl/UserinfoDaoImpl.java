@@ -36,12 +36,12 @@ public class UserinfoDaoImpl extends HibernateDaoSupport implements IUserinfoDao
 
 	@Override
 	public List findByName(String vRealName) {
-		return getHibernateTemplate().find("from Userinfo u where u.vRealName = ?",vRealName);
+		return getHibernateTemplate().find("from Userinfo u where u.vrealName = ?",vRealName);
 	}
 
 	@Override
-	public Userinfo findUserByUserName(String vUserName) {
-		return (Userinfo) getHibernateTemplate().find("from Userinfo u where u.vUserName = ?",vUserName);
+	public List findUserByUserName(String vUserName) {
+		return getHibernateTemplate().find("from Userinfo u where u.vuserName = ?",vUserName);
 	}
 	
 	
