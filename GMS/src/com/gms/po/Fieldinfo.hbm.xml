@@ -4,36 +4,36 @@
 <!-- Generated 2017-5-24 20:23:25 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.gms.po.Fieldinfo" table="FIELDINFO">
-        <id name="lfieldId" type="long">
-            <column name="LFIELDID" />
+        <id name="fieldId" type="long">
+            <column name="lFieldId" />
             <generator class="native" />
         </id>
-        <property name="vfieldName" type="java.lang.String">
-            <column name="VFIELDNAME" />
+        <property name="fieldName" type="java.lang.String">
+            <column name="vFieldName" />
         </property>
-        <property name="vlocation" type="java.lang.String">
-            <column name="VLOCATION" />
+        <property name="location" type="java.lang.String">
+            <column name="vLocation" />
         </property>
-        <property name="isize" type="int">
-            <column name="ISIZE" />
+        <property name="size" type="int">
+            <column name="iSize" />
         </property>
-        <property name="benableRent" type="boolean">
-            <column name="BENABLERENT" />
+        <property name="enableRent" type="boolean">
+            <column name="bEnableRent" />
         </property>
-        <property name="ipeople" type="int">
-            <column name="IPEOPLE" />
+        <property name="people" type="int">
+            <column name="iPeople" />
         </property>
-        <property name="irentH" type="int">
-            <column name="IRENTH" />
+        <property name="rentH" type="int">
+            <column name="iRent" />
         </property>
         <set name="fieldrentinfos" table="FIELDINFO" inverse="false" lazy="true">
             <key>
-                <column name="LFIELDID" />
+                <column name="lfieldId" />
             </key>
             <one-to-many class="com.gms.po.Fieldrentinfo"/>
         </set>
-        <many-to-one name="fieldtype" class="com.gms.po.Fieldtype" fetch="join">
-            <column name="FIELDTYPE" />
+        <many-to-one name="fieldtype" column="lFieldTypeId" 
+              class="com.gms.po.Fieldtype" cascade="save-update" fetch="join">
         </many-to-one>
     </class>
 </hibernate-mapping>

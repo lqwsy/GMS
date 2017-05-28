@@ -9,7 +9,7 @@
 
 <body>
 <footer>
-    <p>&copy; 2016 Guangdong Ocean University, GMS.</p>
+    <p class="text-center">&copy; 2016 Guangdong Ocean University, GMS.</p>
 </footer>	
 </body>
 </html>

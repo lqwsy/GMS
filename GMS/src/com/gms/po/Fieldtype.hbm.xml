@@ -4,16 +4,16 @@
 <!-- Generated 2017-5-24 20:23:25 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.gms.po.Fieldtype" table="FIELDTYPE">
-        <id name="lFieldTypeId" type="long" >
-            <column name="LFIELDTYPEID" />
+        <id name="fieldtypeId" type="long" >
+            <column name="lFieldtypeId" />
             <generator class="native" />
         </id>
-        <property name="vFieldTypeName" type="java.lang.String" >
-            <column name="VFIELDTYPENAME" />
+        <property name="fieldtypeName" type="java.lang.String" >
+            <column name="vFieldtypeName" />
         </property>
         <set name="fieldinfos" table="FIELDINFO" inverse="false" lazy="true" >
             <key>
-                <column name="LFIELDTYPEID" />
+                <column name="lFieldTypeId" />
             </key>
             <one-to-many class="com.gms.po.Fieldinfo" />
         </set>
