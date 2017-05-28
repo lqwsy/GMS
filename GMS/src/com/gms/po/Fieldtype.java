@@ -32,5 +32,10 @@ public class Fieldtype {
 		this.fieldinfos = fieldinfos;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Fieldtype [lFieldTypeId=" + lFieldTypeId + ", vFieldTypeName=" + vFieldTypeName + ", fieldinfos="
+				+ fieldinfos + "]";
+	}
+
 }

@@ -18,7 +18,7 @@
 				<h1>添加场地类型<small>信息填写</small></h1>
 			</div>
 			
-			<form class="form-horizontal" method="post" action="field/Fieldtype-addFieldType.action">
+			<form class="form-horizontal" method="post" action="field/Fieldtype-addFieldtype.action">
 			  <div class="form-group">
 			    <label for="vFieldTypeName" class="col-sm-2 control-label">场地类型名:</label>
 				    <div class="col-sm-4">

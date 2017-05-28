@@ -23,8 +23,14 @@ public class FieldtypeAction extends ActionSupport {
 		this.fieldtypeService = fieldtypeService;
 	}
 
-	public String addFieldType() {
+	public String addFieldtype() {
+		System.out.println(fieldtype);
 		fieldtypeService.addFieldtype(fieldtype);
+		return SUCCESS;
+	}
+	
+	public String listFieldtype() {
+		fieldtypeService.getAllFieldtype();
 		return SUCCESS;
 	}
 }
