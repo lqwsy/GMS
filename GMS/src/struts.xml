@@ -25,7 +25,7 @@
 	
 	<package name="field" extends="struts-default" namespace="/field">
 		
-		<action name="*-*" class="com.gms.action.{1}Action" method="{2}">
+		<action name="Fieldtype-*" class="fieldtypeAction" method="{1}">
 			<result name="list">/WEB-INF/views/emp-list.jsp</result>
 			
 			<result type="stream" name="ajax-success">
@@ -33,7 +33,7 @@
 		        <param name="inputName">inputStream</param>
     		</result>
     		
-    		<result name="input">/WEB-INF/views/emp-input.jsp</result>
+    		<result name="ajax" type="json"></result>
     		<result name="success">${pageContext.request.contextPath}/login_success.jsp</result>
 		</action>
 	

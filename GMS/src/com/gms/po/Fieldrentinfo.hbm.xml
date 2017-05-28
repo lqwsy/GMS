@@ -4,7 +4,7 @@
 <!-- Generated 2017-5-21 12:46:57 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
     <class name="com.gms.po.Fieldrentinfo" table="filedrentinfo" catalog="gms" optimistic-lock="none">
-        <id name="lfieldRentId" type="long">
+        <id name="fieldrentId" type="long">
             <column name="lFieldRentId" />
             <generator class="native" />
         </id>
@@ -14,16 +14,16 @@
         <many-to-one name="userinfo" class="com.gms.po.Userinfo" fetch="select">
             <column name="iUserId" />
         </many-to-one>
-        <property name="dstartTime" type="timestamp">
+        <property name="startTime" type="timestamp">
             <column name="dStartTime" length="19" not-null="true" />
         </property>
-        <property name="dendTime" type="timestamp">
+        <property name="endTime" type="timestamp">
             <column name="dEndTime" length="19" not-null="true" />
         </property>
-        <property name="irent" type="int">
+        <property name="rent" type="int">
             <column name="iRent" not-null="true" />
         </property>
-        <property name="bstatus" type="java.lang.Boolean">
+        <property name="status" type="java.lang.Boolean">
             <column name="bStatus" />
         </property>
     </class>

@@ -8,46 +8,24 @@ import java.util.Date;
  */
 public class Fieldrentinfo implements java.io.Serializable {
 
-	private long lfieldRentId;
+	private long fieldrentId;
 	private Fieldinfo fieldinfo;
 	private Userinfo userinfo;
-	private Date dstartTime;
-	private Date dendTime;
-	private int irent;
-	private Boolean bstatus;
+	private Date startTime;
+	private Date endTime;
+	private int rent;
+	private Boolean status;
 
-	public Fieldrentinfo() {
+	public long getFieldrentId() {
+		return fieldrentId;
 	}
 
-	public Fieldrentinfo(long lfieldRentId, Fieldinfo fieldinfo, Date dstartTime, Date dendTime, int irent) {
-		this.lfieldRentId = lfieldRentId;
-		this.fieldinfo = fieldinfo;
-		this.dstartTime = dstartTime;
-		this.dendTime = dendTime;
-		this.irent = irent;
-	}
-
-	public Fieldrentinfo(long lfieldRentId, Fieldinfo fieldinfo, Userinfo userinfo, Date dstartTime, Date dendTime,
-			int irent, Boolean bstatus) {
-		this.lfieldRentId = lfieldRentId;
-		this.fieldinfo = fieldinfo;
-		this.userinfo = userinfo;
-		this.dstartTime = dstartTime;
-		this.dendTime = dendTime;
-		this.irent = irent;
-		this.bstatus = bstatus;
-	}
-
-	public long getLfieldRentId() {
-		return this.lfieldRentId;
-	}
-
-	public void setLfieldRentId(long lfieldRentId) {
-		this.lfieldRentId = lfieldRentId;
+	public void setFieldrentId(long fieldrentId) {
+		this.fieldrentId = fieldrentId;
 	}
 
 	public Fieldinfo getFieldinfo() {
-		return this.fieldinfo;
+		return fieldinfo;
 	}
 
 	public void setFieldinfo(Fieldinfo fieldinfo) {
@@ -55,43 +33,43 @@ public class Fieldrentinfo implements java.io.Serializable {
 	}
 
 	public Userinfo getUserinfo() {
-		return this.userinfo;
+		return userinfo;
 	}
 
 	public void setUserinfo(Userinfo userinfo) {
 		this.userinfo = userinfo;
 	}
 
-	public Date getDstartTime() {
-		return this.dstartTime;
+	public Date getStartTime() {
+		return startTime;
 	}
 
-	public void setDstartTime(Date dstartTime) {
-		this.dstartTime = dstartTime;
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
 
-	public Date getDendTime() {
-		return this.dendTime;
+	public Date getEndTime() {
+		return endTime;
 	}
 
-	public void setDendTime(Date dendTime) {
-		this.dendTime = dendTime;
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
 	}
 
-	public int getIrent() {
-		return this.irent;
+	public int getRent() {
+		return rent;
 	}
 
-	public void setIrent(int irent) {
-		this.irent = irent;
+	public void setRent(int rent) {
+		this.rent = rent;
 	}
 
-	public Boolean getBstatus() {
-		return this.bstatus;
+	public Boolean getStatus() {
+		return status;
 	}
 
-	public void setBstatus(Boolean bstatus) {
-		this.bstatus = bstatus;
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 }

@@ -4,24 +4,24 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Fieldtype {
-	private long lFieldTypeId;
-	private String vFieldTypeName;
+	private long fieldtypeId;
+	private String fieldtypeName;
 	private Set<Fieldinfo> fieldinfos = new HashSet();
 
-	public long getlFieldTypeId() {
-		return lFieldTypeId;
+	public long getFieldtypeId() {
+		return fieldtypeId;
 	}
 
-	public void setlFieldTypeId(long lFieldTypeId) {
-		this.lFieldTypeId = lFieldTypeId;
+	public void setFieldtypeId(long fieldtypeId) {
+		this.fieldtypeId = fieldtypeId;
 	}
 
-	public String getvFieldTypeName() {
-		return vFieldTypeName;
+	public String getFieldtypeName() {
+		return fieldtypeName;
 	}
 
-	public void setvFieldTypeName(String vFieldTypeName) {
-		this.vFieldTypeName = vFieldTypeName;
+	public void setFieldtypeName(String fieldtypeName) {
+		this.fieldtypeName = fieldtypeName;
 	}
 
 	public Set<Fieldinfo> getFieldinfos() {
@@ -34,7 +34,7 @@ public class Fieldtype {
 
 	@Override
 	public String toString() {
-		return "Fieldtype [lFieldTypeId=" + lFieldTypeId + ", vFieldTypeName=" + vFieldTypeName + ", fieldinfos="
+		return "Fieldtype [fieldtypeId=" + fieldtypeId + ", fieldtypeName=" + fieldtypeName + ", fieldinfos="
 				+ fieldinfos + "]";
 	}
 

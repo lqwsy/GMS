@@ -9,74 +9,71 @@ import java.util.Set;
  */
 public class Fieldinfo implements java.io.Serializable {
 
-	private long lfieldId;
-	private String vfieldName;
-	private String vlocation;
-	private int isize;
-	private boolean benableRent;
-	private int ipeople;
-	private int irentH;
+	private long fieldId;
+	private String fieldName;
+	private String location;
+	private int size;
+	private boolean enableRent;
+	private int people;
+	private int rentH;
 	// private Set spacesuses = new HashSet(0);
 	private Set fieldrentinfos = new HashSet(0);
 	private Fieldtype fieldtype;
 
-	public Fieldinfo() {
+	public long getFieldId() {
+		return fieldId;
 	}
 
-	public long getLfieldId() {
-		return lfieldId;
+	public void setFieldId(long fieldId) {
+		this.fieldId = fieldId;
 	}
 
-	public void setLfieldId(long lfieldId) {
-		this.lfieldId = lfieldId;
+	public String getFieldName() {
+		return fieldName;
 	}
 
-	public String getVfieldName() {
-		return vfieldName;
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
 	}
 
-	public void setVfieldName(String vfieldName) {
-		this.vfieldName = vfieldName;
+	public String getLocation() {
+		return location;
 	}
 
-	public String getVlocation() {
-		return vlocation;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
-	public void setVlocation(String vlocation) {
-		this.vlocation = vlocation;
+	public int getSize() {
+		return size;
 	}
 
-	public int getIsize() {
-		return isize;
+	public void setSize(int size) {
+		this.size = size;
 	}
 
-	public void setIsize(int isize) {
-		this.isize = isize;
+	public boolean isEnableRent() {
+		return enableRent;
 	}
 
-	public boolean isBenableRent() {
-		return benableRent;
+	public void setEnableRent(boolean enableRent) {
+		this.enableRent = enableRent;
 	}
 
-	public void setBenableRent(boolean benableRent) {
-		this.benableRent = benableRent;
+	public int getPeople() {
+		return people;
 	}
 
-	public int getIpeople() {
-		return ipeople;
+	public void setPeople(int people) {
+		this.people = people;
 	}
 
-	public void setIpeople(int ipeople) {
-		this.ipeople = ipeople;
+	public int getRentH() {
+		return rentH;
 	}
 
-	public int getIrentH() {
-		return irentH;
-	}
-
-	public void setIrentH(int irentH) {
-		this.irentH = irentH;
+	public void setRentH(int rentH) {
+		this.rentH = rentH;
 	}
 
 	public Set getFieldrentinfos() {

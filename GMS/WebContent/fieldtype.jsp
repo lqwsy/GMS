@@ -18,15 +18,15 @@
 				<h1>添加场地类型<small>信息填写</small></h1>
 			</div>
 			
-			<form class="form-horizontal" method="post" action="field/Fieldtype-addFieldtype.action">
+			<form class="form-horizontal fieldtype-form" method="post" action="field/Fieldtype-addFieldtype.action">
 			  <div class="form-group">
-			    <label for="vFieldTypeName" class="col-sm-2 control-label">场地类型名:</label>
+			    <label for="fieldtypeName" class="col-sm-2 control-label">场地类型名:</label>
 				    <div class="col-sm-4">
-				      <input type="text" class="form-control" id="vFieldTypeName" name="fieldtype.vFieldTypeName" placeholder="类型名">
+				      <input type="text" class="form-control" id="fieldtypeName" name="fieldtype.fieldtypeName" placeholder="类型名">
 				    </div>
 				  
 				    <div class="col-sm-offset-1 col-sm-4">
-				      <button type="submit" class="btn btn-default">添加</button>
+				      <button type="submit" class="btn btn-default fieldtype-add-button">添加</button>
 				    </div>
 			   </div>
 			</form>
@@ -36,5 +36,13 @@
 
 
 <jsp:include page="common_footer.jsp"></jsp:include>
+
+<script type="text/javascript">
+	$(function(){
+		$(".fieldtype-add-button").click(function(){
+			$(".fieldtype-form").
+		}); 
+	});
+</script>
 </body>
 </html>
