@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
 <html>
 <head>
@@ -18,13 +19,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">体育馆管理系统</a>
+      <a class="navbar-brand" href="index.jsp">体育馆管理系统</a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="index.jsp">首页 <span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">场地 <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -74,18 +74,31 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left">
+<!--       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
-      </form>
+      </form> -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">登录</a></li>
-        <li><a href="#">注册</a></li>
+        <s:if test="#session.cur_user==null">
+			<li><a href="login.jsp">登录</a></li>
+			<li><a href="regist.jsp">注册</a></li>
+        </s:if>
+        <s:else >
+        	<li><a href="#">欢迎：${session.cur_user.vuserName}</a></li>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">设置 <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="usermanger_apply.jsp">账户设置</a></li>
+	            <li role="separator" class="divider"></li>
+	            <li><a href="exit.action">退出</a></li>
+	          </ul>
+	        </li>
+        </s:else>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 </body>
 </html>

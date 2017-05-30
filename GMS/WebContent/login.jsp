@@ -11,8 +11,7 @@
     <title>体育馆管理系统登录页面</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/signin.css" rel="stylesheet">
-  </head>
-
+</head>
   <body>
     <div class="container">
       <form id="login_form" class="form-signin" action="login.action" method="post">
@@ -23,31 +22,10 @@
         <input type="password" id="vPassword" class="form-control" placeholder="密码" name="user.vpassward">
         </br>
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="登录" />
-		<a href="javascript:;" id="register_btn" class="">注册一个账号</a>
+		<a href="regist.jsp" id="register_btn" class="">注册一个账号</a>
 		<p><span id="login-tips-span">${str_result}</span></p>
       </form>
     </div> 
-    
-    
-    <div class="container">
-      <form id="regist_form" class="form-signin" action="regist.action">
-        <h2 class="form-signin-heading">体育馆管理系统注册</h2>
-        <label for="rvUserName" >用户名</label>
-        <input type="text" id="rvUserName" class="form-control" placeholder="用户名" name="user.vuserName">
-        <label for="rvPassword1" >密码</label>
-        <input type="password" id="rvPassword1" class="form-control" placeholder="密码" name="vpassward1">
-        <label for="rvPassword2" >确认密码</label>
-        <input type="password" id="rvPassword2" class="form-control" placeholder="确认密码" name="user.vpassward">
-        <label for="vEmail" >Email</label>
-        <input type="password" id="vEmail" class="form-control" placeholder="Email" name="user.vemail">
-        </br>
-        <input class="btn btn-success pull-right" type="submit" value="注册" />
-        <input type="button" class="btn btn-info pull-left" id="back_btn" value="返回"/>
-        <p><span id="login-tips-span">${str_result}</span></p> 
-      </form>
-    </div>
-    
-    
     
     <script src="js/jquery-2.2.1.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>

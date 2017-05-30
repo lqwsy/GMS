@@ -1,13 +1,3 @@
-$(function() {  
-    $("#register_btn").click(function() { 
-        $("#regist_form").css("display", "block");  
-        $("#login_form").css("display", "none");  
-    });  
-    $("#back_btn").click(function() {  
-        $("#regist_form").css("display", "none");  
-        $("#login_form").css("display", "block");  
-    });  
-});
 $(document).ready(function() {
     $("#login_form").validate({  
         rules: {  

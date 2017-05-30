@@ -18,9 +18,13 @@
 		
     	<action name="regist" class="com.gms.action.UserinfoAction" method="regist">
     		<result name="success">login.jsp</result>    
-    		<result name="error">login.jsp</result>     			
-    		<result name="input">login.jsp</result>
-		</action>		
+    		<result name="error">regist.jsp</result>     			
+    		<result name="input">regist.jsp</result>
+		</action>	
+		<action name="exit" class="com.gms.action.UserinfoAction"
+	        method="exit">
+	        <result name="success">index.jsp</result>
+	    </action>	
 	</package>
 
 	<package name="field" extends="struts-default" namespace="/field">

@@ -57,8 +57,6 @@ public class UserinfoAction extends ActionSupport {
 		this.user = user;
 	}
 
-
-
 	// 用户登录
 	public String login() {
 		if (this.user == null) {
@@ -73,7 +71,8 @@ public class UserinfoAction extends ActionSupport {
 		}
 		if (user.getVpassward().equals(loginuser.get(0).getVpassward())) {
 			Map<String,Object> map=ActionContext.getContext().getSession();
-			map.put("cur_user", user.getIuserId());//向session存入登录标识ID,以供登录后检验使用
+			map.put("cur_user", loginuser.get(0));//向session存入登录标识ID,以供登录后检验使用
+//			map.put("cur_userName", user.getVuserName());//向session存入用户名字,以供登录后检验使用
 			return SUCCESS;
 		} else {
 			this.setStr_result("用户名与密码不匹配");
@@ -96,6 +95,13 @@ public class UserinfoAction extends ActionSupport {
 			System.out.println("用户是否已存在："+isUserNameExistent(user.getVuserName()));
 			return ERROR;
 		}
+	}
+	
+	//用户退出
+	public String exit(){
+		Map<String,Object> map=ActionContext.getContext().getSession();
+		map.remove("cur_user");
+		return SUCCESS;
 	}
 
 	// 用户名是否已存在
