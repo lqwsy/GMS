@@ -14,11 +14,14 @@
         <many-to-one name="userinfo" class="com.gms.po.Userinfo" fetch="select">
             <column name="iUserId" />
         </many-to-one>
-        <property name="startTime" type="timestamp">
+        <!-- <property name="startTime" type="timestamp">
             <column name="dStartTime" length="19" not-null="true" />
         </property>
         <property name="endTime" type="timestamp">
             <column name="dEndTime" length="19" not-null="true" />
+        </property> -->
+        <property name="rentTime" type="java.lang.String" >
+        	<column name="vRentTime"></column>
         </property>
         <property name="rent" type="int">
             <column name="iRent" not-null="true" />

@@ -31,7 +31,7 @@ public class FieldtypeDaoImpl extends HibernateDaoSupport implements IFieldtypeD
 
 	@Override
 	public List getAll() {
-		return getHibernateTemplate().find("from fieldtype");
+		return getHibernateTemplate().find("from Fieldtype");
 	}
 
 	

@@ -87,4 +87,11 @@
 	<bean id="fieldtypeAction" class="com.gms.action.FieldtypeAction" scope="prototype">
 		<property name="fieldtypeService" ref="fieldtypeService"></property>
 	</bean>
+	<bean id="fieldinfoAction" class="com.gms.action.FieldinfoAction" scope="prototype">
+		<property name="fieldinfoService" ref="fieldinfoService"></property>
+		<property name="fieldtypeService" ref="fieldtypeService"></property>
+	</bean>
+	<bean id="fieldrentAction" class="com.gms.action.FieldrentAction" scope="prototype">
+		<property name="fieldrentinfoService" ref="fieldrentinfoService"></property>
+	</bean>
 </beans>

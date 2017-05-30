@@ -23,18 +23,30 @@
 		</action>		
 	</package>
 	
-	<package name="field" extends="struts-default" namespace="/field">
+	<package name="field" extends="struts-default" namespace="/">
 		
 		<action name="Fieldtype-*" class="fieldtypeAction" method="{1}">
-			<result name="list">/WEB-INF/views/emp-list.jsp</result>
+			<!-- <result name="list">/WEB-INF/views/emp-list.jsp</result>
 			
 			<result type="stream" name="ajax-success">
 		        <param name="contentType">text/html</param>
 		        <param name="inputName">inputStream</param>
-    		</result>
+    		</result> -->
     		
-    		<result name="ajax" type="json"></result>
-    		<result name="success">${pageContext.request.contextPath}/login_success.jsp</result>
+    		<result name="add">fieldtype-input.jsp</result>
+    		<!-- <result name="add">${pageContext.request.contextPath}/login_success.jsp</result> -->
+		</action>
+		
+		<action name="Fieldinfo-*" class="fieldinfoAction" method="{1}">
+			<result name="input">/WEB-INF/field-views/fieldinfo-input.jsp</result>
+			<result name="query">/WEB-INF/field-views/fieldinfo-query.jsp</result>
+			<result name="query-success" type="chain">Fieldinfo-query</result>
+			<result name="add" type="chain">Fieldinfo-input</result>			
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="Fieldrent-*" class="fieldrentAction" method="{1}">
+			<result name=""></result>
 		</action>
 	
 	</package>

@@ -10,4 +10,5 @@ public interface IFieldinfoService {
 	Long addFieldinfo(Fieldinfo fieldinfo);
 	void delFieldinfo(Long fieldinfoId);
 	void updateFieldinfo(Fieldinfo fieldinfo);
+	List getFieldinfoByFieldtypeId(long fieldtypeId);
 }

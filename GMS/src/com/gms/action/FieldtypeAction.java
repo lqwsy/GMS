@@ -26,7 +26,7 @@ public class FieldtypeAction extends ActionSupport {
 	public String addFieldtype() {
 		System.out.println(fieldtype);
 		fieldtypeService.addFieldtype(fieldtype);
-		return "json";
+		return "add";
 	}
 	
 	public String listFieldtype() {

@@ -17,8 +17,7 @@ public class FieldtypeServiceImpl implements IFieldtypeService {
 
 	@Override
 	public List getAllFieldtype() {
-		// TODO Auto-generated method stub
-		return null;
+		return fieldtypeDao.getAll();
 	}
 
 	@Override
