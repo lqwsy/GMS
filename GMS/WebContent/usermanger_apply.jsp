@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
 <html>
 <head>
@@ -13,54 +14,155 @@
 <jsp:include page="common_header.jsp"/>
 <div class="container">
 	<div class="row">
-    
     	<!--jsp包含用户管理左侧导航栏-->
     	<jsp:include page="usermanger_navi.jsp"/>
-        <div class="col-sm-10">
+    	
+    	<!-- 个人资料模块-->
+        <div class="col-sm-10" id="userinfopage">
             <div class="page-header"><!-- 包含标题-->
               <h1>用户中心 <small>个人资料</small></h1>
             </div>
            <form class="form-horizontal"><!--包含内容-->
               <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="formGroupInputSmall">用户名</label>
+                <label class="col-sm-2 control-label uneditable-input" for="formGroupInputSmall1">用户名</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall" placeholder="${session.cur_user.vuserName}">
+                  <input class="form-control" type="text" id="formGroupInputSmall1" value="${session.cur_user.vuserName}">
                 </div>
-                <label class="col-sm-2 control-label" for="formGroupInputSmall">真实姓名</label>
+                <label class="col-sm-2 control-label" for="formGroupInputSmall2">真实姓名</label>
+               <div class="col-sm-4">
+                  <input class="form-control" type="text" id="formGroupInputSmall2" value="${session.cur_user.vrealName}">
+                </div>
+             </div>
+              <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="formGroupInputSmall3">电话号码</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall2" placeholder="${session.cur_user.vrealName}">
+                  <input class="form-control" type="text" id="formGroupInputSmall3" value="${session.cur_user.vtelephone}">
+                </div>
+                <label class="col-sm-2 control-label" for="formGroupInputSmall4">电子邮箱</label>
+              <div class="col-sm-4">
+                  <input class="form-control" type="text" id="formGroupInputSmall4" value="${session.cur_user.vemail}">
+                </div>
+             </div>
+              <div class="form-group form-group-sm">            	
+                <label class="col-sm-2 control-label" for="formGroupInputSmall5">身份证号</label>
+                <div class="col-sm-4">
+                  <input class="form-control" type="text" id="formGroupInputSmall5" value="${session.cur_user.videntifierCode}">
+                </div>
+                <label class="col-sm-2 control-label" for="formGroupInputSmall6">身份证地址</label>
+              	<div class="col-sm-4">
+                  <input class="form-control" type="text" id="formGroupInputSmall6" value="${session.cur_user.videntifierAddress}">
                 </div>
               </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="formGroupInputSmall">电话号码</label>
+              <div class="form-group form-group-sm">            	
+                <label class="col-sm-2 control-label" for="formGroupInputSmall7">出生日期</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall3" placeholder="${session.cur_user.vtelephone}">
+                  <input class="form-control" type="text" id="formGroupInputSmall7" value="${session.cur_user.dbirthday}">
                 </div>
-                <label class="col-sm-2 control-label" for="formGroupInputSmall">电子邮箱</label>
+                <label class="col-sm-2 control-label" for="formGroupInputSmall8">所在学校</label>
+              	<div class="col-sm-4">
+                  <input class="form-control" type="text" id="formGroupInputSmall8" value="${session.cur_user.vcollege}">
+                </div>
+              </div>
+              <div class="form-group form-group-sm">            	
+                <label class="col-sm-2 control-label" for="formGroupInputSmall9">审核状态</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall4" placeholder="${session.cur_user.vemail}">
+                	<s:if test="#session.cur_user.ivstate==0">
+	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall9" value="未通过审核">
+                	</s:if>
+                	<s:elseif test="#session.cur_user.ivstate==1">
+	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall10" value="已审核">
+                	</s:elseif>
+                	<s:else>
+	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall11" value="未审核">
+                	</s:else>
+                	
                 </div>
               </div>
               <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label" for="formGroupInputLarge">联系地址</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" id="formGroupInputLarge" placeholder="${session.cur_user.vaddress}">
+                  <input class="form-control" type="text" id="formGroupInputLarge" value="${session.cur_user.vaddress}">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-5" id="surecancel">
+                  <button type="submit" class="btn btn-default" >确定</button>
+                  <button type="button" class="btn btn-default" id="cancelchange">取消</button>
+                </div>
+                <div class="col-sm-offset-2 col-sm-5" id="changeinfo">
+                	<button type="button" class="btn btn-default" id="changeuserinfo">修改</button>
+                </div>
+              </div>
+
+            </form>
+        </div>
+        
+        <!-- 更改密码模块-->
+        <div class="col-sm-10" id="changepasspage">
+            <div class="page-header"><!-- 包含标题-->
+              <h1>用户中心 <small>更改密码</small></h1>
+            </div>
+            <form class="form-horizontal" id="changepasswordform" action="updatepassword.action"><!--包含内容-->
+              <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label uneditable-input" for="formGroupInputSmall12">输入新密码</label>
+                <div class="col-sm-4">
+                  <input class="form-control" type="text" id="formGroupInputSmall12" name="formGroupInputSmall12" >
+                </div>
+              </div>
+              <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="formGroupInputSmall13">确认密码</label>
+                <div class="col-sm-4">
+                  <input class="form-control" type="text" id="formGroupInputSmall13" name="user.vpassward" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-5">
                   <button type="submit" class="btn btn-default">确定</button>
-                  <button type="submit" class="btn btn-default">取消</button>
                 </div>
               </div>
             </form>
         </div>
+        
+        <!-- 用户管理模块-->
+        <div class="col-sm-10" id="usermangerpage">
+            <div class="page-header"><!-- 包含标题-->
+              <h1>用户中心 <small>用户管理</small></h1>
+            </div>
+            <form class="navbar-form navbar-left">
+        		<div class="form-group">
+          			<input type="text" class="form-control" placeholder="请输入用户名">
+        		</div>
+        		<button type="submit" class="btn btn-default">搜索</button>
+      		</form>
+        </div>
+        
+        <!-- 添加用户模块-->
+        <div class="col-sm-10" id="adduserpage">
+            <div class="page-header"><!-- 包含标题-->
+              <h1>用户中心 <small>添加用户</small></h1>
+            </div>
+           <form class="form-horizontal"><!--包含内容-->
+              <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label uneditable-input" for="formGroupInputSmall">输入新密码</label>
+                <div class="col-sm-4">
+                  <input class="form-control" type="text" id="formGroupInputSmall" >
+                </div>
+                <label class="col-sm-2 control-label" for="formGroupInputSmall">确认密码</label>
+               <div class="col-sm-4">
+                  <input class="form-control" type="text" id="formGroupInputSmall2" >
+                </div>
+              </div>
+            </form>
+        </div>
+        
     </div>
     <!-- jsp包含页面脚部 -->
     <jsp:include page="common_footer.jsp"/>
 </div>
 
 <script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/usermanger.js"></script>
 </body>
 </html>

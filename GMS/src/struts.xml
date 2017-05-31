@@ -20,7 +20,14 @@
     		<result name="success">login.jsp</result>    
     		<result name="error">regist.jsp</result>     			
     		<result name="input">regist.jsp</result>
-		</action>	
+		</action>
+		
+    	<action name="updatepassword" class="com.gms.action.UserinfoAction" method="updatePassword">
+    		<result name="success">usermanger_apply.jsp</result>    
+    		<result name="error">index.jsp</result>     			
+    		<result name="input">index.jsp</result>
+		</action>
+			
 		<action name="exit" class="com.gms.action.UserinfoAction"
 	        method="exit">
 	        <result name="success">index.jsp</result>

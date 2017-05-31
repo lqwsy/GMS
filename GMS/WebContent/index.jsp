@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>首页</title>
+<title>体育馆管理系统</title>
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 
@@ -18,9 +18,9 @@
                 <div class="thumbnail">
                   <img src="..." alt="...">
                   <div class="caption">
-                    <h3>Thumbnail label</h3>
+                    <h3>器材租借</h3>
                     <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+                    <p><a href="#" class="btn btn-primary" role="button">进入</a></p>
                   </div>
                 </div>
            </div>
@@ -28,9 +28,9 @@
                 <div class="thumbnail">
                   <img src="..." alt="...">
                   <div class="caption">
-                    <h3>Thumbnail label</h3>
+                    <h3>场地租借</h3>
                     <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+                    <p><a href="#" class="btn btn-primary" role="button">进入</a></p>
                   </div>
                 </div>
            </div>
@@ -38,9 +38,9 @@
                 <div class="thumbnail">
                   <img src="..." alt="...">
                   <div class="caption">
-                    <h3>Thumbnail label</h3>
+                    <h3>赛事申请</h3>
                     <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+                    <p><a href="#" class="btn btn-primary" role="button">进入</a></p>
                   </div>
                 </div>
            </div>
@@ -48,9 +48,9 @@
                 <div class="thumbnail">
                   <img src="..." alt="...">
                   <div class="caption">
-                    <h3>Thumbnail label</h3>
+                    <h3>公告详情</h3>
                     <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+                    <p><a href="#" class="btn btn-primary" role="button">进入</a></p>
                   </div>
                 </div>
            </div>
@@ -58,9 +58,9 @@
                 <div class="thumbnail">
                   <img src="..." alt="...">
                   <div class="caption">
-                    <h3>Thumbnail label</h3>
+                    <h3>其他</h3>
                     <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+                    <p><a href="#" class="btn btn-primary" role="button">进入</a></p>
                   </div>
                 </div>
            </div>
@@ -68,12 +68,12 @@
         <div class="col-sm-3 hidden-xs">
         	<div class="list-group">
               <a href="#" class="list-group-item active">
-                Cras justo odio
+                	公告栏
               </a>
-              <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item">Morbi leo risus</a>
-              <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item">Vestibulum at eros</a>
+              <a href="#" class="list-group-item">公告1</a>
+              <a href="#" class="list-group-item">公告2</a>
+              <a href="#" class="list-group-item">公告3</a>
+              <a href="#" class="list-group-item">公告4</a>
             </div>
         </div>
     </div>

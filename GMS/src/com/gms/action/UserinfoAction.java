@@ -13,10 +13,19 @@ public class UserinfoAction extends ActionSupport {
 
 	private String vusername;
 	private String vpassword;
+	private String newpasword;
 	private Userinfo user;
 	private String str_result;
 	private UserinfoServiceImpl userinfoService;
 
+	public String getNewpasword() {
+		return newpasword;
+	}
+
+	public void setNewpasword(String newpasword) {
+		this.newpasword = newpasword;
+	}
+	
 	public String getStr_result() {
 		return str_result;
 	}
@@ -95,6 +104,20 @@ public class UserinfoAction extends ActionSupport {
 			System.out.println("用户是否已存在："+isUserNameExistent(user.getVuserName()));
 			return ERROR;
 		}
+	}
+
+	//用户更改密码
+	public String updatePassword(){
+		if(user==null){
+			return INPUT;
+		}
+//		if(user.getVpassward()){
+		System.out.println("new password is: "+user.getVpassward());
+//			userinfoService.updateUserinfo(user);
+			return SUCCESS;
+//		}
+		
+//		return ERROR;
 	}
 	
 	//用户退出
