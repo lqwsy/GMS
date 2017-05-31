@@ -1,74 +1,114 @@
 package com.gms.action;
 
-import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
+import com.gms.po.Roleinfo;
 import com.gms.po.Userinfo;
 import com.gms.service.impl.UserinfoServiceImpl;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class UserinfoAction extends ActionSupport{
+public class UserinfoAction extends ActionSupport {
 
-	private String vUserName;
-	private String vPassword;
+	private String vusername;
+	private String vpassword;
 	private Userinfo user;
-	private UserinfoServiceImpl userservice;
+	private String str_result;
+	private UserinfoServiceImpl userinfoService;
+
+	public String getStr_result() {
+		return str_result;
+	}
+
+	public void setStr_result(String str_result) {
+		this.str_result = str_result;
+	}
 	
-	public String getvUserName() {
-		return vUserName;
+	public UserinfoServiceImpl getUserinfoService() {
+		return userinfoService;
 	}
-	public void setvUserName(String vUserName) {
-		this.vUserName = vUserName;
+
+	public void setUserinfoService(UserinfoServiceImpl userinfoService) {
+		this.userinfoService = userinfoService;
 	}
-	public String getvPassword() {
-		return vPassword;
+
+	public String getvusername() {
+		return vusername;
 	}
-	public void setvPassword(String vPassword) {
-		this.vPassword = vPassword;
+
+	public void setvusername(String vusername) {
+		this.vusername = vusername;
 	}
+
+	public String getvpassword() {
+		return vpassword;
+	}
+
+	public void setvpassword(String vpassword) {
+		this.vpassword = vpassword;
+	}
+
 	public Userinfo getUser() {
 		return user;
 	}
+
 	public void setUser(Userinfo user) {
 		this.user = user;
 	}
-	public UserinfoServiceImpl getUserservice() {
-		return userservice;
-	}
-	public void setUserservice(UserinfoServiceImpl userservice) {
-		this.userservice = userservice;
+
+	// 用户登录
+	public String login() {
+		if (this.user == null) {
+			return INPUT;
+		}
+		if(userinfoService == null){
+			return ERROR;
+		}
+		List<Userinfo> loginuser = userinfoService.getUserinfoByUserName(user.getVuserName());
+		if(loginuser.isEmpty()){
+			return ERROR;
+		}
+		if (user.getVpassward().equals(loginuser.get(0).getVpassward())) {
+			Map<String,Object> map=ActionContext.getContext().getSession();
+			map.put("cur_user", loginuser.get(0));//向session存入登录标识ID,以供登录后检验使用
+//			map.put("cur_userName", user.getVuserName());//向session存入用户名字,以供登录后检验使用
+			return SUCCESS;
+		} else {
+			this.setStr_result("用户名与密码不匹配");
+		}
+		return ERROR;
 	}
 
-	//用户登录
-	public String login(){
-		if(this.user==null){
+	// 用户注册
+	public String regist() {
+		if (this.user == null) {
 			return INPUT;
 		}
-		String password = userservice.getUserinfoByUserName(user.getVuserName()).getVpassward();
-		if(user.getVpassward().equals(password)){
+		if (!isUserNameExistent(user.getVuserName())) {
+			Roleinfo role = new Roleinfo();
+			role.setIroleId(5);
+			user.setRoleinfo(role);
+			userinfoService.addUserinfo(user);
 			return SUCCESS;
-		}else{
+		} else {
+			System.out.println("用户是否已存在："+isUserNameExistent(user.getVuserName()));
 			return ERROR;
 		}
 	}
 	
-	//用户注册
-	public String regist(){
-		if(this.user==null){
-			return INPUT;
-		}
-		if(isUserNameExistent(user.getVuserName())){
-			userservice.addUserinfo(user);
-			return SUCCESS;
-		}else{
-			return ERROR;
-		}
+	//用户退出
+	public String exit(){
+		Map<String,Object> map=ActionContext.getContext().getSession();
+		map.remove("cur_user");
+		return SUCCESS;
 	}
-	
-	//用户名是否已存在
-	public boolean isUserNameExistent(String vUserName){
-		if(userservice.getUserinfoByUserName(vUserName)==null){
+
+	// 用户名是否已存在
+	public boolean isUserNameExistent(String vusername) {
+		if (userinfoService.getUserinfoByUserName(vusername).isEmpty()) {
 			return false;
-		}else{
+		} else {
 			return true;
 		}
 	}
