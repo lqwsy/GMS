@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>添加场地类型</title>
+<title>场地类型添加</title>
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 <body>
@@ -18,18 +18,19 @@
 				<h1>添加场地类型<small>信息填写</small></h1>
 			</div>
 			
-			<form class="form-horizontal fieldtype-form" method="post" action="field/Fieldtype-addFieldtype.action">
+			<form class="form-horizontal" method="post" action="Fieldtype-addFieldtype.action">
 			  <div class="form-group">
 			    <label for="fieldtypeName" class="col-sm-2 control-label">场地类型名:</label>
-				    <div class="col-sm-4">
+				    <div class="col-sm-5">
 				      <input type="text" class="form-control" id="fieldtypeName" name="fieldtype.fieldtypeName" placeholder="类型名">
 				    </div>
 				  
 				    <div class="col-sm-offset-1 col-sm-4">
-				      <button type="submit" class="btn btn-default fieldtype-add-button">添加</button>
+				      <button type="submit" class="btn btn-default">添加</button>
 				    </div>
 			   </div>
 			</form>
+			
 		</div>
 	</div>
 </div>
@@ -37,12 +38,7 @@
 
 <jsp:include page="common_footer.jsp"></jsp:include>
 
-<script type="text/javascript">
-	$(function(){
-		$(".fieldtype-add-button").click(function(){
-			$(".fieldtype-form").
-		}); 
-	});
-</script>
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

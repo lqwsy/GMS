@@ -17,9 +17,9 @@
         <property name="size" type="int">
             <column name="iSize" />
         </property>
-        <property name="enableRent" type="boolean">
+        <!-- <property name="enableRent" type="boolean">
             <column name="bEnableRent" />
-        </property>
+        </property> -->
         <property name="people" type="int">
             <column name="iPeople" />
         </property>
@@ -33,7 +33,7 @@
             <one-to-many class="com.gms.po.Fieldrentinfo"/>
         </set>
         <many-to-one name="fieldtype" column="lFieldTypeId" 
-              class="com.gms.po.Fieldtype" cascade="save-update" fetch="join">
+              class="com.gms.po.Fieldtype" fetch="join">
         </many-to-one>
     </class>
 </hibernate-mapping>

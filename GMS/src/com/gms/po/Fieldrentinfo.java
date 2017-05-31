@@ -11,8 +11,9 @@ public class Fieldrentinfo implements java.io.Serializable {
 	private long fieldrentId;
 	private Fieldinfo fieldinfo;
 	private Userinfo userinfo;
-	private Date startTime;
-	private Date endTime;
+/*	private Date startTime;
+	private Date endTime;*/
+	private String rentTime;
 	private int rent;
 	private Boolean status;
 
@@ -40,22 +41,6 @@ public class Fieldrentinfo implements java.io.Serializable {
 		this.userinfo = userinfo;
 	}
 
-	public Date getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-
-	public Date getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
-
 	public int getRent() {
 		return rent;
 	}
@@ -70,6 +55,14 @@ public class Fieldrentinfo implements java.io.Serializable {
 
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+
+	public String getRentTime() {
+		return rentTime;
+	}
+
+	public void setRentTime(String rentTime) {
+		this.rentTime = rentTime;
 	}
 
 }

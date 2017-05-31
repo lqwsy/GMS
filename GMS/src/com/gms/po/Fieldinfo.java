@@ -13,7 +13,7 @@ public class Fieldinfo implements java.io.Serializable {
 	private String fieldName;
 	private String location;
 	private int size;
-	private boolean enableRent;
+	//private boolean enableRent;
 	private int people;
 	private int rentH;
 	// private Set spacesuses = new HashSet(0);
@@ -52,14 +52,6 @@ public class Fieldinfo implements java.io.Serializable {
 		this.size = size;
 	}
 
-	public boolean isEnableRent() {
-		return enableRent;
-	}
-
-	public void setEnableRent(boolean enableRent) {
-		this.enableRent = enableRent;
-	}
-
 	public int getPeople() {
 		return people;
 	}
@@ -90,6 +82,13 @@ public class Fieldinfo implements java.io.Serializable {
 
 	public void setFieldtype(Fieldtype fieldtype) {
 		this.fieldtype = fieldtype;
+	}
+
+	@Override
+	public String toString() {
+		return "Fieldinfo [fieldId=" + fieldId + ", fieldName=" + fieldName + ", location=" + location + ", size="
+				+ size + ", people=" + people + ", rentH=" + rentH + ", fieldrentinfos=" + fieldrentinfos
+				+ ", fieldtype=" + fieldtype + "]";
 	}
 
 }
