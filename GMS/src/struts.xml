@@ -10,24 +10,34 @@
 	
 	<package name="login-regist" extends="struts-default">
     	<action name="login" class="com.gms.action.UserinfoAction" method="login">
-    		<result name="success">login_success.jsp</result>
-    		<result name="error">login_error.jsp</result>    		    	
-    		<result name="input">index.jsp</result>
+    		<result name="success">index.jsp</result>
+    		<result name="error">login.jsp</result>    		    	
+    		<result name="input">login.jsp</result>
 
 		</action>
 		
     	<action name="regist" class="com.gms.action.UserinfoAction" method="regist">
     		<result name="success">login.jsp</result>    
     		<result name="error">regist.jsp</result>     			
-    		<result name="input">regist.jsp</result>
+    		<result name="input">index.jsp</result>
 		</action>
 		
     	<action name="updatepassword" class="com.gms.action.UserinfoAction" method="updatePassword">
-    		<result name="success">usermanger_apply.jsp</result>    
-    		<result name="error">index.jsp</result>     			
-    		<result name="input">index.jsp</result>
+    		<result name="success">usermanger_changepassword.jsp</result>    
+    		<result name="error">usermanger_changepassword.jsp</result>     			
+    		<result name="input">usermanger_changepassword.jsp</result>
 		</action>
 			
+		<action name="searchuser" class="com.gms.action.UserinfoAction"
+	        method="searchUser">
+	        <result name="success">usermanger_manage.jsp</result>
+	    </action>	
+	    
+		<action name="updateuser" class="com.gms.action.UserinfoAction"
+	        method="updateUser">
+	        <result name="success">usermanger_apply.jsp</result>
+	    </action>	
+	    
 		<action name="exit" class="com.gms.action.UserinfoAction"
 	        method="exit">
 	        <result name="success">index.jsp</result>
