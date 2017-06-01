@@ -72,4 +72,11 @@
 	
 	</package>
 	
+	<package name="competition" extends="struts-default" namespace="/">
+	    <action name="addCompetition" class="com.gms.action.CompetitionAction"
+	        method="addCompetition">
+	        <result name="input">/competition_apply.jsp</result>
+	    </action>
+	</package>
+	
 </struts>
