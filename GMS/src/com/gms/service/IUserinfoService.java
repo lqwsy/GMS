@@ -13,4 +13,5 @@ public interface IUserinfoService {
 	void delUserinfo(Integer iUserId);
 	void verifyUserinfo(Integer iUserId);
 	void updateUserinfo(Userinfo userinfo);
+	void updatePassword(Userinfo userinfo,String newPassword);
 }

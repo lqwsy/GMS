@@ -63,4 +63,10 @@ public class UserinfoServiceImpl implements IUserinfoService{
 		return userinfodao.findByName(vRealName);
 	}
 
+	@Override
+	public void updatePassword(Userinfo userinfo, String newPassword) {
+		userinfo.setVpassward(newPassword);
+		userinfodao.update(userinfo);
+	}
+
 }

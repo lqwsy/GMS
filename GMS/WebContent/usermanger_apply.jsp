@@ -59,7 +59,8 @@
               <div class="form-group form-group-sm">            	
                 <label class="col-sm-2 control-label" for="formGroupInputSmall7">出生日期</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall7" value="${session.cur_user.dbirthday}" name="user.dbirthday">
+                  <input class="form-control" type="text" id="formGroupInputSmall7" value="<s:property value='#session.cur_user.dbirthday.toString().substring(0,10)'/>
+" name="user.dbirthday">
                 </div>
                 <label class="col-sm-2 control-label" for="formGroupInputSmall8">所在学校</label>
               	<div class="col-sm-4">
@@ -67,16 +68,24 @@
                 </div>
               </div>
               <div class="form-group form-group-sm">            	
-                <label class="col-sm-2 control-label" for="formGroupInputSmall9">审核状态</label>
+                <label class="col-sm-2 control-label" for="formGroupInputSmall9">用户状态</label>
                 <div class="col-sm-4">
-                	<s:if test="#session.cur_user.ivstate==0">
-	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall9" value="未审核" readonly >
+                	<s:if test="#session.cur_user.ivstate==1">
+	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall9" value="未通过审核" readonly >
                 	  <input type="hidden" value="${session.cur_user.ivstate}"  name="user.ivstate" />
                 	</s:if>
-                	<s:elseif test="#session.cur_user.ivstate==1">
-	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall10" value="已审核" readonly >
+                	<s:elseif test="#session.cur_user.ivstate==2">
+	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall10" value="已通过审核" readonly >
 	                  <input type="hidden" value="${session.cur_user.ivstate}"  name="user.ivstate" />
                 	</s:elseif>
+                	<s:else>
+	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall20" value="未审核" readonly >
+	                  <input type="hidden" value="${session.cur_user.ivstate}"  name="user.ivstate" />
+                	</s:else>
+                </div>
+                <label class="col-sm-2 control-label" for="rolename">用户类型</label>
+                <div class="col-sm-4">
+                  <input class="form-control" type="text" name="rolename"  value="${session.cur_user.roleinfo.vroleName}" readonly>
                 </div>
               </div>
               <div class="form-group form-group-sm">
@@ -92,6 +101,11 @@
                 </div>
                 <div class="col-sm-offset-2 col-sm-5" id="changeinfo">
                 	<button type="button" class="btn btn-primary" id="changeuserinfo">修改</button>
+                </div>
+              </div>
+              <div class="form-group">
+              	<div class="col-sm-offset-2 col-sm-5" id="changeinfo">
+            	<p><span id="login-tips-span">${str_result}</span></p>
                 </div>
               </div>
             </form>

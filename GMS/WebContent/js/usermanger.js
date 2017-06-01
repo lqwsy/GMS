@@ -6,7 +6,7 @@ $(document).ready(function() {
             	minlength:4,
             	maxlength:20
             },  
-            'user.vpassward': {
+            'newpasword': {
             	equalTo: formGroupInputSmall12
             },  
         },  
@@ -16,11 +16,44 @@ $(document).ready(function() {
             	minlength:"密码长度为4-20个字符",
             	maxlength:"密码长度为4-20个字符"
             },  
-            'user.vpassward': {  
+            'newpasword': {  
             	equalTo: "两次输入的密码不一样"
             },  
         }  
     });
+	
+	$("#adduserform").validate({  
+		rules: {  
+			newusername: {
+				required: true, 
+				minlength:4,
+				maxlength:20
+			},  
+			newuserpassword1: {
+				required: true, 
+				minlength:4,
+				maxlength:20
+			},  
+			newuserpassword: {
+				equalTo: newuserpassword1
+			},  
+		},  
+		messages: {  
+			newusername: {
+				required: "请输入用户名", 
+				minlength:"用户名长度为4-20个字符",
+				maxlength:"用户名长度为4-20个字符"
+			},  
+			newuserpassword1: {
+				required: "请输入新密码", 
+				minlength:"密码长度为4-20个字符",
+				maxlength:"密码长度为4-20个字符"
+			},  
+			newuserpassword: {  
+				equalTo: "两次输入的密码不一样"
+			},  
+		}  
+	});
 });
 $("#cancelchange").click(function(){
 	 $("#surecancel").css("display","none");  

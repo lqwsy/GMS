@@ -27,17 +27,23 @@
                 <label class="col-sm-2 control-label uneditable-input" for="formGroupInputSmall12">输入新密码</label>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" id="formGroupInputSmall12" name="formGroupInputSmall12" >
+                  <input type="hidden" value="${session.cur_user.iuserId}"  name="newpaswordId" />
                 </div>
               </div>
               <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label" for="formGroupInputSmall13">确认密码</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall13" name="user.vpassward" >
+                  <input class="form-control" type="text" id="formGroupInputSmall13" name="newpasword" >
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-5">
                   <button type="submit" class="btn btn-primary">确定</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-5">
+                	<p><span id="login-tips-span">${str_result}</span></p>
                 </div>
               </div>
             </form>

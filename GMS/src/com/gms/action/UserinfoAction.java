@@ -15,12 +15,76 @@ public class UserinfoAction extends ActionSupport {
 	private String vusername;
 	private String vpassword;
 	private String newpasword;
+	private int newpaswordId;
 	private String searchname;
 	private Userinfo user;
 	private String str_result;
 	private String regist_result;
 	private UserinfoServiceImpl userinfoService;
 	private RoleinfoServiceImpl roleinfoService;
+	private int roleId;
+	private String newusername;
+	private String newuserpassword;
+	private int changeuserstate;
+	private int changeuserrole;
+	private int changeuserId;
+	
+	public int getNewpaswordId() {
+		return newpaswordId;
+	}
+
+	public void setNewpaswordId(int newpaswordId) {
+		this.newpaswordId = newpaswordId;
+	}
+	
+	public int getChangeuserId() {
+		return changeuserId;
+	}
+
+	public void setChangeuserId(int changeuserId) {
+		this.changeuserId = changeuserId;
+	}
+
+	public int getChangeuserstate() {
+		return changeuserstate;
+	}
+
+	public void setChangeuserstate(int changeuserstate) {
+		this.changeuserstate = changeuserstate;
+	}
+
+	public int getChangeuserrole() {
+		return changeuserrole;
+	}
+
+	public void setChangeuserrole(int changeuserrole) {
+		this.changeuserrole = changeuserrole;
+	}
+
+	public String getNewusername() {
+		return newusername;
+	}
+
+	public void setNewusername(String newusername) {
+		this.newusername = newusername;
+	}
+
+	public String getNewuserpassword() {
+		return newuserpassword;
+	}
+
+	public void setNewuserpassword(String newuserpassword) {
+		this.newuserpassword = newuserpassword;
+	}
+
+
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
 
 	public String getRegist_result() {
 		return regist_result;
@@ -104,12 +168,12 @@ public class UserinfoAction extends ActionSupport {
 		}
 		List<Userinfo> loginuser = userinfoService.getUserinfoByUserName(user.getVuserName());
 		if(loginuser.isEmpty()){
+			this.setStr_result("用户不存在");
 			return ERROR;
 		}
 		if (user.getVpassward().equals(loginuser.get(0).getVpassward())) {
 			Map<String,Object> map=ActionContext.getContext().getSession();
 			map.put("cur_user", loginuser.get(0));//向session存入登录标识ID,以供登录后检验使用
-//			map.put("cur_userName", user.getVuserName());//向session存入用户名字,以供登录后检验使用
 			return SUCCESS;
 		} else {
 			this.setStr_result("用户名与密码不匹配");
@@ -138,34 +202,101 @@ public class UserinfoAction extends ActionSupport {
 
 	//用户更改密码
 	public String updatePassword(){
-		if(user==null){
-			return INPUT;
-		}
-//		if(user.getVpassward()){
-		System.out.println("new password is: "+user.getVpassward());
-//			userinfoService.updateUserinfo(user);
+		if(newpasword!=null && newpaswordId!=0){
+			Userinfo newpassworduser = userinfoService.getUserinfoById(newpaswordId);
+			userinfoService.updatePassword(newpassworduser, newpasword);
+			this.setStr_result("修改成功");
 			return SUCCESS;
-//		}
-		
-//		return ERROR;
+		}else {
+			this.setStr_result("修改失败");
+			return ERROR;
+		}
 	}
 	
 	//更新用户资料
 	public String updateUser(){
 		if(user==null){
+			this.setStr_result("请重新操作");
 			return INPUT;
 		}
 		Roleinfo role = roleinfoService.getRoleinfoById(user.getRoleinfo().getIroleId());
 		user.setRoleinfo(role);
-		System.out.println("realname: "+user.getVrealName());
-		System.out.println("shenfenzhengdizhi: "+user.getVidentifierAddress());
-		System.out.println("state: "+user.getIvstate());
-		System.out.println("collage: "+user.getVcollege());
-		System.out.println("lianxidizhi: "+user.getVaddress());
-		System.out.println("jeseid: "+user.getRoleinfo().getVroleName());
-		System.out.println("user: "+user.toString());
-		
 		userinfoService.updateUserinfo(user);
+		Map<String,Object> map=ActionContext.getContext().getSession();
+		map.remove("cur_user");
+		map.put("cur_user", userinfoService.getUserinfoByUserName(user.getVuserName()).get(0));
+		this.setStr_result("更新成功");
+		return SUCCESS;
+	}
+	
+	//修改用户状态和角色
+	public String updateUserStateAndRole(){
+		if(changeuserstate!=0 && changeuserrole!=0){
+			Userinfo cuser = userinfoService.getUserinfoById(changeuserId);
+			Roleinfo crole = new Roleinfo();
+			crole.setIroleId(changeuserrole);
+			cuser.setIvstate(changeuserstate);
+			cuser.setRoleinfo(crole);
+			userinfoService.updateUserinfo(cuser);
+			Map<String,Object> map=ActionContext.getContext().getSession();
+			map.remove("change_user");
+			map.put("change_user", cuser);
+			this.setStr_result("修改成功");
+			return SUCCESS;
+		}else{
+			this.setStr_result("修改失败，用户状态必须为通过或不通过");
+			return ERROR;
+		}
+		
+		
+	}
+	
+	//添加用户
+	public String addUser(){
+		if(newusername!=null && newuserpassword!=null && roleId!=0){
+			if(isUserNameExistent(newusername)){
+				this.setStr_result("用户名已存在");
+				return INPUT;
+			}
+			Userinfo newuser = new Userinfo();
+			Roleinfo newrole = new Roleinfo();
+			newuser.setVuserName(newusername);
+			newuser.setVpassward(newuserpassword);
+			newuser.setIvstate(1);
+			newrole.setIroleId(roleId);
+			newuser.setRoleinfo(newrole);
+			userinfoService.addUserinfo(newuser);
+			this.setStr_result("添加成功");
+			return SUCCESS;
+		}else {
+			this.setStr_result("添加失败");
+			return ERROR;
+		}
+	}
+	
+	//修改用户
+	public String changeUser(){
+		if(user==null){
+			return INPUT;
+		}
+		if(user.getIuserId()!=0){
+			Userinfo change_user = userinfoService.getUserinfoById(user.getIuserId());
+			Map<String,Object> map=ActionContext.getContext().getSession();
+			map.remove("change_user");
+			map.put("change_user", change_user);
+			return SUCCESS;
+		}
+		return ERROR;
+	}
+	
+	//删除用户
+	public String deleteUser(){
+		if(user==null){
+			return INPUT;
+		}
+		if(user.getIuserId()!=0){
+			userinfoService.delUserinfo(user.getIuserId());
+		}
 		return SUCCESS;
 	}
 	
@@ -174,6 +305,7 @@ public class UserinfoAction extends ActionSupport {
 		Map<String,Object> map=ActionContext.getContext().getSession();
 		map.remove("cur_user");
 		map.remove("all_users");
+		map.remove("change_user");
 		map.remove("search_users");
 		return SUCCESS;
 	}
