@@ -1,10 +1,5 @@
 $(document).ready(function() {
-    $("#changepasspage").css("display","none");  
-    $("#usermangerpage").css("display","none");  
-    $("#adduserpage").css("display","none");  
-    $("#surecancel").css("display","none");
-    
-    $("#changepasswordform").validate({  
+	$("#changepasswordform").validate({  
         rules: {  
         	formGroupInputSmall12: {
             	required: true, 
@@ -26,30 +21,6 @@ $(document).ready(function() {
             },  
         }  
     });
-});
-$("#userinfo").click(function(){
-	$("#userinfopage").css("display","block");  
-	$("#changepasspage").css("display","none");
-    $("#usermangerpage").css("display","none");  
-    $("#adduserpage").css("display","none"); 
-});
-$("#changepass").click(function(){
-	$("#userinfopage").css("display","none");  
-	$("#changepasspage").css("display","block");
-    $("#usermangerpage").css("display","none");  
-    $("#adduserpage").css("display","none"); 
-});
-$("#usermanger").click(function(){
-	$("#userinfopage").css("display","none");  
-	$("#changepasspage").css("display","none");
-    $("#usermangerpage").css("display","block");  
-    $("#adduserpage").css("display","none"); 
-});
-$("#adduser").click(function(){
-	$("#userinfopage").css("display","none");  
-	$("#changepasspage").css("display","none");
-    $("#usermangerpage").css("display","none");  
-    $("#adduserpage").css("display","block"); 
 });
 $("#cancelchange").click(function(){
 	 $("#surecancel").css("display","none");  

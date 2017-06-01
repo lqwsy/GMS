@@ -58,4 +58,9 @@ public class UserinfoServiceImpl implements IUserinfoService{
 		return userinfodao.findUserByUserName(vUserName);
 	}
 
+	@Override
+	public List getUserinfoByName(String vRealName) {
+		return userinfodao.findByName(vRealName);
+	}
+
 }

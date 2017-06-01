@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>体育馆管理系统/用户中心</title>
+<title>体育馆管理系统/用户中心/个人资料</title>
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 
@@ -22,134 +22,76 @@
             <div class="page-header"><!-- 包含标题-->
               <h1>用户中心 <small>个人资料</small></h1>
             </div>
-           <form class="form-horizontal"><!--包含内容-->
+           <form class="form-horizontal" action="updateuser.action"><!--包含内容-->
               <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label uneditable-input" for="formGroupInputSmall1">用户名</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall1" value="${session.cur_user.vuserName}">
+                  <input class="form-control" type="text" id="formGroupInputSmall1" value="${session.cur_user.vuserName}" name="user.vuserName" readonly>
+                  <input type="hidden" value="${session.cur_user.iuserId}"  name="user.iuserId" />
+                  <input type="hidden" value="${session.cur_user.vpassward}"  name="user.vpassward" />
+                  <input type="hidden" value="${session.cur_user.roleinfo.iroleId}"  name="user.roleinfo.iroleId" />
                 </div>
                 <label class="col-sm-2 control-label" for="formGroupInputSmall2">真实姓名</label>
                <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall2" value="${session.cur_user.vrealName}">
+                  <input class="form-control" type="text" id="formGroupInputSmall2" value="${session.cur_user.vrealName}" name="user.vrealName">
                 </div>
              </div>
               <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label" for="formGroupInputSmall3">电话号码</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall3" value="${session.cur_user.vtelephone}">
+                  <input class="form-control" type="text" id="formGroupInputSmall3" value="${session.cur_user.vtelephone}" name="user.vtelephone">
                 </div>
                 <label class="col-sm-2 control-label" for="formGroupInputSmall4">电子邮箱</label>
               <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall4" value="${session.cur_user.vemail}">
+                  <input class="form-control" type="text" id="formGroupInputSmall4" value="${session.cur_user.vemail}" name="user.vemail">
                 </div>
              </div>
               <div class="form-group form-group-sm">            	
                 <label class="col-sm-2 control-label" for="formGroupInputSmall5">身份证号</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall5" value="${session.cur_user.videntifierCode}">
+                  <input class="form-control" type="text" id="formGroupInputSmall5" value="${session.cur_user.videntifierCode}" name="user.videntifierCode">
                 </div>
                 <label class="col-sm-2 control-label" for="formGroupInputSmall6">身份证地址</label>
               	<div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall6" value="${session.cur_user.videntifierAddress}">
+                  <input class="form-control" type="text" id="formGroupInputSmall6" value="${session.cur_user.videntifierAddress}" name="user.videntifierAddress">
                 </div>
               </div>
               <div class="form-group form-group-sm">            	
                 <label class="col-sm-2 control-label" for="formGroupInputSmall7">出生日期</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall7" value="${session.cur_user.dbirthday}">
+                  <input class="form-control" type="text" id="formGroupInputSmall7" value="${session.cur_user.dbirthday}" name="user.dbirthday">
                 </div>
                 <label class="col-sm-2 control-label" for="formGroupInputSmall8">所在学校</label>
               	<div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall8" value="${session.cur_user.vcollege}">
+                  <input class="form-control" type="text" id="formGroupInputSmall8" value="${session.cur_user.vcollege}" name="user.vcollege">
                 </div>
               </div>
               <div class="form-group form-group-sm">            	
                 <label class="col-sm-2 control-label" for="formGroupInputSmall9">审核状态</label>
                 <div class="col-sm-4">
                 	<s:if test="#session.cur_user.ivstate==0">
-	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall9" value="未通过审核">
+	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall9" value="未审核" readonly >
+                	  <input type="hidden" value="${session.cur_user.ivstate}"  name="user.ivstate" />
                 	</s:if>
                 	<s:elseif test="#session.cur_user.ivstate==1">
-	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall10" value="已审核">
+	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall10" value="已审核" readonly >
+	                  <input type="hidden" value="${session.cur_user.ivstate}"  name="user.ivstate" />
                 	</s:elseif>
-                	<s:else>
-	                  <input class="form-control input-xlarge uneditable-input" type="text" id="formGroupInputSmall11" value="未审核">
-                	</s:else>
-                	
                 </div>
               </div>
               <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label" for="formGroupInputLarge">联系地址</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" id="formGroupInputLarge" value="${session.cur_user.vaddress}">
+                  <input class="form-control" type="text" id="formGroupInputLarge" value="${session.cur_user.vaddress}" name="user.vaddress">
                 </div>
               </div>
               <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-5" id="surecancel">
-                  <button type="submit" class="btn btn-default" >确定</button>
-                  <button type="button" class="btn btn-default" id="cancelchange">取消</button>
+                <div class="col-sm-offset-2 col-sm-5" id="surecancel" style="display:none;">
+                  <button type="submit" class="btn btn-primary" >确定</button>
+                  <button type="button" class="btn btn-primary" id="cancelchange">取消</button>
                 </div>
                 <div class="col-sm-offset-2 col-sm-5" id="changeinfo">
-                	<button type="button" class="btn btn-default" id="changeuserinfo">修改</button>
-                </div>
-              </div>
-
-            </form>
-        </div>
-        
-        <!-- 更改密码模块-->
-        <div class="col-sm-10" id="changepasspage">
-            <div class="page-header"><!-- 包含标题-->
-              <h1>用户中心 <small>更改密码</small></h1>
-            </div>
-            <form class="form-horizontal" id="changepasswordform" action="updatepassword.action"><!--包含内容-->
-              <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label uneditable-input" for="formGroupInputSmall12">输入新密码</label>
-                <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall12" name="formGroupInputSmall12" >
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="formGroupInputSmall13">确认密码</label>
-                <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall13" name="user.vpassward" >
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-5">
-                  <button type="submit" class="btn btn-default">确定</button>
-                </div>
-              </div>
-            </form>
-        </div>
-        
-        <!-- 用户管理模块-->
-        <div class="col-sm-10" id="usermangerpage">
-            <div class="page-header"><!-- 包含标题-->
-              <h1>用户中心 <small>用户管理</small></h1>
-            </div>
-            <form class="navbar-form navbar-left">
-        		<div class="form-group">
-          			<input type="text" class="form-control" placeholder="请输入用户名">
-        		</div>
-        		<button type="submit" class="btn btn-default">搜索</button>
-      		</form>
-        </div>
-        
-        <!-- 添加用户模块-->
-        <div class="col-sm-10" id="adduserpage">
-            <div class="page-header"><!-- 包含标题-->
-              <h1>用户中心 <small>添加用户</small></h1>
-            </div>
-           <form class="form-horizontal"><!--包含内容-->
-              <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label uneditable-input" for="formGroupInputSmall">输入新密码</label>
-                <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall" >
-                </div>
-                <label class="col-sm-2 control-label" for="formGroupInputSmall">确认密码</label>
-               <div class="col-sm-4">
-                  <input class="form-control" type="text" id="formGroupInputSmall2" >
+                	<button type="button" class="btn btn-primary" id="changeuserinfo">修改</button>
                 </div>
               </div>
             </form>
