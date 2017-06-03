@@ -9,7 +9,7 @@ public class Competitionresult implements java.io.Serializable {
 	private long bcompetitionResultId;
 	private Competition competition;
 	private String vcompetitorUnit;
-	private Integer iscores;
+	private Integer iscores=0;
 
 	public Competitionresult() {
 	}

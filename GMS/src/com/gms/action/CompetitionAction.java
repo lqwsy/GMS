@@ -8,31 +8,42 @@ import java.util.Set;
 
 import com.gms.po.Competition;
 import com.gms.po.Competitionresult;
+import com.gms.po.Competitiontype;
 import com.gms.po.Equitmentsuse;
 import com.gms.po.Spacesuse;
+import com.gms.po.Userinfo;
 import com.gms.service.ICompetitionResultService;
 import com.gms.service.ICompetitionService;
 import com.gms.service.ICompetitionTypeService;
 import com.gms.service.IEquitmentsUseService;
 import com.gms.service.ISpacesUseService;
+import com.gms.service.IUserinfoService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CompetitionAction extends ActionSupport{
 	private int page;
+	private String operation;
+	private Long ci;
 	private Competition competition;
 	private Set<Competitionresult> competitionresults;//赛事结果
 	private Spacesuse spacesuse;//赛事场地
 	private Equitmentsuse equitmentsuse;//赛事器材
 	private String keyword;//搜索关键字
 	private InputStream resultStream;//ajax请求结果标识
+	private List<Competitiontype> competitionTypes;
 	private List<Competition> competitions;
 	
+	private String actionName;
+	
+	//业务组件
+	private IUserinfoService userinfoService;
 	private ICompetitionTypeService competitionTypeService;
 	private ISpacesUseService spacesUseService;
 	private IEquitmentsUseService equitmentsUseService;
 	private ICompetitionService competitionService;
-	private ICompetitionResultService competitionResultServie;
-	//other module
+	private ICompetitionResultService competitionResultService;
+	//other module service
 	
 	public int getPage() {
 		return page;
@@ -40,6 +51,34 @@ public class CompetitionAction extends ActionSupport{
 
 	public void setPage(int page) {
 		this.page = page;
+	}
+
+	/**
+	 * @return the operation
+	 */
+	public String getOperation() {
+		return operation;
+	}
+
+	/**
+	 * @param operation the operation to set
+	 */
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
+
+	/**
+	 * @return the ci
+	 */
+	public Long getCi() {
+		return ci;
+	}
+
+	/**
+	 * @param ci the ci to set
+	 */
+	public void setCi(Long ci) {
+		this.ci = ci;
 	}
 
 	public Competition getCompetition() {
@@ -86,8 +125,21 @@ public class CompetitionAction extends ActionSupport{
 		return this.resultStream;
 	}
 	
-	public void setResult(String result) throws Exception{
-		this.resultStream=new ByteArrayInputStream(result.getBytes("UTF-8"));
+	public void setResult(String result) {
+		try{
+			this.resultStream=new ByteArrayInputStream(result.getBytes("UTF-8"));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	public List<Competitiontype> getCompetitionTypes() {
+		return competitionTypes;
+	}
+
+	public void setCompetitionTypes(List<Competitiontype> competitionTypes) {
+		this.competitionTypes = competitionTypes;
 	}
 
 	public List<Competition> getCompetitions() {
@@ -96,6 +148,24 @@ public class CompetitionAction extends ActionSupport{
 
 	public void setCompetitions(List<Competition> competitions) {
 		this.competitions = competitions;
+	}
+
+	/**
+	 * @return the actionName
+	 */
+	public String getActionName() {
+		return actionName;
+	}
+
+	/**
+	 * @param actionName the actionName to set
+	 */
+	public void setActionName(String actionName) {
+		this.actionName = actionName;
+	}
+
+	public void setUserinfoService(IUserinfoService userinfoService) {
+		this.userinfoService = userinfoService;
 	}
 
 	public void setCompetitionTypeService(ICompetitionTypeService competitionTypeService) {
@@ -114,93 +184,192 @@ public class CompetitionAction extends ActionSupport{
 		this.competitionService = competitionService;
 	}
 	
-	public void setCompetitionResultServie(ICompetitionResultService competitionResultServie) {
-		this.competitionResultServie = competitionResultServie;
+	public void setCompetitionResultService(ICompetitionResultService competitionResultService) {
+		this.competitionResultService = competitionResultService;
 	}
 
-	//赛事申请
+	//赛事申请 done
 	public String addCompetition(){
+		Userinfo cur_user=(Userinfo)ActionContext.getContext().getSession().get("cur_user");
 		if(competition==null){
+			competitionTypes=competitionTypeService.getAllTypes();
 			return INPUT;
 		}
 		competition.setCompetitiontype(competitionTypeService.getTypeById(
 				competition.getCompetitiontype().getIcompetitionType()));
-		//TODO rely on userService#getUser
+		competition.setUserinfo((Userinfo)userinfoService.getUserinfoById(cur_user.getIuserId()));
 		competition.setCompetitionresults(competitionresults);//设置赛事结果
 		//TODO rely on fileInfoService#getFileInfo
-		competition.getSpacesuses().add(spacesuse);
+		//competition.getSpacesuses().add(spacesuse);
 		//TODO rely on equitmentService#getEquitment
-		competition.getEquitmentsuses().add(equitmentsuse);
-		competitionService.addCompetition(competition);
+		//competition.getEquitmentsuses().add(equitmentsuse);
+		try{
+			competitionService.addCompetition(competition);
+			this.setResult("1");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			this.setResult("0");
+		}
 		return SUCCESS;
 	}
 	
-	//赛事取消
-	public String cancel(){
-		competitionService.cancelCompetition(competition.getBcompetitionId());
+	//赛事取消done
+	public String cancelCompetition(){
+		Userinfo cur_user=(Userinfo)ActionContext.getContext().getSession().get("cur_user");
+		Competition competitionPo=competitionService.
+				getCompetitionById(this.ci);//从数据库拉取赛事信息
+		if(cur_user.getIuserId().intValue()!=competitionPo.getUserinfo().getIuserId().intValue()){
+			this.setResult("-1");
+			return SUCCESS;
+		}
+		try{
+			competitionService.cancelCompetition(this.ci);
+			this.setResult("1");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			this.setResult("0");
+		}
 		return SUCCESS;
 	}
 	
-	//赛事认证
+	//赛事认证>>>>>>>管理员*****done
 	public String verifyCompetition(){
-		competitionService.verifyCompetition(competition.getBcompetitionId());
+		if(this.ci==null){
+			competitions=(List<Competition>)competitionService.getAllToVerifyCompetitionsByPage(page);
+			return INPUT;
+		}
+		try{
+			if("pass".equals(this.operation)){
+				competitionService.verifyCompetition(this.ci);
+			}
+			else{
+				competitionService.cancelCompetition(this.ci);
+			}
+			this.setResult("1");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			this.setResult("0");
+		}
 		return SUCCESS;
 	}
 	
-	//开始赛事
+	//开始赛事>>>>>>>管理员******done
 	public String startCompetition(){
-		competitionService.startCompetition(competition.getBcompetitionId());
+		try{
+			competitionService.startCompetition(this.ci);
+			this.setResult("1");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			this.setResult("0");
+		}
 		return SUCCESS;
 	}
 	
-	//结束赛事
+	//结束赛事>>>>>>管理员******done
 	public String endCompetition(){
-		competitionService.endCoompetition(competition.getBcompetitionId());
+		try{
+			competitionService.endCoompetition(this.ci);
+			this.setResult("1");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			this.setResult("0");
+		}
 		return SUCCESS;
 	}
 	
-	//删除赛事
-	public String delCompetition(){
-		competitionService.delCompetition(competition.getBcompetitionId());
-		return SUCCESS;
-	}
-	
-	//彻底删除赛事
-	public String delForeCompetition(){
-		competitionService.delForeCompetition(competition.getBcompetitionId());
-		return SUCCESS;
-	}
-	
-	//更新赛事信息
-	public String updateForeCompetition(){
-		Competition competitionPo=competitionService.getCompetitionById(competition.getBcompetitionId());//从数据库拉取赛事信息
+//	//删除赛事
+//	public String delCompetition(){
+//		competitionService.delCompetition(competition.getBcompetitionId());
+//		return SUCCESS;
+//	}
+//	
+//	//彻底删除赛事
+//	public String delForeCompetition(){
+//		competitionService.delForeCompetition(competition.getBcompetitionId());
+//		return SUCCESS;
+//	}
+//	
+	//更新赛事信息 done
+	public String updateCompetition(){
+		Userinfo cur_user=(Userinfo)ActionContext.getContext().getSession().get("cur_user");
+		if(this.ci!=null){
+			competitionTypes=competitionTypeService.getAllTypes();
+			competition=competitionService.getCompetitionById(this.ci);
+			if(cur_user.getIuserId().intValue()!=competition.getUserinfo().getIuserId().intValue()){
+				return "noauthority";
+			}
+			return INPUT;
+		}
+		Competition competitionPo=competitionService.
+				getCompetitionById(competition.getBcompetitionId());//从数据库拉取赛事信息
+		if(cur_user.getIuserId().intValue()!=competitionPo.getUserinfo().getIuserId().intValue()){
+			this.setResult("-1");
+			return SUCCESS;
+		}
 		competitionPo.setCompetitiontype(competitionTypeService.getTypeById(
 				competition.getCompetitiontype().getIcompetitionType()));//设置赛事类型
-		
+		//赛事结果
 		Set results=competitionPo.getCompetitionresults();
 		results.clear();
 		Iterator<Competitionresult> iter=competitionresults.iterator();
 		while(iter.hasNext()){
 			Competitionresult result=iter.next();
-			Competitionresult resultPo=competitionResultServie.getResultById(
+			Competitionresult resultPo=competitionResultService.getResultById(
 					result.getBcompetitionResultId());
 			resultPo.setVcompetitorUnit(result.getVcompetitorUnit());
 			results.add(resultPo);
 		}
-		//TODO set the competition property
-		competitionService.updateCompetition(competitionPo);
+		//设置其它属性
+		competitionPo.setDcompetitionDate(competition.getDcompetitionDate());
+		competitionPo.setVcompetitionDetails(competition.getVcompetitionDetails());
+		competitionPo.setVlinkMan(competition.getVlinkMan());
+		competitionPo.setVphoneNumber(competition.getVphoneNumber());
+		competitionPo.setVmainUnit(competition.getVmainUnit());
+		competitionPo.setVunitAddress(competition.getVunitAddress());
+		try{
+			competitionService.updateCompetition(competitionPo);
+			this.setResult("1");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			this.setResult("0");
+		}
 		return SUCCESS;
 	}
 	
-	//获取赛事详情
+	//获取赛事详情  done
 	public String getCompetitionDetails(){
-		competition=competitionService.getCompetitionById(competition.getBcompetitionId());
+		if(this.ci==null){
+			return "mylist";
+		}
+		competition=competitionService.getCompetitionById(this.ci);
 		return SUCCESS;
 	}
 	
-	//获取所有赛事
-	public String getAllCompetitions(){
-		competitions=(List<Competition>)competitionService.getAllCompetitionsByPage(page);
+	//获取我的赛事 done
+	public String getMyCompetitions(){
+		Userinfo cur_user=(Userinfo)ActionContext.getContext().getSession().get("cur_user");
+		competitions=competitionService.getMyCompetitions(cur_user.getIuserId());
 		return SUCCESS;
 	}
+	
+	//获取直播赛事done
+	public String getLiveComeptitions(){
+		competitions=competitionService.getLiveCompetitions();
+		return SUCCESS;
+	}
+	
+	//赛事搜索
+	public String searchCompetitions(){
+		if(keyword!=null){
+			competitions=competitionService.searchCompetitions(keyword.trim());
+		}
+		return SUCCESS;
+	}
+	
 }

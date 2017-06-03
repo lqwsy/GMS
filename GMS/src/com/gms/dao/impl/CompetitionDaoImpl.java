@@ -58,6 +58,12 @@ public class CompetitionDaoImpl extends HibernateDaoSupport implements ICompetit
 	}
 
 	@Override
+	public List findCompetitions(String hql) {
+		// TODO Auto-generated method stub
+		return getHibernateTemplate().find(hql);
+	}
+
+	@Override
 	public List findCompetitions(String hql, Object arg) {
 		// TODO Auto-generated method stub
 		return getHibernateTemplate().find(hql, arg);

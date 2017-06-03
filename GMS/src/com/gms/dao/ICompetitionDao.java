@@ -10,5 +10,6 @@ public interface ICompetitionDao {
 	void update(Competition competition);
 	Competition get(Long id);
 	List findByPage(String hql,Object arg,int offset,int pageSize);
+	List findCompetitions(String hql);
 	List findCompetitions(String hql,Object arg);
 }

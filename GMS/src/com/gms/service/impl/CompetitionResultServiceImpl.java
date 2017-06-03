@@ -1,5 +1,7 @@
 package com.gms.service.impl;
 
+import java.util.List;
+
 import com.gms.dao.ICompetitionResultDao;
 import com.gms.po.Competitionresult;
 import com.gms.service.ICompetitionResultService;
@@ -15,6 +17,12 @@ public class CompetitionResultServiceImpl implements ICompetitionResultService{
 	public Competitionresult getResultById(Long resultId) {
 		// TODO Auto-generated method stub
 		return competitionResultDao.get(resultId);
+	}
+
+	@Override
+	public List<Competitionresult> getCompetitionResultsById(Long competitionId) {
+		// TODO Auto-generated method stub
+		return competitionResultDao.findResultsByCompetitionId(competitionId);
 	}
 
 	@Override
