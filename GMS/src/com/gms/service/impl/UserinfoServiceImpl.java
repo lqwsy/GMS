@@ -58,4 +58,15 @@ public class UserinfoServiceImpl implements IUserinfoService{
 		return userinfodao.findUserByUserName(vUserName);
 	}
 
+	@Override
+	public List getUserinfoByName(String vRealName) {
+		return userinfodao.findByName(vRealName);
+	}
+
+	@Override
+	public void updatePassword(Userinfo userinfo, String newPassword) {
+		userinfo.setVpassward(newPassword);
+		userinfodao.update(userinfo);
+	}
+
 }

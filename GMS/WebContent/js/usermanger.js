@@ -1,17 +1,12 @@
 $(document).ready(function() {
-    $("#changepasspage").css("display","none");  
-    $("#usermangerpage").css("display","none");  
-    $("#adduserpage").css("display","none");  
-    $("#surecancel").css("display","none");
-    
-    $("#changepasswordform").validate({  
+	$("#changepasswordform").validate({  
         rules: {  
         	formGroupInputSmall12: {
             	required: true, 
             	minlength:4,
             	maxlength:20
             },  
-            'user.vpassward': {
+            'newpasword': {
             	equalTo: formGroupInputSmall12
             },  
         },  
@@ -21,35 +16,44 @@ $(document).ready(function() {
             	minlength:"密码长度为4-20个字符",
             	maxlength:"密码长度为4-20个字符"
             },  
-            'user.vpassward': {  
+            'newpasword': {  
             	equalTo: "两次输入的密码不一样"
             },  
         }  
     });
-});
-$("#userinfo").click(function(){
-	$("#userinfopage").css("display","block");  
-	$("#changepasspage").css("display","none");
-    $("#usermangerpage").css("display","none");  
-    $("#adduserpage").css("display","none"); 
-});
-$("#changepass").click(function(){
-	$("#userinfopage").css("display","none");  
-	$("#changepasspage").css("display","block");
-    $("#usermangerpage").css("display","none");  
-    $("#adduserpage").css("display","none"); 
-});
-$("#usermanger").click(function(){
-	$("#userinfopage").css("display","none");  
-	$("#changepasspage").css("display","none");
-    $("#usermangerpage").css("display","block");  
-    $("#adduserpage").css("display","none"); 
-});
-$("#adduser").click(function(){
-	$("#userinfopage").css("display","none");  
-	$("#changepasspage").css("display","none");
-    $("#usermangerpage").css("display","none");  
-    $("#adduserpage").css("display","block"); 
+	
+	$("#adduserform").validate({  
+		rules: {  
+			newusername: {
+				required: true, 
+				minlength:4,
+				maxlength:20
+			},  
+			newuserpassword1: {
+				required: true, 
+				minlength:4,
+				maxlength:20
+			},  
+			newuserpassword: {
+				equalTo: newuserpassword1
+			},  
+		},  
+		messages: {  
+			newusername: {
+				required: "请输入用户名", 
+				minlength:"用户名长度为4-20个字符",
+				maxlength:"用户名长度为4-20个字符"
+			},  
+			newuserpassword1: {
+				required: "请输入新密码", 
+				minlength:"密码长度为4-20个字符",
+				maxlength:"密码长度为4-20个字符"
+			},  
+			newuserpassword: {  
+				equalTo: "两次输入的密码不一样"
+			},  
+		}  
+	});
 });
 $("#cancelchange").click(function(){
 	 $("#surecancel").css("display","none");  

@@ -8,26 +8,64 @@
 	<constant name="struts.devMode" value="false" /> 	
 	<include file="struts-default.xml" />
 	
+	<package name="my-default" namespace="/" extends="struts-default">
+	    <interceptors>
+	        <!-- 未登录用户拦截器 -->
+	        <interceptor name="noLoginInterceptor" 
+	            class="com.gms.interceptor.NoLoginInterceptor"/>
+	        <!-- 权限拦截器 -->
+	        <interceptor name="noAuthorityIntercetor"
+	            class="com.gms.interceptor.AuthorityInterceptor"/>
+	        <!-- 未登录用户拦截器栈 -->
+	        <interceptor-stack name="noLoninStack">
+	            <interceptor-ref name="defaultStack"/>
+	            <interceptor-ref name="noLoginInterceptor"/>
+	        </interceptor-stack>
+	        <!-- 赛事管理员 -->
+	        <interceptor-stack name="compAdmin">
+	            <interceptor-ref name="defaultStack"/>
+	            <interceptor-ref name="noLoginInterceptor"/>
+	            <interceptor-ref name="noAuthorityIntercetor">
+	                <param name="role">1</param>
+	            </interceptor-ref>
+	        </interceptor-stack>
+	    </interceptors>
+	    <global-results>
+	        <result name="login">/login.jsp</result>
+	        <result name="noauthority">/403.jsp</result>
+	    </global-results>
+	</package>
+	
 	<package name="login-regist" extends="struts-default">
     	<action name="login" class="com.gms.action.UserinfoAction" method="login">
-    		<result name="success">login_success.jsp</result>
-    		<result name="error">login_error.jsp</result>    		    	
-    		<result name="input">index.jsp</result>
+    		<result name="success">index.jsp</result>
+    		<result name="error">login.jsp</result>    		    	
+    		<result name="input">login.jsp</result>
 
 		</action>
 		
     	<action name="regist" class="com.gms.action.UserinfoAction" method="regist">
     		<result name="success">login.jsp</result>    
     		<result name="error">regist.jsp</result>     			
-    		<result name="input">regist.jsp</result>
+    		<result name="input">index.jsp</result>
 		</action>
 		
     	<action name="updatepassword" class="com.gms.action.UserinfoAction" method="updatePassword">
-    		<result name="success">usermanger_apply.jsp</result>    
-    		<result name="error">index.jsp</result>     			
-    		<result name="input">index.jsp</result>
+    		<result name="success">usermanger_changepassword.jsp</result>    
+    		<result name="error">usermanger_changepassword.jsp</result>     			
+    		<result name="input">usermanger_changepassword.jsp</result>
 		</action>
 			
+		<action name="searchuser" class="com.gms.action.UserinfoAction"
+	        method="searchUser">
+	        <result name="success">usermanger_manage.jsp</result>
+	    </action>	
+	    
+		<action name="updateuser" class="com.gms.action.UserinfoAction"
+	        method="updateUser">
+	        <result name="success">usermanger_apply.jsp</result>
+	    </action>	
+	    
 		<action name="exit" class="com.gms.action.UserinfoAction"
 	        method="exit">
 	        <result name="success">index.jsp</result>
@@ -62,10 +100,135 @@
 	
 	</package>
 	
-	<package name="competition" extends="struts-default" namespace="/">
+	<package name="competition" extends="my-default,json-default" namespace="/">
 	    <action name="addCompetition" class="com.gms.action.CompetitionAction"
 	        method="addCompetition">
+			<interceptor-ref name="noLoninStack"/>
 	        <result name="input">/competition_apply.jsp</result>
+	        <result name="success" type="stream">
+	            <param name="contentType">text/html</param>
+	            <param name="inputName">result</param>
+	        </result>
+	    </action>
+	    <action name="myCompetitions" class="com.gms.action.CompetitionAction"
+	        method="getMyCompetitions">
+	        <interceptor-ref name="noLoninStack"/>
+	        <param name="actionName">my</param>
+	        <result name="success">/competition_list.jsp</result>
+	    </action>
+	    <action name="competitionDetails" class="com.gms.action.CompetitionAction"
+	        method="getCompetitionDetails">
+	        <result name="mylist" type="redirect">myCompetitions.action</result>
+	        <result name="success">/competition_details.jsp</result>
+	    </action>
+	    <action name="updateCompetition" class="com.gms.action.CompetitionAction" 
+	        method="updateCompetition">
+	        <interceptor-ref name="noLoninStack"/>
+	        <result name="input">/competition_update.jsp</result>
+	        <result name="success" type="stream">
+	            <param name="contentType">text/html</param>
+	            <param name="inputName">result</param>
+	        </result>
+	    </action>
+	    <action name="liveComeptitions" class="com.gms.action.CompetitionAction" 
+	        method="getLiveComeptitions">
+	        <param name="actionName">live</param>
+	        <result name="success">/competition_list.jsp</result>
+	    </action>
+	    <action name="searchCompetitions"  class="com.gms.action.CompetitionAction" 
+	        method="searchCompetitions">
+	        <param name="actionName">search</param>
+	        <result name="success">/competition_list.jsp</result>
+	    </action>
+	    <action name="verifyCompetition" class="com.gms.action.CompetitionAction" 
+	        method="verifyCompetition">
+	        <interceptor-ref name="compAdmin"/>
+	        <param name="actionName">verify</param>
+	        <result name="input">/competition_list.jsp</result>
+	        <result name="success" type="stream">
+	            <param name="contentType">text/html</param>
+	            <param name="inputName">result</param>
+	        </result>
+	    </action>
+	    <action name="cancelCompetition" class="com.gms.action.CompetitionAction" 
+	        method="cancelCompetition">
+	        <interceptor-ref name="noLoninStack"/>
+	        <param name="actionName">my</param>
+	        <param name="input">/competition_list.jsp</param>
+	        <result name="success" type="stream">
+	            <param name="contentType">text/html</param>
+	            <param name="inputName">result</param>
+	        </result>
+	    </action>
+	    <action name="startCompetition" class="com.gms.action.CompetitionAction" 
+	        method="startCompetition">
+	        <interceptor-ref name="compAdmin"/>
+	        <result name="success" type="stream">
+	            <param name="contentType">text/html</param>
+	            <param name="inputName">result</param>
+	        </result>
+	    </action>
+	    <action name="endCompetition"  class="com.gms.action.CompetitionAction"
+	         method="endCompetition">
+	        <interceptor-ref name="compAdmin"/>
+	        <result name="success" type="stream">
+	            <param name="contentType">text/html</param>
+	            <param name="inputName">result</param>
+	        </result>
+	    </action>
+	    <!-- 直播 -->
+	    <action name="competitionLive"  class="com.gms.action.CompetitionResultAction"
+	        method="competitionLive">
+	        <result name="success">/competition_live.jsp</result>
+	    </action>
+	    <!-- 得分 -->
+	    <action name="addOneScore" class="com.gms.action.CompetitionResultAction" 
+	        method="addOneScore">
+	        <interceptor-ref name="compAdmin"/>
+	        <result name="success" type="stream">
+	            <param name="contentType">text/html</param>
+	            <param name="inputName">result</param>
+	        </result>
+	    </action>
+	    <action name="subOneScore" class="com.gms.action.CompetitionResultAction" 
+	        method="subOneScore">
+	        <interceptor-ref name="compAdmin"/>
+	        <result name="success" type="stream">
+	            <param name="contentType">text/html</param>
+	            <param name="inputName">result</param>
+	        </result>
+	    </action>
+	    <!-- 添加评论 -->
+	    <action name="addCompetitionComment" class="com.gms.action.CompetitionCommentAction" 
+	        method="addCompetitionComment">
+	        <interceptor-ref name="noLoninStack"/>
+	        <result name="success" type="json">
+	            <param name="root">comment</param>
+	            <param name="noCache">true</param>
+	        </result>
+	    </action>
+	    <action name="getCompetitionComments" class="com.gms.action.CompetitionCommentAction" 
+	        method="getCompetitionComments">
+	        <result name="success" type="json">
+	            <param name="root">comments</param>
+	            <param name="noCache">true</param>
+	        </result>
+	    </action>
+	    <!-- 添加回复 -->
+	    <action name="addCompetitionReply" class="com.gms.action.CompetitionReplyAction" 
+	        method="addCompetitionReply">
+	        <interceptor-ref name="noLoninStack"/>
+	        <result name="success" type="json">
+	            <param name="root">reply</param>
+	            <param name="noCache">true</param>
+	        </result>
+	    </action>
+	    <action name="getCompetitionReplies" class="com.gms.action.CompetitionReplyAction" 
+	        method="getCompetitionReplies">
+	        <result name="success" type="json">
+	            <param name="root">replies</param>
+	            <param name="noCache">true</param>
+	        </result>
 	    </action>
 	</package>
 	

@@ -8,7 +8,7 @@
             <column name="iUserId" />
             <generator class="identity" />
         </id>
-        <many-to-one name="roleinfo" class="com.gms.po.Roleinfo" fetch="select">
+        <many-to-one name="roleinfo" class="com.gms.po.Roleinfo" fetch="select" lazy="false">
             <column name="iRoleId" not-null="true" />
         </many-to-one>
         <property name="vuserName" type="string">
