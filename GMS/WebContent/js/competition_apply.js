@@ -9,10 +9,10 @@ $(function(){
         showMeridian: 1
     });
 	$(".next-page-btn").click(function(){
-		if(!checkForm($(".first-page input[type$='text'],#competitionDetailsInput"))){
-			$(".show-tips-btn").click();
-			return false;
-		}
+//		if(!checkForm($(".first-page input[type$='text'],#competitionDetailsInput"))){
+//			$(".show-tips-btn").click();
+//			return false;
+//		}
 		$(".all-page").toggleClass("next");
 	});
 	$(".last-page-btn").click(function(){
@@ -59,5 +59,26 @@ $(function(){
 		},3000);
 		
 	});
-	
+	$("#field-type-select").change(function(){
+		var typeId=$(this).val();
+		$("#field-info-select").empty();
+		$.ajax({
+			url:"getFields.action",
+			type:"POST",
+			data:{
+				fieldtypeId:typeId
+			},
+			success:function(data){
+				for(var i in data){
+					var option="<option value='"+
+					data[i].fieldId+"'>"+
+					data[i].fieldName+"</option>";
+					$("#field-info-select").append(option);
+				}
+				$("#field-info-select")[0].selectedIndex=0;
+			}
+		});
+	});
+	$("#field-type-select").change();
+	$("#field-type-select").change();
 });

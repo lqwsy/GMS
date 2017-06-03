@@ -104,14 +104,17 @@
               		<div class="form-group form-group-sm">
 		                <label class="col-sm-1 control-label" for="competitionTypeInput">场地类型</label>
 		                <div class="col-sm-5">
-		                  <select class="form-control" name="">
-							 
+		                  <select class="form-control" id="field-type-select" >
+							 <s:iterator value="fieldTypes" id="type" status="status">
+							 	<option value="<s:property value='#type.fieldtypeId'/>" <s:if test='#status.index==0'>selected='selected'</s:if>>
+									<s:property value='#type.fieldtypeName'/>
+						 		</option>
+							 </s:iterator>
 							</select>
 		                </div>
 		                <label class="col-sm-1 control-label" for="competitionInput">选择场地</label>
 		                <div class="col-sm-5">
-		                  <select class="form-control" name="">
-							  
+		                  <select class="form-control" id="field-info-select" name="spacesuse.fieldinfo.fieldId">
 							</select>
 		                </div>
              		</div>

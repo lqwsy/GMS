@@ -10,12 +10,16 @@ import com.gms.po.Competition;
 import com.gms.po.Competitionresult;
 import com.gms.po.Competitiontype;
 import com.gms.po.Equitmentsuse;
+import com.gms.po.Fieldinfo;
+import com.gms.po.Fieldtype;
 import com.gms.po.Spacesuse;
 import com.gms.po.Userinfo;
 import com.gms.service.ICompetitionResultService;
 import com.gms.service.ICompetitionService;
 import com.gms.service.ICompetitionTypeService;
 import com.gms.service.IEquitmentsUseService;
+import com.gms.service.IFieldinfoService;
+import com.gms.service.IFieldtypeService;
 import com.gms.service.ISpacesUseService;
 import com.gms.service.IUserinfoService;
 import com.opensymphony.xwork2.ActionContext;
@@ -34,6 +38,11 @@ public class CompetitionAction extends ActionSupport{
 	private List<Competitiontype> competitionTypes;
 	private List<Competition> competitions;
 	
+	//场地
+	private Long fieldtypeId;
+	private List<Fieldtype> fieldTypes;
+	private List<Fieldinfo> fieldInfos;
+	
 	private String actionName;
 	
 	//业务组件
@@ -43,6 +52,9 @@ public class CompetitionAction extends ActionSupport{
 	private IEquitmentsUseService equitmentsUseService;
 	private ICompetitionService competitionService;
 	private ICompetitionResultService competitionResultService;
+	
+	private IFieldtypeService fieldtypeService;
+	private IFieldinfoService fieldinfoService;
 	//other module service
 	
 	public int getPage() {
@@ -150,6 +162,30 @@ public class CompetitionAction extends ActionSupport{
 		this.competitions = competitions;
 	}
 
+	public Long getFieldtypeId() {
+		return fieldtypeId;
+	}
+
+	public void setFieldtypeId(Long fieldtypeId) {
+		this.fieldtypeId = fieldtypeId;
+	}
+
+	public List<Fieldtype> getFieldTypes() {
+		return fieldTypes;
+	}
+
+	public void setFieldTypes(List<Fieldtype> fieldTypes) {
+		this.fieldTypes = fieldTypes;
+	}
+
+	public List<Fieldinfo> getFieldInfos() {
+		return fieldInfos;
+	}
+
+	public void setFieldInfos(List<Fieldinfo> fieldInfos) {
+		this.fieldInfos = fieldInfos;
+	}
+
 	/**
 	 * @return the actionName
 	 */
@@ -188,10 +224,19 @@ public class CompetitionAction extends ActionSupport{
 		this.competitionResultService = competitionResultService;
 	}
 
+	public void setFieldtypeService(IFieldtypeService fieldtypeService) {
+		this.fieldtypeService = fieldtypeService;
+	}
+
+	public void setFieldinfoService(IFieldinfoService fieldinfoService) {
+		this.fieldinfoService = fieldinfoService;
+	}
+
 	//赛事申请 done
 	public String addCompetition(){
 		Userinfo cur_user=(Userinfo)ActionContext.getContext().getSession().get("cur_user");
 		if(competition==null){
+			fieldTypes=fieldtypeService.getAllFieldtype();
 			competitionTypes=competitionTypeService.getAllTypes();
 			return INPUT;
 		}
@@ -199,8 +244,9 @@ public class CompetitionAction extends ActionSupport{
 				competition.getCompetitiontype().getIcompetitionType()));
 		competition.setUserinfo((Userinfo)userinfoService.getUserinfoById(cur_user.getIuserId()));
 		competition.setCompetitionresults(competitionresults);//设置赛事结果
-		//TODO rely on fileInfoService#getFileInfo
-		//competition.getSpacesuses().add(spacesuse);
+		Fieldinfo fieldPo=fieldinfoService.getFieldinfoById(spacesuse.getFieldinfo().getFieldId());
+		spacesuse.setFieldinfo(fieldPo);
+		competition.getSpacesuses().add(spacesuse);
 		//TODO rely on equitmentService#getEquitment
 		//competition.getEquitmentsuses().add(equitmentsuse);
 		try{
@@ -211,6 +257,11 @@ public class CompetitionAction extends ActionSupport{
 			e.printStackTrace();
 			this.setResult("0");
 		}
+		return SUCCESS;
+	}
+	
+	public String getFields(){
+		fieldInfos=fieldinfoService.getFieldinfoByFieldtypeId(fieldtypeId);
 		return SUCCESS;
 	}
 	
