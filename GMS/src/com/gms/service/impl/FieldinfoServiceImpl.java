@@ -46,4 +46,18 @@ public class FieldinfoServiceImpl implements IFieldinfoService {
 		return fieldinfoDao.getByFieldtypeId(fieldtypeId);
 	}
 
+	public List getByTypeIdWithoutFieldId(long fieldTypeId, List<Long> fieldIds) {
+		return fieldinfoDao.getByTypeIdWithoutFieldId(fieldTypeId, fieldIds);
+	}
+
+	@Override
+	public void saveOrUpdateFieldinfo(Fieldinfo fieldinfo) {
+		fieldinfoDao.saveOrUpdateFieldinfo(fieldinfo);
+	}
+
+	@Override
+	public List getFieldinfoByName(String fieldName) {
+		return fieldinfoDao.getFieldinfoByName(fieldName);
+	}
+	
 }

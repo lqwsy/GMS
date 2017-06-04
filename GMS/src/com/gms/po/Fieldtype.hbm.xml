@@ -11,7 +11,7 @@
         <property name="fieldtypeName" type="java.lang.String" >
             <column name="vFieldtypeName" />
         </property>
-        <set name="fieldinfos" table="FIELDINFO" inverse="false" lazy="true" >
+        <set name="fieldinfos" table="FIELDINFO" inverse="true" >
             <key>
                 <column name="lFieldTypeId" />
             </key>

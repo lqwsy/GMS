@@ -11,4 +11,7 @@ public interface IFieldinfoService {
 	void delFieldinfo(Long fieldinfoId);
 	void updateFieldinfo(Fieldinfo fieldinfo);
 	List getFieldinfoByFieldtypeId(long fieldtypeId);
+	List getByTypeIdWithoutFieldId(long fieldTypeId, List<Long> fieldIds);
+	void saveOrUpdateFieldinfo(Fieldinfo fieldinfo);
+	List getFieldinfoByName(String fieldName);
 }

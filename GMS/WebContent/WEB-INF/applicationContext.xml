@@ -10,7 +10,7 @@
 	    <property name="driverClass" value="com.mysql.jdbc.Driver"/>
 	    <property name="jdbcUrl" value="jdbc:mysql:///gms"/>
 	    <property name="user" value="root"/>
-	    <property name="password" value="mysql"/>
+	    <property name="password" value="123456"/>
 	    <property name="maxPoolSize" value="40"/>
 	    <property name="minPoolSize" value="1"/>
 	    <property name="initialPoolSize" value="1"/>
@@ -24,6 +24,7 @@
 	        <value>
 	            hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
 	            hibernate.show_sql=true
+	            hibernate.format_sql=true
 	            hibernate.hbm2ddl.auto=update
 	        </value>
         </property>
@@ -64,6 +65,7 @@
 	</bean>
 	<bean id="fieldrentinfoDao" class="com.gms.dao.impl.FieldrentinfoDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="userinfoDao" ref="userinfoDao"></property>
 	</bean>
 	
 	<!-- 赛事模块dao -->
@@ -88,7 +90,6 @@
 	<bean id="spacesUseDao" class="com.gms.dao.impl.SpacesUseDaoImpl">
 	    <property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	
 	
 	<!-- 业务逻辑组件配置 -->
 	<bean id="userinfoService" class="com.gms.service.impl.UserinfoServiceImpl">
@@ -129,7 +130,7 @@
 	<bean id="spacesUseService" class="com.gms.service.impl.SpacesUseServiceImpl">
 	    <property name="spacesUseDao" ref="spacesUseDao"/>
 	</bean>
-	
+
 	<!-- action类注入配置 -->
 	<bean id="fieldtypeAction" class="com.gms.action.FieldtypeAction" scope="prototype">
 		<property name="fieldtypeService" ref="fieldtypeService"></property>
@@ -137,8 +138,11 @@
 	<bean id="fieldinfoAction" class="com.gms.action.FieldinfoAction" scope="prototype">
 		<property name="fieldinfoService" ref="fieldinfoService"></property>
 		<property name="fieldtypeService" ref="fieldtypeService"></property>
+		<property name="fieldrentinfoService" ref="fieldrentinfoService"></property>
 	</bean>
 	<bean id="fieldrentAction" class="com.gms.action.FieldrentAction" scope="prototype">
 		<property name="fieldrentinfoService" ref="fieldrentinfoService"></property>
+		<property name="fieldtypeService" ref="fieldtypeService"></property>
+		<property name="fieldinfoService" ref="fieldinfoService"></property>
 	</bean>
 </beans>

@@ -13,6 +13,7 @@ public class Fieldrentinfo implements java.io.Serializable {
 	private Userinfo userinfo;
 /*	private Date startTime;
 	private Date endTime;*/
+	private Date rentDate;
 	private String rentTime;
 	private int rent;
 	private Boolean status;
@@ -55,6 +56,14 @@ public class Fieldrentinfo implements java.io.Serializable {
 
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+
+	public Date getRentDate() {
+		return rentDate;
+	}
+
+	public void setRentDate(Date rentDate) {
+		this.rentDate = rentDate;
 	}
 
 	public String getRentTime() {
