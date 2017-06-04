@@ -40,7 +40,7 @@
                   <div class="caption">
                     <h3>赛事申请</h3>
                     <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">进入</a></p>
+                    <p><a href="addCompetition.action" class="btn btn-primary" role="button">进入</a></p>
                   </div>
                 </div>
            </div>
