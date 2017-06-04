@@ -8,10 +8,10 @@
             <column name="bCompetitionId" />
             <generator class="native" />
         </id>
-        <many-to-one name="competitiontype" class="com.gms.po.Competitiontype" fetch="select">
+        <many-to-one name="competitiontype" class="com.gms.po.Competitiontype" fetch="select" lazy="false">
             <column name="iCompetitionType" />
         </many-to-one>
-        <many-to-one name="userinfo" class="com.gms.po.Userinfo" fetch="select">
+        <many-to-one name="userinfo" class="com.gms.po.Userinfo" fetch="select" lazy="false">
             <column name="iUserId" />
         </many-to-one>
         <property name="dapplyDate" type="java.sql.Timestamp">
@@ -50,7 +50,7 @@
             </key>
             <one-to-many class="com.gms.po.Competitioncomment" />
         </set>
-        <set name="competitionresults" table="competitionresult" cascade="all" inverse="false" lazy="true" fetch="select">
+        <set name="competitionresults" table="competitionresult" cascade="all" inverse="false" lazy="false" fetch="join">
             <key>
                 <column name="bCompetitionId" not-null="true" />
             </key>

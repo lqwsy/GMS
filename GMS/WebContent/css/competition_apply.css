@@ -1,0 +1,22 @@
+form{overflow:hidden;}
+.all-page{
+	position: relative;
+	right:0;
+	margin:0;
+    -webkit-transition: right .25s ease-out;
+         -o-transition: right .25s ease-out;
+            transition: right .25s ease-out;
+}
+.all-page.next{
+	right:100%;
+}
+.all-page.tips{
+	right:200%;
+}
+.second-page,.tips-page{
+	position: absolute;
+    top: 0;
+    width: 100%; 
+}
+.second-page{right:-100%;}
+.tips-page{right:-200%;}

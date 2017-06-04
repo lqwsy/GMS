@@ -9,7 +9,9 @@
 
 <body>
 <footer>
+	<div class="navbar-fixed-bottom">
     <p class="text-center">&copy; 2016 Guangdong Ocean University, GMS.</p>
+    </div>
 </footer>	
 </body>
 </html>

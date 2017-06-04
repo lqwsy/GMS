@@ -31,7 +31,7 @@ public class CompetitionReplyDaoImpl extends HibernateDaoSupport implements ICom
 	public List findByCommentId(Long id) {
 		// TODO Auto-generated method stub
 		return getHibernateTemplate().
-				find("from Competitionreply r where r.competitioncomment.bcommentId=?", id);
+				find("from Competitionreply r where r.competitioncomment.bcommentId=? order by r.dreplyTime desc", id);
 	}
 
 }

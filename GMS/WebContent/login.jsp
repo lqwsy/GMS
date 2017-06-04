@@ -15,31 +15,21 @@
   <body>
     <div class="container">
       <form id="login_form" class="form-signin" action="login.action" method="post">
-<form id="login_form" class="form-signin" action="login.action" method="post">
         <h2 class="form-signin-heading">体育馆管理系统</h2>
         <label for="vUserName" class="sr-only" >用户名</label>
         <input type="text" id="vUserName" class="form-control" placeholder="用户名" name="user.vuserName">
 		<label for="vPassword" class="sr-only">密码</label>        
         <input type="password" id="vPassword" class="form-control" placeholder="密码" name="user.vpassward">
-        </br>
+        <br>
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="登录" />
 		<a href="regist.jsp" id="register_btn" class="">注册一个账号</a>
 		<p><span id="login-tips-span">${str_result}</span></p>
+		<p><span id="login-tips-span">${regist_result}</span></p>
       </form>
     </div> 
-    
     <script src="js/jquery-2.2.1.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/login.js"></script>        <label for="vUserName" class="sr-only" >用户名</label>
-        <input type="text" id="vUserName" class="form-control" placeholder="用户名" name="user.vuserName">
-		<label for="vPassword" class="sr-only">密码</label>        
-        <input type="password" id="vPassword" class="form-control" placeholder="密码" name="user.vpassward">
-        <input class="btn btn-lg btn-primary btn-block" type="submit" value="登录" />
-		<a href="regist.jsp" id="register_btn" class="">注册一个账号</a>
-		<p><span id="login-tips-span">${str_result}</span></p>
-    
-
     <script src="js/login.js"></script>  
 </body>
 </html>

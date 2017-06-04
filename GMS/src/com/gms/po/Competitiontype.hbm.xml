@@ -11,11 +11,5 @@
         <property name="vcompetitionName" type="string">
             <column name="vCompetitionName" length="20" />
         </property>
-        <set name="competitions" table="competition" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="iCompetitionType" />
-            </key>
-            <one-to-many class="com.gms.po.Competition" />
-        </set>
     </class>
 </hibernate-mapping>

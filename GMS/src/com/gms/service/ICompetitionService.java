@@ -7,7 +7,10 @@ import com.gms.po.Competition;
 public interface ICompetitionService {
 	Competition getCompetitionById(Long competitionId);
 	List getToVerifyCompetitions();
-	List getAllCompetitionsByPage(int page);
+	List getMyCompetitions(Integer userId);
+	List getAllToVerifyCompetitionsByPage(int page);
+	List getLiveCompetitions();
+	List searchCompetitions(String keyword);
 	Long addCompetition(Competition competition);
 	void cancelCompetition(Long competitionId);
 	void verifyCompetition(Long competitionId);

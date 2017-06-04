@@ -68,6 +68,29 @@
 		<property name="userinfoDao" ref="userinfoDao"></property>
 	</bean>
 	
+	<!-- 赛事模块dao -->
+	<bean id="competitionCommentDao" class="com.gms.dao.impl.CompetitionCommentDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="competitionDao" class="com.gms.dao.impl.CompetitionDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="competitionReplyDao" class="com.gms.dao.impl.CompetitionReplyDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="competitionResultDao" class="com.gms.dao.impl.CompetitionResultDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="competitionTypeDao" class="com.gms.dao.impl.CompetitionTypeDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="equitmentsUseDao" class="com.gms.dao.impl.EquitmentsUseDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="spacesUseDao" class="com.gms.dao.impl.SpacesUseDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
 	<!-- 业务逻辑组件配置 -->
 	<bean id="userinfoService" class="com.gms.service.impl.UserinfoServiceImpl">
 	    <property name="userinfodao" ref="userinfoDao"/>
@@ -83,6 +106,29 @@
 	</bean>
 	<bean id="fieldrentinfoService" class="com.gms.service.impl.FieldrentinfoServiceImpl">
 		<property name="fieldrentinfoDao" ref="fieldrentinfoDao"/>
+	</bean>
+
+	<!-- 赛事模块service -->
+	<bean id="competitionCommentService" class="com.gms.service.impl.CompetitionCommentServiceImpl">
+	    <property name="competitionCommentDao" ref="competitionCommentDao"/>
+	</bean>
+	<bean id="competitionReplyService" class="com.gms.service.impl.CompetitionReplyServiceImpl">
+	    <property name="competitionReplyDao" ref="competitionReplyDao"/>
+	</bean>
+	<bean id="competitionResultService" class="com.gms.service.impl.CompetitionResultServiceImpl">
+	    <property name="competitionResultDao" ref="competitionResultDao"/>
+	</bean>
+	<bean id="competitionService" class="com.gms.service.impl.CompetitionServiceImpl">
+	    <property name="competitionDao" ref="competitionDao"/>
+	</bean>
+	<bean id="competitionTypeService" class="com.gms.service.impl.CompetitionTypeServiceImpl">
+	    <property name="competitionTypeDao" ref="competitionTypeDao"/>
+	</bean>
+	<bean id="equitmentsUseService" class="com.gms.service.impl.EquitmentsUseServiceImpl">
+	    <property name="equitmentsUseDao" ref="equitmentsUseDao"/>
+	</bean>
+	<bean id="spacesUseService" class="com.gms.service.impl.SpacesUseServiceImpl">
+	    <property name="spacesUseDao" ref="spacesUseDao"/>
 	</bean>
 
 	<!-- action类注入配置 -->

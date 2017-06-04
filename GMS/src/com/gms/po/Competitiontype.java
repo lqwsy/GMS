@@ -11,14 +11,12 @@ public class Competitiontype implements java.io.Serializable {
 
 	private Integer icompetitionType;
 	private String vcompetitionName;
-	private Set competitions = new HashSet(0);
 
 	public Competitiontype() {
 	}
 
-	public Competitiontype(String vcompetitionName, Set competitions) {
+	public Competitiontype(String vcompetitionName) {
 		this.vcompetitionName = vcompetitionName;
-		this.competitions = competitions;
 	}
 
 	public Integer getIcompetitionType() {
@@ -35,14 +33,6 @@ public class Competitiontype implements java.io.Serializable {
 
 	public void setVcompetitionName(String vcompetitionName) {
 		this.vcompetitionName = vcompetitionName;
-	}
-
-	public Set getCompetitions() {
-		return this.competitions;
-	}
-
-	public void setCompetitions(Set competitions) {
-		this.competitions = competitions;
 	}
 
 }

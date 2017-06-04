@@ -38,6 +38,7 @@ public class Fieldinfo implements java.io.Serializable {
 		this.fieldName = fieldName;
 	}
 
+	@JSON(serialize=false)
 	public String getLocation() {
 		return location;
 	}
@@ -46,6 +47,7 @@ public class Fieldinfo implements java.io.Serializable {
 		this.location = location;
 	}
 
+	@JSON(serialize=false)
 	public int getSize() {
 		return size;
 	}
@@ -54,6 +56,7 @@ public class Fieldinfo implements java.io.Serializable {
 		this.size = size;
 	}
 
+	@JSON(serialize=false)
 	public int getPeople() {
 		return people;
 	}
@@ -62,6 +65,7 @@ public class Fieldinfo implements java.io.Serializable {
 		this.people = people;
 	}
 
+	@JSON(serialize=false)
 	public int getRentH() {
 		return rentH;
 	}
