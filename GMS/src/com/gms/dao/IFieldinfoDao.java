@@ -11,4 +11,7 @@ public interface IFieldinfoDao {
 	Fieldinfo get(long id);
 	List getByFieldtypeId(long fieldtypeId);
 	List getAll();
+	List getByTypeIdWithoutFieldId(long fieldTypeId, List<Long> fieldIds);
+	void saveOrUpdateFieldinfo(Fieldinfo fieldinfo);
+	List getFieldinfoByName(String fieldName);
 }

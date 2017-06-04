@@ -6,6 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title></title>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 </head>
 
 <body>
@@ -30,11 +31,13 @@
           <ul class="dropdown-menu">
             <li><a href="Fieldinfo-input.action">添加场地</a></li>
             <li><a href="Fieldinfo-query.action">查询场地</a></li>
-            <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="fieldtype-input.jsp">添加场地类型</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <s:if test="#session.cur_user.iuserId != null">
+            	<li><a href="Fieldrent-query.action">我的租用记录</a></li>
+            	<li><a href="Fieldrent-lookup.action">场地租用记录管理</a></li>
+            </s:if>
           </ul>
         </li>
         <li class="dropdown">

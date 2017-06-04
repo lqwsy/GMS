@@ -22,7 +22,7 @@
         <label for="rvPassword2" >确认密码</label>
         <input type="password" id="rvPassword2" class="form-control" placeholder="确认密码" name="user.vpassward">
         <label for="vEmail" >Email</label>
-        <input type="password" id="vEmail" class="form-control" placeholder="Email" name="user.vemail">
+        <input type="text" id="vEmail" class="form-control" placeholder="Email" name="user.vemail">
         </br>
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="注册" />
         <a href="login.jsp" id="register_btn" class="">返回</a>

@@ -1,8 +1,10 @@
 package com.gms.dao.impl;
 
 
+import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.dialect.Ingres10Dialect;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.gms.dao.IFieldinfoDao;
@@ -40,4 +42,29 @@ public class FieldinfoDaoImpl extends HibernateDaoSupport implements IFieldinfoD
 		return getHibernateTemplate().find("from Fieldinfo fi where fi.fieldtype.fieldtypeId="+fieldTypeId);
 	}
 	
+	public List getByTypeIdWithoutFieldId(long fieldTypeId, List<Long> fieldIds) {
+		int i = 0;
+		StringBuffer sb = new StringBuffer();
+		for(long fieldId : fieldIds) {
+			if(i == 0) {
+				sb.append(fieldId);
+			}else {
+				sb.append(","+fieldId);
+			}
+			i++;
+		}
+		if(sb.length() == 0) {
+			return getHibernateTemplate().find("from Fieldinfo fi where fi.fieldtype.fieldtypeId="+fieldTypeId);
+		}
+		return getHibernateTemplate().find("from Fieldinfo fi where fi.fieldtype.fieldtypeId="
+								+fieldTypeId +" and fi.fieldId NOT IN " + "(" + sb.toString() + ")");
+	}
+	
+	public void saveOrUpdateFieldinfo(Fieldinfo fieldinfo) {
+		getHibernateTemplate().saveOrUpdate(fieldinfo);
+	}
+	
+	public List getFieldinfoByName(String fieldName) {
+		return getHibernateTemplate().find("from Fieldinfo fi where fi.fieldName = '" + fieldName + "'");
+	}
 }

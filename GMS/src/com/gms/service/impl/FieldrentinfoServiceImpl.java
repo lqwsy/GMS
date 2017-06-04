@@ -31,9 +31,8 @@ public class FieldrentinfoServiceImpl implements IFieldrentinfoService {
 	}
 
 	@Override
-	public void delFieldrentinfo(Long fieldrentinfoId) {
-		fieldrentinfo = fieldrentinfoDao.get(fieldrentinfoId);
-		fieldrentinfoDao.delete(fieldrentinfo);
+	public int delFieldrentinfo(Long fieldrentinfoId) {
+		return fieldrentinfoDao.setStatusFalseById(fieldrentinfoId);
 	}
 
 	@Override
@@ -41,4 +40,30 @@ public class FieldrentinfoServiceImpl implements IFieldrentinfoService {
 		fieldrentinfoDao.update(fieldrentinfo);
 	}
 
+	//获取，在某日期已经被租用了的场地id
+	public List getFieldIdFromRentedDate(String rentDate) {
+		return fieldrentinfoDao.getFieldIdFromRentedDate(rentDate);
+	}
+		
+	//获取，在某日期、时间被租用的场地id
+	public List getFieldIdFromRentedTime(String rentDate, String rentTime) {
+		return fieldrentinfoDao.getFieldIdFromRentedTime(rentDate, rentTime);
+	}
+
+	//获取当前用户的7天前往后的租用记录
+	@Override
+	public List getFieldrentRecord(Integer userId) {
+		return fieldrentinfoDao.getFieldrentRecord(userId);
+	}
+
+	@Override
+	public List queryFieldrent(String rentDate, String status, String fieldId, String userName) {
+		return fieldrentinfoDao.queryFieldrent(rentDate, status, fieldId, userName);
+	}
+
+	@Override
+	public void realDeleteFieldrent(long fieldrentId) {
+		fieldrentinfoDao.delete(fieldrentId);
+	}
+	
 }

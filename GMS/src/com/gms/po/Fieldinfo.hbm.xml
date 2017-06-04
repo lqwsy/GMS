@@ -26,7 +26,7 @@
         <property name="rentH" type="int">
             <column name="iRent" />
         </property>
-        <set name="fieldrentinfos" table="FIELDINFO" inverse="false" lazy="true">
+        <set name="fieldrentinfos" table="FIELDINFO" inverse="true">
             <key>
                 <column name="lfieldId" />
             </key>
