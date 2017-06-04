@@ -1,5 +1,7 @@
 package com.gms.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.gms.dao.ICompetitionDao;
@@ -47,7 +49,12 @@ public class CompetitionServiceImpl implements ICompetitionService{
 	@Override
 	public List getLiveCompetitions() {
 		// TODO Auto-generated method stub
-		String hql="from Competition c where c.vcompetitionState=?";
+		Date currentTime = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String dateString = formatter.format(currentTime);
+		String hql="from Competition c where c.vcompetitionState=? or (c.vcompetitionState='"
+				+ CompetitionState.NORMAL+"' and c.dcompetitionDate='"
+						+dateString+"')";
 		return competitionDao.
 				findCompetitions(hql, CompetitionState.IN_PLAY);
 	}

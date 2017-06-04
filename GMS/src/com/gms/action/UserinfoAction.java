@@ -174,6 +174,7 @@ public class UserinfoAction extends ActionSupport {
 		if (user.getVpassward().equals(loginuser.get(0).getVpassward())) {
 			Map<String,Object> map=ActionContext.getContext().getSession();
 			map.put("cur_user", loginuser.get(0));//向session存入登录标识ID,以供登录后检验使用
+			map.put("cur_user_roleid", "1");
 			return SUCCESS;
 		} else {
 			this.setStr_result("用户名与密码不匹配");

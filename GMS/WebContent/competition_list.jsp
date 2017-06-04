@@ -103,7 +103,7 @@
             			<s:if test="#competition.vcompetitionState=='0000'&&actionName=='my'">
         					<li><a class="cancel-comp-btn" id="comp-cancel-<s:property value='#competition.bcompetitionId'/>" href="javascript:void(0);">取消赛事</a></li>
                         </s:if>
-                        <s:elseif test="#competition.vcompetitionState=='0010'">
+                        <s:elseif test="#competition.vcompetitionState=='0010'||actionName=='live'">
                         	<li><a href="competitionLive.action?ci=<s:property value='#competition.bcompetitionId'/>">查看直播</a></li>
                         </s:elseif>
                         <s:if test="#competition.vcompetitionState!='0100'&&actionName=='my'">

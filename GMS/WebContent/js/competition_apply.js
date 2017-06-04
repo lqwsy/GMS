@@ -9,10 +9,10 @@ $(function(){
         showMeridian: 1
     });
 	$(".next-page-btn").click(function(){
-//		if(!checkForm($(".first-page input[type$='text'],#competitionDetailsInput"))){
-//			$(".show-tips-btn").click();
-//			return false;
-//		}
+		if(!checkForm($(".first-page input[type$='text'],#competitionDetailsInput"))){
+			$(".show-tips-btn").click();
+			return false;
+		}
 		$(".all-page").toggleClass("next");
 	});
 	$(".last-page-btn").click(function(){
@@ -33,7 +33,7 @@ $(function(){
 //		if(!checkForm($("#compeition-apply-form input[type$='text']"))){
 //			return false;
 //		}
-		var url;
+		var url="/index.jsp";
 		$.ajax({
 			url:"addCompetition.action",
 			type:"POST",
@@ -79,6 +79,5 @@ $(function(){
 			}
 		});
 	});
-	$("#field-type-select").change();
 	$("#field-type-select").change();
 });

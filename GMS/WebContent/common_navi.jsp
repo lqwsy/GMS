@@ -41,7 +41,7 @@
 	</div>
     <div class="list-group">
 	  <a href="#" class="list-group-item active" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-	    	个人中心
+	    	场地中心
 	  </a>
 	  <ul class="list-group collapse" id="collapseExample2" >
 		  <li class="list-group-item">Cras justo odio</li>
@@ -53,7 +53,7 @@
 	</div>
     <div class="list-group">
 	  <a href="#" class="list-group-item active" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
-	    	个人中心
+	    	器材中心
 	  </a>
 	  <ul class="list-group collapse" id="collapseExample3" >
 		  <li class="list-group-item">Cras justo odio</li>
@@ -65,7 +65,7 @@
 	</div>
     <div class="list-group">
 	  <a href="#" class="list-group-item active" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
-	    	个人中心
+	    	公告中心
 	  </a>
 	  <ul class="list-group collapse" id="collapseExample4" >
 		  <li class="list-group-item">Cras justo odio</li>

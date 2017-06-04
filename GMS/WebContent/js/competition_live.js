@@ -59,4 +59,8 @@ $(function(){
 	$(".right-sub").click(function(){
 		scoreRequest("subOneScore.action",$("#right-comp").val());
 	});
+	setInterval(function(){
+		location.reload();
+	},15000);
+	$(".show-comments-btn").click();
 });

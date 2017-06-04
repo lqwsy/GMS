@@ -139,7 +139,7 @@
             <hr/>
             <div class="row text-right">
             	<div class="col-sm-12">
-            		<s:if test="competition.vcompetitionState=='0000'&&#session.cur_user_roleid=='1'">
+            		<s:if test="competition.vcompetitionState=='0000'&&#session.cur_user_roleid==1">
 	                    <button type="button" class="btn btn-primary pass-btn">通过</button>
 	                    <button type="button" class="btn btn-primary unpass-btn">不通过</button>
                     </s:if>
