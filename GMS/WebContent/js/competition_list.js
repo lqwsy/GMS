@@ -129,15 +129,17 @@ $(function(){
 	   refreshPages();
 	}
 	$(document).ready(function(){
-		$.ajax({
-			url:"getAllCopetitionsCount.action",
-			type:"GET",
-			success:function(data){
-				if(data!="-1"){
-					var cur=$("#cur-page-span").html();
-					pageGenerate(parseInt(cur),data);
+		if($("#cur-page-span")){
+			$.ajax({
+				url:"getAllCopetitionsCount.action",
+				type:"GET",
+				success:function(data){
+					if(data!="-1"){
+						var cur=$("#cur-page-span").html();
+						pageGenerate(parseInt(cur),data);
+					}
 				}
-			}
-		});
+			});
+		}
 	});
 });

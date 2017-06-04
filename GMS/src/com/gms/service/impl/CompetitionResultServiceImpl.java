@@ -44,4 +44,10 @@ public class CompetitionResultServiceImpl implements ICompetitionResultService{
 		}
 	}
 
+	@Override
+	public Integer getScoresById(Long id) {
+		// TODO Auto-generated method stub
+		return competitionResultDao.getScore(id);
+	}
+
 }

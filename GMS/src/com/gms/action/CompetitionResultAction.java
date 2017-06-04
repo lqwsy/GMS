@@ -129,4 +129,17 @@ public class CompetitionResultAction extends ActionSupport{
 		}
 		return SUCCESS;
 	}
+	
+	//≤È—Øµ√∑÷
+	public String getScores(){
+		try{
+			int score=competitionResultService.getScoresById(competitionResultId);
+			this.setResult(String.valueOf(score));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			this.setResult("0");
+		}
+		return SUCCESS;
+	}
 }
