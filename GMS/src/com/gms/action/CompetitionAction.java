@@ -26,7 +26,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CompetitionAction extends ActionSupport{
-	private int page;
+	private int page=1;
 	private String operation;
 	private Long ci;
 	private Competition competition;
@@ -419,6 +419,25 @@ public class CompetitionAction extends ActionSupport{
 	public String searchCompetitions(){
 		if(keyword!=null){
 			competitions=competitionService.searchCompetitions(keyword.trim());
+		}
+		return SUCCESS;
+	}
+	
+	//查找所有赛事
+	public String searchAllCompetitions(){
+		competitions=competitionService.searchAllCompetitions(page);
+		return SUCCESS;
+	}
+	
+	//获取所有赛事结果
+	public String getAllCopetitionsCount(){
+		try{
+			Long count=competitionService.getAllCompetitionsCount();
+			this.setResult(String.valueOf(count));
+		}
+		catch(Exception  e){
+			e.printStackTrace();
+			this.setResult("0");
 		}
 		return SUCCESS;
 	}

@@ -38,6 +38,25 @@ public class CompetitionDaoImpl extends HibernateDaoSupport implements ICompetit
 	}
 
 	@Override
+	public List findByPage(String hql,int offset,int pageSize) {
+		// TODO Auto-generated method stub
+		List list=getHibernateTemplate().
+				executeFind(new HibernateCallback(){
+
+			@Override
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				// TODO Auto-generated method stub
+				List result=session.createQuery(hql).
+						setFirstResult(offset).
+						setMaxResults(pageSize).list();
+				return result;
+			}
+			
+		});
+		return list;
+	}
+	
+	@Override
 	public List findByPage(String hql,Object arg,int offset,int pageSize) {
 		// TODO Auto-generated method stub
 		List list=getHibernateTemplate().
@@ -67,6 +86,12 @@ public class CompetitionDaoImpl extends HibernateDaoSupport implements ICompetit
 	public List findCompetitions(String hql, Object arg) {
 		// TODO Auto-generated method stub
 		return getHibernateTemplate().find(hql, arg);
+	}
+
+	@Override
+	public Long getCopetitionCount(String hql) {
+		// TODO Auto-generated method stub
+		return (Long)getHibernateTemplate().find(hql).get(0);
 	}
 
 }

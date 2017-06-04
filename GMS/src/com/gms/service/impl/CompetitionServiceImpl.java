@@ -41,7 +41,7 @@ public class CompetitionServiceImpl implements ICompetitionService{
 	@Override
 	public List getAllToVerifyCompetitionsByPage(int page) {
 		// TODO Auto-generated method stub
-		String hql="from Competition c where c.vcompetitionState=?";
+		String hql="from Competition c where c.vcompetitionState=?  order by c.dapplyDate asc";
 		return competitionDao.findByPage(hql, CompetitionState.TO_VERTIFY, 
 				(page-1)*20, 20);
 	}
@@ -54,7 +54,7 @@ public class CompetitionServiceImpl implements ICompetitionService{
 		String dateString = formatter.format(currentTime);
 		String hql="from Competition c where c.vcompetitionState=? or (c.vcompetitionState='"
 				+ CompetitionState.NORMAL+"' and c.dcompetitionDate='"
-						+dateString+"')";
+						+dateString+"')  order by c.dcompetitionDate desc";
 		return competitionDao.
 				findCompetitions(hql, CompetitionState.IN_PLAY);
 	}
@@ -67,8 +67,27 @@ public class CompetitionServiceImpl implements ICompetitionService{
 						+ "c.vmainUnit like '%"+keyword+"%' or "
 								+ "r.vcompetitorUnit like '%"+keyword+"%' ) and "
 										+ "c.vcompetitionState !='"+CompetitionState.CANCELLED+"' and "
-												+ "c.vcompetitionState != '"+CompetitionState.TO_VERTIFY+"'";
+												+ "c.vcompetitionState != '"+CompetitionState.TO_VERTIFY+"' "
+														+ " order by c.dcompetitionDate desc ";
 		return competitionDao.findCompetitions(hql);
+	}
+
+	@Override //???????????????????????
+	public List searchAllCompetitions(int page) {
+		// TODO Auto-generated method stub
+		String hql="from Competition c where c.vcompetitionState <>'"
+				+CompetitionState.CANCELLED+"' and c.vcompetitionState <>'"+CompetitionState.TO_VERTIFY+"'"
+						+ " order by c.dcompetitionDate desc";
+		return competitionDao.findByPage(hql,(page-1)*10, 10);
+	}
+
+	@Override
+	public Long getAllCompetitionsCount() {
+		// TODO Auto-generated method stub
+		String hql="select count(*) from Competition c where c.vcompetitionState <>'"
+				+CompetitionState.CANCELLED+"' and c.vcompetitionState <>'"+CompetitionState.TO_VERTIFY+"'"
+						+ " order by c.dcompetitionDate desc";
+		return competitionDao.getCopetitionCount(hql);
 	}
 
 	@Override

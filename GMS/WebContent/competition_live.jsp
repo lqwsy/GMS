@@ -58,7 +58,7 @@
                         	<div class="row text-center">
                             	<div class="col-sm-4"><!-- A方得分 -->
                                 	<div class="row text-info" style="font-size:36px; font-weight:bolder;">
-                                	<s:if test="competition.vcompetitionState=='0010'&&#session.cur_user_roleid==1">
+                                	<s:if test="competition.vcompetitionState=='0010'&&#session.cur_user_roleid==2">
                                     	<div class="col-sm-12">
                                         	<div class="row">
                                         		<a class="btn btn-default btn-xs col-sm-offset-8 col-sm-4 left-add" href="#" role="button">
@@ -78,7 +78,7 @@
                                         		</span>
                                             </div>
                                         </div>
-                                    <s:if test="competition.vcompetitionState=='0010'&&#session.cur_user_roleid==1">
+                                    <s:if test="competition.vcompetitionState=='0010'&&#session.cur_user_roleid==2">
                                     	<div class="col-sm-12">
                                         	<div class="row">
                                         		<a class="btn btn-default btn-xs col-sm-offset-8 col-sm-4 left-sub" href="#" role="button">
@@ -96,7 +96,7 @@
                                 </div>
                             	<div class="col-sm-4"><!-- B方得分 -->
                                 	<div class="row text-info"  style="font-size:36px; font-weight:bolder;">
-                                	<s:if test="competition.vcompetitionState=='0010'&&#session.cur_user_roleid==1">
+                                	<s:if test="competition.vcompetitionState=='0010'&&#session.cur_user_roleid==2">
                                     	<div class="col-sm-12">
                                         	<div class="row">
                                         		<a class="btn btn-default btn-xs col-sm-4 right-add" href="#" role="button">
@@ -116,7 +116,7 @@
                                         		</span>
                                             </div>
                                         </div>
-                                    <s:if test="competition.vcompetitionState=='0010'&&#session.cur_user_roleid==1">
+                                    <s:if test="competition.vcompetitionState=='0010'&&#session.cur_user_roleid==2">
                                     	<div class="col-sm-12">
                                         	<div class="row">
                                         		<a class="btn btn-default btn-xs col-sm-4 right-sub" href="#" role="button">
@@ -132,13 +132,14 @@
                         <div class="col-sm-2"></div>
                     </div>
                     <div class="row text-right">
-                    	<s:if test="competition.vcompetitionState=='0001'&&#session.cur_user_roleid==1">
+                    	<s:if test="competition.vcompetitionState=='0001'&&#session.cur_user_roleid==2">
                     		<a class="btn btn-primary start-btn" href="#" role="button">开始比赛</a> 
 	        			</s:if>
-	        			<s:elseif test="competition.vcompetitionState=='0010'#session.cur_user_roleid==1">
+	        			<s:elseif test="competition.vcompetitionState=='0010'#session.cur_user_roleid==2">
 	        				<a class="btn btn-primary end-btn" href="#" role="button">结束比赛</a> 
 	        			</s:elseif>
                     	<a class="btn btn-info" href="competitionDetails.action?ci=<s:property value='competition.bcompetitionId'/>" role="button">更多详情</a> 
+                    	<span>&nbsp;</span>
                     </div>
                   </div>
                 </div>
@@ -155,7 +156,7 @@
             </a>
         </div>
     </div>
-    
+   
     <!-- 引入评论模块 -->
     <jsp:include page="competition_comment_module.jsp"/>
     <jsp:include page="common_footer.jsp"/>
