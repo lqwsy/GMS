@@ -27,8 +27,8 @@
         	<div class="page-header"><!-- 包含标题-->
               <h1><small>我的--</small>场地租用记录</h1>
             </div>
-	           <table class="table table-bordered table-striped text-center">
-					<tr class="info">
+	           <table class="table table-bordered table-hover text-center">
+					<tr class="info" style="font-weight: bold;">
 						<td>序号</td>
 						<td>场地名</td>
 						<td>地址</td>

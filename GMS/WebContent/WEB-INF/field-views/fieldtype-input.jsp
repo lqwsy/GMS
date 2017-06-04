@@ -9,10 +9,10 @@
 </head>
 <body>
 
-<jsp:include page="common_header.jsp"></jsp:include>
+<jsp:include page="/common_header.jsp"></jsp:include>
 <div class="container">
 	<div class="row">
-		<jsp:include page="common_navi.jsp"></jsp:include>
+		<jsp:include page="/common_navi.jsp"></jsp:include>
 		 <div class="col-sm-10">
 			<div class="page-header">
 				<h1>添加场地类型<small>信息填写</small></h1>
@@ -36,7 +36,7 @@
 </div>
 
 
-<jsp:include page="common_footer.jsp"></jsp:include>
+<jsp:include page="/common_footer.jsp"></jsp:include>
 
 <script src="js/jquery-2.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

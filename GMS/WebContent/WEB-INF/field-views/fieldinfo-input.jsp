@@ -29,20 +29,19 @@
             </div>
            <form class="form-horizontal" method="post" action="Fieldinfo-addFieldinfo.action"><!--包含内容-->
               <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="fieldName">场地名称</label>
-                <div class="col-sm-3">
+                <label class="col-sm-1 control-label" for="fieldName">场地名称</label>
+                <div class="col-sm-4">
                   <input class="form-control" type="text" id="fieldName" value="${fieldinfo.fieldName }" name="fieldinfo.fieldName" placeholder="场地名">
                   <%-- <s:textfield class="form-control" id="fieldName" name="fieldinfo.fieldName"></s:textfield> --%>
                 </div>
-                <label class="col-sm-1 control-label" for="location">地址</label>
-                <div class="col-sm-6">
+                <label class="col-sm-2 control-label" for="location">场地地址</label>
+                <div class="col-sm-5">
                   <input class="form-control" type="text" id="location" value="${ fieldinfo.location}" name="fieldinfo.location" placeholder="地址位置">
                 </div>
               </div>
-              <br/>
               <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="fieldtype">所属类型</label>
-                <div class="col-sm-3">
+                <label class="col-sm-1 control-label" for="fieldtype">所属类型</label>
+                <div class="col-sm-4">
                    <%-- <select class="form-control" id="fieldtype" name="fieldinfo.fieldtype.fieldtypeId">
 					  <%
 					  	boolean flag = false;
@@ -64,25 +63,23 @@
 				   listValue="fieldtypeName" name="fieldinfo.fieldtype.fieldtypeId"></s:select>
                 </div>
                 <label class="col-sm-2 control-label" for="size">场地大小/平方米</label>
-                <div class="col-sm-3">
+                <div class="col-sm-5">
                   <input class="form-control" type="text" id="size" value="${ fieldinfo.size}" name="fieldinfo.size" placeholder="场地大小">
                 </div>
               </div>
-              <br/>
               <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="people">可供人数</label>
-                <div class="col-sm-3">
+                <label class="col-sm-1 control-label" for="people">可供人数</label>
+                <div class="col-sm-4">
                   <input class="form-control" type="text" id="people" value="${ fieldinfo.people}" name="fieldinfo.people" placeholder="可供人数">
                 </div>
                 <label class="col-sm-2 control-label" for="rentH">租金(元/每节)</label>
-                <div class="col-sm-3">
+                <div class="col-sm-5">
                   <input class="form-control" type="text" id="rentH" value="${ fieldinfo.rentH}" name="fieldinfo.rentH" placeholder="￥">
                 </div>
               </div>
               <input type="hidden" value="${fieldinfo.fieldId }" name="fieldinfo.fieldId"/>
-              <br/>
               <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-6">
+                <div class="col-sm-offset-1 col-sm-1">
                   <button type="submit" class="btn btn-primary btn-block">提交</button>
                 </div>
               </div>

@@ -20,7 +20,7 @@ public class NoLoginInterceptor extends AbstractInterceptor{
 			String reqType = request.getHeader("X-Requested-With");
 			if("XMLHttpRequest".equalsIgnoreCase(reqType)){
 				PrintWriter printWriter = ServletActionContext.getResponse().getWriter();  
-                printWriter.print("-1");  
+                printWriter.print("-1");  //Í¨¹ýajax·µ»Ø-1
                 printWriter.flush();  
                 printWriter.close();  
 

@@ -206,7 +206,7 @@ public class FieldrentAction extends ActionSupport {
 		ActionContext actionContext = ActionContext.getContext();
 		Map<String,Object> request = (Map<String,Object>)actionContext.get("request");
 		request.put("fieldrents", fieldrents) ;
-		return "query-success";
+		return "rent-query-success";
 	}
 
 	//通过ajax-json，实现二级联动
