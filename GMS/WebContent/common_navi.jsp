@@ -29,15 +29,15 @@
 	  <a href="#" class="list-group-item active" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
 	    	赛事中心
 	  </a>
-	  <ul class="list-group collapse" id="collapseExample1" >
-		  <li class="list-group-item"><a href="addCompetition.action">申请赛事</a></li>
-		  <li class="list-group-item"><a href="liveComeptitions.action">查看直播</a></li>
-		  <li class="list-group-item"><a href="searchCompetitions.action">搜索赛事</a></li>
-		  <li class="list-group-item"><a href="myCompetitions.action">我的赛事</a></li>
+	  <div class="list-group collapse" id="collapseExample1" >
+		  <a href="addCompetition.action" class="list-group-item">申请赛事</a></li>
+		  <a href="liveComeptitions.action" class="list-group-item">查看直播</a>
+		  <a href="searchCompetitions.action" class="list-group-item">搜索赛事</a>
+		  <a href="myCompetitions.action" class="list-group-item">我的赛事</a>
 		  <s:if test="#session.cur_user_roleid=='1'">
-		  	<li class="list-group-item"><a href="verifyCompetition.action">赛事审核</a></li>
+		  	<a href="verifyCompetition.action" class="list-group-item">赛事审核</a>
 		  </s:if>
-		</ul>
+		</div>
 	</div>
     <div class="list-group">
 	  <a href="#" class="list-group-item active" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
