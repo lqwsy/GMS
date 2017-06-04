@@ -26,7 +26,7 @@
 	            <interceptor-ref name="defaultStack"/>
 	            <interceptor-ref name="noLoginInterceptor"/>
 	            <interceptor-ref name="noAuthorityIntercetor">
-	                <param name="role">1</param>
+	                <param name="role">2</param>
 	            </interceptor-ref>
 	        </interceptor-stack>
 	    </interceptors>
@@ -140,6 +140,18 @@
 	        <param name="actionName">search</param>
 	        <result name="success">/competition_list.jsp</result>
 	    </action>
+	    <action name="searchAllCompetitions"  class="com.gms.action.CompetitionAction" 
+	        method="searchAllCompetitions">
+	        <param name="actionName">searchAll</param>
+	        <result name="success">/competition_list.jsp</result>
+	    </action>
+	    <action name="getAllCopetitionsCount" class="com.gms.action.CompetitionAction" 
+	        method="getAllCopetitionsCount">
+	        <result name="success" type="stream">
+	            <param name="contentType">text/html</param>
+	            <param name="inputName">result</param>
+	        </result>
+	    </action>
 	    <action name="verifyCompetition" class="com.gms.action.CompetitionAction" 
 	        method="verifyCompetition">
 	        <interceptor-ref name="compAdmin"/>
@@ -227,6 +239,14 @@
 	        method="getCompetitionReplies">
 	        <result name="success" type="json">
 	            <param name="root">replies</param>
+	            <param name="noCache">true</param>
+	        </result>
+	    </action>
+	    
+	    <action name="getFields"  class="com.gms.action.CompetitionAction" 
+	        method="getFields">
+	        <result name="success" type="json">
+	            <param name="root">fieldInfos</param>
 	            <param name="noCache">true</param>
 	        </result>
 	    </action>

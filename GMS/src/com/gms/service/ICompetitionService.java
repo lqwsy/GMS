@@ -11,6 +11,8 @@ public interface ICompetitionService {
 	List getAllToVerifyCompetitionsByPage(int page);
 	List getLiveCompetitions();
 	List searchCompetitions(String keyword);
+	List searchAllCompetitions(int page);
+	Long getAllCompetitionsCount();
 	Long addCompetition(Competition competition);
 	void cancelCompetition(Long competitionId);
 	void verifyCompetition(Long competitionId);

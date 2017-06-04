@@ -22,7 +22,7 @@
               	<s:if test="actionName=='my'">我的赛事</s:if>
               	<s:elseif test="actionName=='verify'">赛事审核</s:elseif>
               	<s:elseif test="actionName=='live'">正在直播</s:elseif>
-              	<s:elseif test="actionName=='search'">
+              	<s:elseif test="actionName=='search'||actionName=='searchAll'">
               		<s:if test="keyword==null">
               			赛事搜索
               		</s:if>
@@ -30,11 +30,12 @@
               			"<s:property value='keyword'/>" 搜索结果
               		</s:else>
               	 </s:elseif>
-              	<s:if test="keyword!=null&&actionName='search'"><small>条件输入</small></s:if>
+              	<s:if test="keyword==null&&actionName=='search'"><small>条件输入</small></s:if>
+              	<s:if test="actionName=='searchAll'"><small>所有赛事</small></s:if>
               	<s:else><small>赛事列表</small></s:else>
               </h1>
             </div>
-            <s:if test="actionName=='search'">
+            <s:if test="actionName=='search'||actionName=='searchAll'">
             <div class="row">
             	<div class="col-sm-12 text-right">
 	            	<form class="form-inline" action="searchCompetitions.action">
@@ -44,6 +45,7 @@
 					    </div>
 					  </div>
 					  <button type="submit" class="btn btn-primary">搜索</button>
+					  <a class="btn btn-default" href="searchAllCompetitions.action" role="button">显示所有</a>
 					</form>
 				</div>
 			</div>
@@ -115,6 +117,10 @@
               </tr>
                </s:iterator>
             </table>
+            <s:if test="actionName=='searchAll'">
+            	<div><ul class="pages-ul pagination"></ul></div>
+            </s:if>
+            <span class="hidden" id="cur-page-span"><s:property value="page"/></span>
         </div>
     </div>
     <jsp:include page="competition_operation_tips.jsp"/>
