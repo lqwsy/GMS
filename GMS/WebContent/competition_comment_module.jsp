@@ -8,6 +8,7 @@
 </head>
 <body>
 <jsp:include page="competition_operation_tips.jsp"/>
+	 <span>&nbsp;</span>
     <div class="row collapse" id="competition-comments-module"><!-- 展开评论 -->
     	<div class="col-sm-12">
       <div class="well">
