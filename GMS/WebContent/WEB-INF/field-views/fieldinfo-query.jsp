@@ -27,7 +27,7 @@
         	<div class="page-header"><!-- 包含标题-->
               <h1>查询场地 <small>信息填写</small></h1>
             </div>
-           <form class="form-horizontal" method="post" action="Fieldinfo-queryFieldinfo.action" onsubmit="return checkQuery()">
+           <form class="form-horizontal" method="post" action="FieldinfoQ-queryFieldinfo.action" onsubmit="return checkQuery()">
               <div class="form-group form-group-sm">
                 <label class="col-sm-1 control-label" for="rentDate">租用日期</label>
                 <div class="col-sm-2">
@@ -98,29 +98,31 @@
                 </div>
               </div>
             </form>
-	           <table class="table table-bordered table-striped text-center">
-					<tr class="info">
+	           <table class="table table-bordered table-hover text-center">
+					<tr class="info" style="font-weight: bold;">
 						<td>序号</td>
 						<td>场地名</td>
 						<td>地址</td>
 						<td>大小/平方米</td>
 						<td>可供人数</td>
 						<td>租金(元/每节课)</td>
-						<s:if test='#request.display == "enable" && #session.cur_user.iuserId != null'>
+						<s:if test='#request.display == "enable"'>
 							<td>租用</td>
 						</s:if>
-						<td>修改</td>
-						<td>删除</td>
+						<s:if test="#session.cur_user.iuserId != null">
+							<td>修改</td>
+							<td>删除</td>
+						</s:if>
 					</tr>
 					<s:iterator value="#request.fieldinfos" status="status">
 					<tr>
 						<td><s:property value="#status.index+1"/></td>
 						<td>${fieldName }</td>
 						<td>${location }</td>
-						<td>${size }</td>
-						<td>${people}</td>
+						<td>${size }㎡</td>
+						<td>${people}人</td>
 						<td>${rentH }元</td>
-						<s:if test='#request.display == "enable" && #session.cur_user.iuserId != null'>
+						<s:if test='#request.display == "enable"'>
 						<td>
 							<!-- <button type="button" class="btn btn-primary rent-btn">租借</button> -->
 							<button type="button" class="btn btn-primary rent-btn btn-sm" >
@@ -131,13 +133,15 @@
 							<input type="hidden" value="${fieldName }" />
 						</td>
 						</s:if>
-						<td>
-							<a href="Fieldinfo-input.action?fieldId=${fieldId }" class="btn btn-warning btn-sm" role="button">修改</a>
-						</td>
-						<td>
-							<a href="Fieldinfo-delete.action?fieldId=${fieldId }" class="btn btn-danger delete-btn btn-sm" role="button">删除</a>
-							<input type="hidden" value="${fieldName }" />
-						</td>
+						<s:if test="#session.cur_user.iuserId != null">
+							<td>
+								<a href="Fieldinfo-input.action?fieldId=${fieldId }" class="btn btn-warning btn-sm" role="button">修改</a>
+							</td>
+							<td>
+								<a href="Fieldinfo-delete.action?fieldId=${fieldId }" class="btn btn-danger delete-btn btn-sm" role="button">删除</a>
+								<input type="hidden" value="${fieldName }" />
+							</td>
+						</s:if>
 					</tr>
 					</s:iterator>
 				</table>
@@ -212,6 +216,9 @@
 					alert("租用成功 ！");
 					var tr = $this.parent().parent();
 					tr.remove();
+				}else if(data == -1) {
+					alert("请先登录！");
+					location.href = "http://localhost:8080/GMS/login.jsp";
 				}else { //若返回data为0，删除失败 
 					$('#myModal').modal('hide');
 					alert("租用失败!");

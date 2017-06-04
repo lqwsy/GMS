@@ -132,8 +132,8 @@
                 </div>
             </div>
             </form>
-	           <table class="table table-bordered table-striped text-center">
-					<tr class="info">
+	           <table class="table table-bordered table-hover text-center">
+					<tr class="info" style="font-weight: bold;">
 						<td>序号</td>
 						<td>场地名</td>
 						<td>地址</td>

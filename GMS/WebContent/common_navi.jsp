@@ -43,13 +43,13 @@
 	  <a href="#" class="list-group-item active" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
 	    	场地中心
 	  </a>
-	  <ul class="list-group collapse" id="collapseExample2" >
-		  <li class="list-group-item">Cras justo odio</li>
-		  <li class="list-group-item">Dapibus ac facilisis in</li>
-		  <li class="list-group-item">Morbi leo risus</li>
-		  <li class="list-group-item">Porta ac consectetur ac</li>
-		  <li class="list-group-item">Vestibulum at eros</li>
-		</ul>
+	  <div class="list-group collapse" id="collapseExample2" >
+		  <a href="Fieldinfo-input.action" class="list-group-item">添加场地</a>
+		  <a href="Fieldtype-input.action" class="list-group-item">添加场地类型</a>
+		  <a href="FieldinfoQ-query.action" class="list-group-item">查询场地</a>
+		  <a href="Fieldrent-query.action" class="list-group-item">我的租用记录</a>
+		  <a href="Fieldrent-lookup.action" class="list-group-item">管理租用记录</a>
+	  </div>
 	</div>
     <div class="list-group">
 	  <a href="#" class="list-group-item active" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">

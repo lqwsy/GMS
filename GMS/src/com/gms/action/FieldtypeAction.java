@@ -33,4 +33,8 @@ public class FieldtypeAction extends ActionSupport {
 		fieldtypeService.getAllFieldtype();
 		return SUCCESS;
 	}
+	
+	public String input() {
+		return "add";
+	}
 }

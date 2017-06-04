@@ -107,7 +107,7 @@ public class FieldinfoAction extends ActionSupport {
 		long id = fieldinfo.getFieldId();
 		fieldinfoService.saveOrUpdateFieldinfo(fieldinfo);
 		if(id != 0) { //如果是修改操作
-			return "to-query";
+			return "query-to";
 		}else {
 			return "no-to-input";
 		}
