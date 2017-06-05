@@ -87,7 +87,7 @@
 		
 		<action name="Fieldtype-*" class="fieldtypeAction" method="{1}">
     		<interceptor-ref name="noLoninStack"></interceptor-ref>
-    		<result name="add">fieldtype-input.jsp</result>
+    		<result name="add">/WEB-INF/field-views/fieldtype-input.jsp</result>
     		<!-- <result name="add">${pageContext.request.contextPath}/login_success.jsp</result> -->
 		</action>
 		

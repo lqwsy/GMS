@@ -27,7 +27,7 @@
             <div class="page-header"><!-- 包含标题-->
               <h1>场地 <small>信息填写</small></h1>
             </div>
-           <form class="form-horizontal" method="post" action="Fieldinfo-addFieldinfo.action"><!--包含内容-->
+           <form id="field-input-form" class="form-horizontal" method="post" action="Fieldinfo-addFieldinfo.action"><!--包含内容-->
               <div class="form-group form-group-sm">
                 <label class="col-sm-1 control-label" for="fieldName">场地名称</label>
                 <div class="col-sm-4">
@@ -92,11 +92,14 @@
 </div>
 
 <script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/field-input.js"></script>
 <s:if test='#request.repeat == true'>
 	<script type="text/javascript">
 		alert("场地名已存在，操作失败!");
 	</script>
 </s:if>
+
 </body>
 </html>

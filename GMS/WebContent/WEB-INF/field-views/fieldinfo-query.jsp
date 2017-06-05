@@ -107,6 +107,8 @@
 						<td>可供人数</td>
 						<td>租金(元/每节课)</td>
 						<s:if test='#request.display == "enable"'>
+							<td>租用日期</td>
+							<td>租用时间</td>
 							<td>租用</td>
 						</s:if>
 						<s:if test="#session.cur_user.iuserId != null">
@@ -123,15 +125,16 @@
 						<td>${people}人</td>
 						<td>${rentH }元</td>
 						<s:if test='#request.display == "enable"'>
-						<td>
-							<!-- <button type="button" class="btn btn-primary rent-btn">租借</button> -->
-							<button type="button" class="btn btn-primary rent-btn btn-sm" >
-								  租用
-							</button>
-							<input type="hidden" value="${fieldId }"  /> <!-- 隐藏域 -->
-							<input type="hidden" value="${rentH }" />
-							<input type="hidden" value="${fieldName }" />
-						</td>
+							<td>${rentDate }</td>
+							<td>${rentTime }</td>
+							<td>
+								<button type="button" class="btn btn-primary rent-btn btn-sm">
+									  租用
+								</button>
+								<input type="hidden" value="${fieldId }"  /> <!-- 隐藏域 -->
+								<input type="hidden" value="${rentH }" />
+								<input type="hidden" value="${fieldName }" />
+							</td>
 						</s:if>
 						<s:if test="#session.cur_user.iuserId != null">
 							<td>
