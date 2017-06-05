@@ -10,4 +10,5 @@ public interface IAnnouncementService {
 	void deleteAnnouncement(Long announcementId);
 	void updateAnnouncement(Announcement announcement);
 	List getAnnouncementsByPage(int page);
+	List getAnnouncements();
 }

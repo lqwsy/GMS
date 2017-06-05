@@ -10,4 +10,5 @@ public interface IAnnouncementDao {
 	void update(Announcement announcement);
 	Announcement get(Long id);
 	List findByPage(String hql,int offset,int pageSize);
+	List findAllAnnouncement();
 }

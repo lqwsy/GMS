@@ -29,6 +29,15 @@
 	                <param name="role">2</param>
 	            </interceptor-ref>
 	        </interceptor-stack>
+			<!-- 炒鸡管理员 -->
+			<interceptor-stack name="superAdmin">
+	            <interceptor-ref name="defaultStack"/>
+	            <interceptor-ref name="noLoginInterceptor"/>
+	            <interceptor-ref name="noAuthorityIntercetor">
+	                <param name="role">1</param>
+	            </interceptor-ref>
+	        </interceptor-stack>
+			
 	    </interceptors>
 	    <global-results>
 	        <result name="login">/login.jsp</result>
@@ -293,6 +302,27 @@
 	            <param name="root">fieldInfos</param>
 	            <param name="noCache">true</param>
 	        </result>
+	    </action>
+	</package>
+	<!-- 公告  -->
+	<package name="announcement" extends="struts-default" namespace="/">
+	    
+	    <!-- 管理公告  -->
+	    <action name="searchannouncements" class="com.gms.action.AnnouncementAction"
+	        method="getAllAnnouncements">
+	        <result name="success">announcement_manage.jsp</result>
+	        <result name="error">announcement_manage.jsp</result>
+	    </action>
+	    <!-- 添加公告  -->
+	    <action name="addannouncement" class="com.gms.action.AnnouncementAction"
+	        method="addAnnouncement">
+	        <result name="success">announcement_adder.jsp</result>
+	        <result name="input">announcement_adder.jsp</result>
+	    </action>
+	    <!-- 删除公告  -->
+	    <action name="deleteannouncement" class="com.gms.action.AnnouncementAction"
+	        method="deleteAnnouncement">
+	        <result name="success">announcement_manage.jsp</result>
 	    </action>
 	</package>
 	

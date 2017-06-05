@@ -44,4 +44,9 @@ public class AnnouncementServiceImpl implements IAnnouncementService {
 		return announcementDao.findByPage(hql, (page-1)*12, 12);
 	}
 
+	@Override
+	public List getAnnouncements() {
+		return announcementDao.findAllAnnouncement();
+	}
+
 }

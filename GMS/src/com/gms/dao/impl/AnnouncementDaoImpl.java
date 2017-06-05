@@ -55,4 +55,9 @@ public class AnnouncementDaoImpl extends HibernateDaoSupport implements IAnnounc
 		return list;
 	}
 
+	@Override
+	public List findAllAnnouncement() {
+		return getHibernateTemplate().find("from Announcement");
+	}
+
 }

@@ -174,7 +174,7 @@ public class UserinfoAction extends ActionSupport {
 		if (user.getVpassward().equals(loginuser.get(0).getVpassward())) {
 			Map<String,Object> map=ActionContext.getContext().getSession();
 			map.put("cur_user", loginuser.get(0));//向session存入登录标识ID,以供登录后检验使用
-			map.put("cur_user_roleid", "1");
+			map.put("cur_user_roleid", Integer.toString(loginuser.get(0).getRoleinfo().getIroleId()));//向session存入登录标识ID,以供登录后检验使用
 			return SUCCESS;
 		} else {
 			this.setStr_result("用户名与密码不匹配");
@@ -194,9 +194,11 @@ public class UserinfoAction extends ActionSupport {
 			userinfoService.addUserinfo(user);
 			this.setRegist_result("注册成功,请重新登录");
 			return SUCCESS;
-		} else {
-			this.setRegist_result("注册失败");
+		} else if(isUserNameExistent(user.getVuserName())){
+			this.setRegist_result("注册失败,用户名已存在");
 			System.out.println("用户是否已存在："+isUserNameExistent(user.getVuserName()));
+			return ERROR;
+		}else {
 			return ERROR;
 		}
 	}
@@ -301,16 +303,6 @@ public class UserinfoAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	//用户退出
-	public String exit(){
-		Map<String,Object> map=ActionContext.getContext().getSession();
-		map.remove("cur_user");
-		map.remove("all_users");
-		map.remove("change_user");
-		map.remove("search_users");
-		return SUCCESS;
-	}
-	
 	//查找用户
 	public String searchUser(){
 		if(searchname==null){
@@ -332,6 +324,20 @@ public class UserinfoAction extends ActionSupport {
 			return SUCCESS;
 		}
 	}
+	
+	//用户退出
+	public String exit(){
+		Map<String,Object> map=ActionContext.getContext().getSession();
+		map.remove("cur_user");
+		map.remove("all_users");
+		map.remove("cur_user_roleid");
+		map.remove("change_user");
+		map.remove("all_announcements");
+		map.remove("search_users");
+		return SUCCESS;
+	}
+	
+
 
 	// 用户名是否已存在
 	public boolean isUserNameExistent(String vusername) {
