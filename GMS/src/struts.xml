@@ -115,6 +115,7 @@
 	<package name="field" extends="my-default,json-default" namespace="/">
 		
 		<action name="Fieldtype-*" class="fieldtypeAction" method="{1}">
+    		<interceptor-ref name="superAdmin"></interceptor-ref>
     		<interceptor-ref name="noLoninStack"></interceptor-ref>
     		<result name="add">/WEB-INF/field-views/fieldtype-input.jsp</result>
     		<!-- <result name="add">${pageContext.request.contextPath}/login_success.jsp</result> -->
@@ -137,7 +138,7 @@
 		
 		<action name="Fieldinfo-*" class="fieldinfoAction" method="{1}">
 			<interceptor-ref name="noLoninStack"></interceptor-ref>
-			
+			<interceptor-ref name="superAdmin"></interceptor-ref>
 			<result name="input">/WEB-INF/field-views/fieldinfo-input.jsp</result>
 			<result name="no-to-input" type="redirectAction">Fieldinfo-input</result>
 			<result name="to-input" type="chain">Fieldinfo-input</result>
@@ -153,7 +154,6 @@
 		
 		<action name="Fieldrent-*" class="fieldrentAction" method="{1}">
 			<interceptor-ref name="noLoninStack"></interceptor-ref>
-		
 			<result type="stream" name="ajax">
 		        <param name="contentType">text/html</param>
 		        <param name="inputName">inputStream</param>

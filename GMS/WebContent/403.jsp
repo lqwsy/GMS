@@ -7,6 +7,6 @@
 <title>403 Forbidden</title>
 </head>
 <body>
-	<h1>403 Forbidden.</h1>
+	<h1>403 用户权限不足.</h1>
 </body>
 </html>
