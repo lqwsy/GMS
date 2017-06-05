@@ -111,7 +111,7 @@
 							<td>租用时间</td>
 							<td>租用</td>
 						</s:if>
-						<s:if test="#session.cur_user.iuserId != null">
+						<s:if test="#session.cur_user.iuserId != null && #session.cur_user_roleid == 1">
 							<td>修改</td>
 							<td>删除</td>
 						</s:if>
@@ -136,7 +136,7 @@
 								<input type="hidden" value="${fieldName }" />
 							</td>
 						</s:if>
-						<s:if test="#session.cur_user.iuserId != null">
+						<s:if test="#session.cur_user.iuserId != null && #session.cur_user_roleid == 1">
 							<td>
 								<a href="Fieldinfo-input.action?fieldId=${fieldId }" class="btn btn-warning btn-sm" role="button">修改</a>
 							</td>

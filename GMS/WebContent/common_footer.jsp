@@ -12,8 +12,8 @@
 <div style="width:100%;height: 50px;">
 
 </div>
-<div class="navbar-fixed-bottom" style="width:100%;height: 50px;line-height:50px;background-color: #030303;">
-<p class="text-center" style="color:white">&copy; 2016 Guangdong Ocean University, GMS.</p>
+<div class="navbar-fixed-bottom" style="width:100%;height: 50px;line-height:50px;background-color: #F8F8F8;">
+<p class="text-center" style="color:5E5E5E;">&copy; 2016 Guangdong Ocean University, GMS.</p>
 </div>
 </footer>	
 </body>

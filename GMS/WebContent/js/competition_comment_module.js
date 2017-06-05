@@ -31,7 +31,7 @@ $(function(){
 		if($.trim(contents).length<=0){
 			$(".operation-tips").html("评论框不能留空！");
 			$(".show-tips-btn").click();
-			return false;
+			return ;
 		}
 		$("#comment").val(contents);
 		$.ajax({
