@@ -26,6 +26,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CompetitionAction extends ActionSupport{
+	private int spage=1;
 	private int page=1;
 	private String operation;
 	private Long ci;
@@ -57,6 +58,20 @@ public class CompetitionAction extends ActionSupport{
 	private IFieldinfoService fieldinfoService;
 	//other module service
 	
+	/**
+	 * @return the spage
+	 */
+	public int getSpage() {
+		return spage;
+	}
+
+	/**
+	 * @param spage the spage to set
+	 */
+	public void setSpage(int spage) {
+		this.spage = spage;
+	}
+
 	public int getPage() {
 		return page;
 	}

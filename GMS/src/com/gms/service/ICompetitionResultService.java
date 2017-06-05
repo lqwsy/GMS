@@ -9,4 +9,5 @@ public interface ICompetitionResultService {
 	void addOneScore(Long resultId);
 	void subOneScore(Long resultId);
 	List<Competitionresult> getCompetitionResultsById(Long competitionId);
+	Integer getScoresById(Long id);
 }

@@ -246,6 +246,14 @@
 	            <param name="inputName">result</param>
 	        </result>
 	    </action>
+	    <!-- 获取分数 -->
+	    <action name="getScores" class="com.gms.action.CompetitionResultAction" 
+	        method="getScores">
+	        <result name="success" type="stream">
+	            <param name="contentType">text/html</param>
+	            <param name="inputName">result</param>
+	        </result>
+	    </action>
 	    <!-- 添加评论 -->
 	    <action name="addCompetitionComment" class="com.gms.action.CompetitionCommentAction" 
 	        method="addCompetitionComment">

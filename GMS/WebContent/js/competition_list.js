@@ -25,25 +25,25 @@ $(function(){
 			}
 		});
 	});
-	var pageGenerate=function(cur,count){
+	var pageGenerate=function(spage,cur,count){
 		var url="searchAllCompetitions.action?page=";
 		var curPage=cur;
 		var maxPages=Math.ceil(count/10);
-		var sPage=1;
+		var sPage=spage;
 		var pagesUlObj=$(".pages-ul");
 		var refreshPages=function(){
 			pagesUlObj.html(" ");
 			pagesUlObj.append("<li><a class='last-btn' href='javascript:void(0);'>&laquo;</a></li>");
 			if(sPage+4<maxPages){
 				for(var i=0;i<4;i++){
-					pagesUlObj.append("<li class='pagenum'><a href='searchAllCompetitions.action?page="+(sPage+i)+"'>"+(sPage+i)+"</a></li>");
+					pagesUlObj.append("<li class='pagenum'><a href='searchAllCompetitions.action?page="+(sPage+i)+"&spage="+sPage+"'>"+(sPage+i)+"</a></li>");
 				}
 				pagesUlObj.append("<li class='more-points pagenum'><a href='javascript:void(0);'>...</a></li>");
-				pagesUlObj.append("<li class='pagenum'><a href='searchAllCompetitions.action?page="+maxPages+"'>"+maxPages+"</a></li>");
+				pagesUlObj.append("<li class='pagenum'><a href='searchAllCompetitions.action?page="+maxPages+"&spage="+sPage+"'>"+maxPages+"</a></li>");
 			}
 			else{
 				for(var j=0;j<=maxPages-sPage;j++){
-					pagesUlObj.append("<li class='pagenum'><a href='searchAllCompetitions.action?page="+parseInt(sPage+j)+"'>"+(sPage+j)+"</a></li>");
+					pagesUlObj.append("<li class='pagenum'><a href='searchAllCompetitions.action?page="+parseInt(sPage+j)+"&spage="+sPage+"'>"+(sPage+j)+"</a></li>");
 				}
 			}
 			pagesUlObj.append("<li><a class='next-btn' href='javascript:void(0);'>&raquo;</a></li>");
@@ -91,7 +91,7 @@ $(function(){
 				refreshPages();
 			}
 			curPage++;
-			location.href=url+curPage;
+			location.href=url+curPage+"&spage="+sPage;
 			//lightUpBtn();
 		});
 		$(".pages-ul").on('click','li.pagenum',function(){
@@ -103,7 +103,7 @@ $(function(){
 				return false;
 			}
 			curPage=parseInt($(this).find("a").html());
-			location.href=url+curPage;
+			location.href=url+curPage+"&spage="+sPage;
 //			if(curPage>=4){
 //				if(hasMore()&&index===3){
 //					sPage=curPage-1;
@@ -129,15 +129,18 @@ $(function(){
 	   refreshPages();
 	}
 	$(document).ready(function(){
-		$.ajax({
-			url:"getAllCopetitionsCount.action",
-			type:"GET",
-			success:function(data){
-				if(data!="-1"){
-					var cur=$("#cur-page-span").html();
-					pageGenerate(parseInt(cur),data);
+		if($("#cur-page-span")){
+			$.ajax({
+				url:"getAllCopetitionsCount.action",
+				type:"GET",
+				success:function(data){
+					if(data!="-1"){
+						var cur=$("#cur-page-span").html();
+						var spage=$("#spage-span").html();
+						pageGenerate(parseInt(spage),parseInt(cur),data);
+					}
 				}
-			}
-		});
+			});
+		}
 	});
 });

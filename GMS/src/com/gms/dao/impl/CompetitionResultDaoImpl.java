@@ -28,4 +28,12 @@ public class CompetitionResultDaoImpl extends HibernateDaoSupport implements ICo
 				find("from Competitionresult cr where cr.competition.bcompetitionId=?",competitionId);
 	}
 
+	@Override
+	public Integer getScore(Long id) {
+		// TODO Auto-generated method stub
+		return (Integer)getHibernateTemplate().
+				find("select iscores from Competitionresult c where c.bcompetitionResultId=?",id).
+				get(0);
+	}
+
 }

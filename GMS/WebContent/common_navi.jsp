@@ -30,11 +30,11 @@
 	    	赛事中心
 	  </a>
 	  <div class="list-group collapse" id="collapseExample1" >
-		  <a href="addCompetition.action" class="list-group-item">申请赛事</a></li>
+		  <a href="addCompetition.action" class="list-group-item">申请赛事</a>
 		  <a href="liveComeptitions.action" class="list-group-item">查看直播</a>
 		  <a href="searchCompetitions.action" class="list-group-item">搜索赛事</a>
 		  <a href="myCompetitions.action" class="list-group-item">我的赛事</a>
-		  <s:if test="#session.cur_user_roleid=='1'">
+		  <s:if test="#session.cur_user_roleid==2">
 		  	<a href="verifyCompetition.action" class="list-group-item">赛事审核</a>
 		  </s:if>
 		</div>

@@ -59,8 +59,23 @@ $(function(){
 	$(".right-sub").click(function(){
 		scoreRequest("subOneScore.action",$("#right-comp").val());
 	});
+	var updateScores=function(id,obj){
+		$.ajax({
+			url:"getScores.action",
+			type:"POST",
+			data:{
+				competitionResultId:id
+			},
+			success:function(data){
+				if(data!="0"){
+					obj.html(data);
+				}
+			}
+		});
+	}
 	setInterval(function(){
-		location.reload();
-	},15000);
+		updateScores($("#left-comp").val(),$(".left-scores"));
+		updateScores($("#right-comp").val(),$(".right-scores"));
+	},10000);
 	$(".show-comments-btn").click();
 });

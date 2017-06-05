@@ -119,8 +119,9 @@
             </table>
             <s:if test="actionName=='searchAll'">
             	<div><ul class="pages-ul pagination"></ul></div>
+            	<span class="hidden" id="cur-page-span"><s:property value="page"/></span>
+            	<span class="hidden" id="spage-span"><s:property value="spage"/></span>
             </s:if>
-            <span class="hidden" id="cur-page-span"><s:property value="page"/></span>
         </div>
     </div>
     <jsp:include page="competition_operation_tips.jsp"/>
