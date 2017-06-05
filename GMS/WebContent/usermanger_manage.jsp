@@ -17,7 +17,7 @@
 <div class="container">
 	<div class="row">
     	<!--jsp包含用户管理左侧导航栏-->
-    	<jsp:include page="usermanger_navi.jsp"/>
+    	<jsp:include page="common_navi.jsp"/>
         
         <!-- 用户管理模块-->
         <div class="col-sm-10" >
@@ -45,7 +45,7 @@
 						<td>邮箱</td>
 						<td>用户类型</td>
 						<td>审核状态</td>
-						<td>查看/修改</td>
+						<td>修改</td>
 						<td>删除</td>
 					</tr>
 					<s:if test="#session.all_users!=null">
@@ -68,7 +68,7 @@
 							<td>${roleinfo.vroleName }</td>
 							<td>
 								<s:if test="#session.cur_user.iuserId != #curuser.iuserId">
-									<s:a href="changeuser.action?user.iuserId=%{#curuser.iuserId}" class="btn btn-default">查看/修改</s:a>
+									<s:a href="changeuser.action?user.iuserId=%{#curuser.iuserId}" class="btn btn-default">修改</s:a>
 								</s:if>
 							</td>
 							<td>

@@ -14,16 +14,17 @@
 <body>
 <div class="col-sm-2">
     <div class="list-group">
-	  <a href="#" class="list-group-item active" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-	    	个人中心
+	  <a href="#" class="list-group-item active" type="button" data-toggle="collapse" data-target="#collapseExample110" aria-expanded="false" aria-controls="collapseExample110">
+	    	用户中心
 	  </a>
-	  <ul class="list-group collapse" id="collapseExample" >
-		  <li class="list-group-item">Cras justo odio</li>
-		  <li class="list-group-item">Dapibus ac facilisis in</li>
-		  <li class="list-group-item">Morbi leo risus</li>
-		  <li class="list-group-item">Porta ac consectetur ac</li>
-		  <li class="list-group-item">Vestibulum at eros</li>
-		</ul>
+	<div class="list-group collapse" id="collapseExample110" >
+		  <a href="usermanger_apply.jsp" class="list-group-item">个人资料</a>
+		  <a href="usermanger_changepassword.jsp" class="list-group-item">更改密码</a>
+		  <s:if test="#session.cur_user.roleinfo.iroleId==1">
+		  	<a href="usermanger_manage.jsp" class="list-group-item">管理用户</a>
+		  	<a href="usermanger_adduser.jsp" class="list-group-item">添加用户</a>
+		  </s:if>
+	</div>
 	</div>
     <div class="list-group">
 	  <a href="#" class="list-group-item active" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">

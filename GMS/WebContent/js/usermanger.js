@@ -1,17 +1,17 @@
 $(document).ready(function() {
 	$("#changepasswordform").validate({  
         rules: {  
-        	formGroupInputSmall12: {
+        	formGroupInput12: {
             	required: true, 
             	minlength:4,
             	maxlength:20
             },  
             'newpasword': {
-            	equalTo: formGroupInputSmall12
+            	equalTo: 'formGroupInput12'
             },  
         },  
         messages: {  
-        	formGroupInputSmall12: {
+        	formGroupInput12: {
             	required: "请输入新密码", 
             	minlength:"密码长度为4-20个字符",
             	maxlength:"密码长度为4-20个字符"
@@ -35,7 +35,7 @@ $(document).ready(function() {
 				maxlength:20
 			},  
 			newuserpassword: {
-				equalTo: newuserpassword1
+				equalTo: 'newuserpassword1'
 			},  
 		},  
 		messages: {  

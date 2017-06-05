@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
 <html>
 <head>
@@ -9,6 +10,7 @@
 </head>
 
 <body>
+<s:action name="searchannouncements" namespace="/"></s:action>
 <!--jsp 包含页面头部-->
 <jsp:include page="common_header.jsp"/>
 <div class="container">
@@ -66,14 +68,23 @@
            </div>
         </div>
         <div class="col-sm-3 hidden-xs">
-        	<div class="list-group">
+        	<div class="list-group"> 
               <a href="#" class="list-group-item active">
                 	公告栏
               </a>
-              <a href="#" class="list-group-item">公告1</a>
-              <a href="#" class="list-group-item">公告2</a>
-              <a href="#" class="list-group-item">公告3</a>
-              <a href="#" class="list-group-item">公告4</a>
+              <s:if test="#session.all_announcements!=null">
+				  <s:iterator value="#session.all_announcements" id="curannouncement" status="status" >
+				  	<s:if test="#status.count<5">
+						<a href="announcement_apply.jsp" class="list-group-item"><p style="text-indent:2em;">${vannouncementTitle}</p></a>
+			  		</s:if>
+				  </s:iterator>
+			  </s:if>
+			  <s:else>
+				  <a href="#" class="list-group-item">公告1</a>
+	              <a href="#" class="list-group-item">公告2</a>
+	              <a href="#" class="list-group-item">公告3</a>
+	              <a href="#" class="list-group-item">公告4</a>		  	
+			  </s:else>
             </div>
         </div>
     </div>
