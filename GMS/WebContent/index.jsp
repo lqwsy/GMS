@@ -20,9 +20,9 @@
                 <div class="thumbnail">
                   <img src="..." alt="...">
                   <div class="caption">
-                    <h3>器材租借</h3>
+                    <h3>器材管理</h3>
                     <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">进入</a></p>
+                    <p><a href="EquipmentAdministrator.jsp" class="btn btn-primary" role="button">进入</a></p>
                   </div>
                 </div>
            </div>
