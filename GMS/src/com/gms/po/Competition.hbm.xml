@@ -38,7 +38,7 @@
         <property name="dcompetitionDate" type="java.sql.Timestamp">
             <column name="dCompetitionDate" length="19" />
         </property>
-        <set name="spacesuses" table="spacesuse" cascade="all" inverse="false" lazy="true" fetch="select">
+        <set name="spacesuses" table="spacesuse" cascade="all" inverse="false" lazy="false" fetch="select">
             <key>
                 <column name="bCompetitionId" />
             </key>

@@ -74,7 +74,7 @@
             </div>
             <!-- 以下内容普通用户无法查看 -->
             <!-- start -->
-            <s:if test="#session.cur_user_roleid=='1'||#session.cur_user.iuserId==competition.userinfo.iuserId">
+            <s:if test="#session.cur_user_roleid==2||#session.cur_user.iuserId==competition.userinfo.iuserId">
 	            <div class="row">
 	            	<label class="col-sm-2">联系人:</label>
 	                <span class="col-sm-4">
@@ -121,13 +121,15 @@
             <hr/><!--分割线-->
             <!-- 以下内容普通用户无法查看 -->
             <!-- start -->
-            <s:if test="#session.cur_user_roleid=='1'||#session.cur_user.iuserId==competition.userinfo.iuserId">
-	            <div class="row">
-	            	<label class="col-sm-2">场地类型:</label>
-	                <span class="col-sm-4"></span>
-	            	<label class="col-sm-2">场地名称:</label>
-	                <span class="col-sm-4"></span>
-	            </div>
+            <div class="row">
+            <s:iterator value="competition.spacesuses" id="spaceuse">
+            	<label class="col-sm-2">场地类型:</label>
+                <span class="col-sm-4"><s:property value="#spaceuse.fieldinfo.fieldtype.fieldtypeName"/></span>
+            	<label class="col-sm-2">场地名称:</label>
+                <span class="col-sm-4"><s:property value="#spaceuse.fieldinfo.fieldName"/></span>
+            </s:iterator>
+            </div>
+            <s:if test="#session.cur_user_roleid==2||#session.cur_user.iuserId==competition.userinfo.iuserId">
 	            <div class="row">
 	            	<label class="col-sm-2">器材名称:</label>
 	                <span class="col-sm-4"></span>

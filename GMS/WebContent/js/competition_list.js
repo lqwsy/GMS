@@ -129,13 +129,25 @@ $(function(){
 	   refreshPages();
 	}
 	$(document).ready(function(){
-		if($("#cur-page-span")){
+		var url;
+		var curSpan=$("#cur-page-span");
+		if(curSpan){
+			if(curSpan.hasClass("my")){
+				url="getMyCompetitionsCount.action";
+			}
+			else if(curSpan.hasClass("searchAll")){
+				url="getAllCopetitionsCount.action";
+			}
 			$.ajax({
-				url:"getAllCopetitionsCount.action",
+				url:url,
 				type:"GET",
 				success:function(data){
 					if(data!="-1"){
-						var cur=$("#cur-page-span").html();
+						if(data==0){
+							$(".pages-ul").hide();
+							return ;
+						}
+						var cur=curSpan.html();
 						var spage=$("#spage-span").html();
 						pageGenerate(parseInt(spage),parseInt(cur),data);
 					}
