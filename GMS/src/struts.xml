@@ -190,6 +190,15 @@
 	        <param name="actionName">my</param>
 	        <result name="success">/competition_list.jsp</result>
 	    </action>
+	    <action name="getMyCompetitionsCount"  class="com.gms.action.CompetitionAction" 
+	        method="getMyCompetitionsCount">
+	        <interceptor-ref name="noLoninStack"/>
+	        <param name="actionName">my</param>
+	        <result name="success" type="stream">
+	            <param name="contentType">text/html</param>
+	            <param name="inputName">result</param>
+	        </result>
+	    </action>
 	    <action name="competitionDetails" class="com.gms.action.CompetitionAction"
 	        method="getCompetitionDetails">
 	        <result name="mylist" type="redirect">myCompetitions.action</result>

@@ -420,7 +420,7 @@ public class CompetitionAction extends ActionSupport{
 	//获取我的赛事 done
 	public String getMyCompetitions(){
 		Userinfo cur_user=(Userinfo)ActionContext.getContext().getSession().get("cur_user");
-		competitions=competitionService.getMyCompetitions(cur_user.getIuserId());
+		competitions=competitionService.getMyCompetitions(cur_user.getIuserId(),page);
 		return SUCCESS;
 	}
 	
@@ -444,7 +444,7 @@ public class CompetitionAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	//获取所有赛事结果
+	//获取所有赛事数量
 	public String getAllCopetitionsCount(){
 		try{
 			Long count=competitionService.getAllCompetitionsCount();
@@ -456,5 +456,17 @@ public class CompetitionAction extends ActionSupport{
 		}
 		return SUCCESS;
 	}
-	
+	//获取我的赛事数量 
+	public String getMyCompetitionsCount(){
+		try{
+			Userinfo cur_user=(Userinfo)ActionContext.getContext().getSession().get("cur_user");
+			Long count=competitionService.getMyCompetitionsCount(cur_user.getIuserId());
+			this.setResult(String.valueOf(count));
+		}
+		catch(Exception  e){
+			e.printStackTrace();
+			this.setResult("0");
+		}
+		return SUCCESS;
+	}
 }

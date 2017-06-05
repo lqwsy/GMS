@@ -32,10 +32,17 @@ public class CompetitionServiceImpl implements ICompetitionService{
 	}
 
 	@Override
-	public List getMyCompetitions(Integer userId) {
+	public List getMyCompetitions(Integer userId,int page) {
 		// TODO Auto-generated method stub
-		String hql="from Competition c where c.userinfo.iuserId=?";
-		return competitionDao.findCompetitions(hql, userId);
+		String hql="from Competition c where c.userinfo.iuserId="+String.valueOf(userId)+" order by c.dapplyDate desc";
+		return competitionDao.findByPage(hql,(page-1)*10, 10);
+	}
+
+	@Override
+	public Long getMyCompetitionsCount(Integer userId) {
+		// TODO Auto-generated method stub
+		String hql="select count(*) from Competition c where c.userinfo.iuserId= "+String.valueOf(userId);
+		return competitionDao.getCopetitionCount(hql);
 	}
 
 	@Override

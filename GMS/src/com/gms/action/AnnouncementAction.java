@@ -92,7 +92,6 @@ public class AnnouncementAction extends ActionSupport{
 			Map<String,Object> map=ActionContext.getContext().getSession();
 			map.remove("all_announcements");
 			map.put("all_announcements", announcements);//向session存入根据所有公告信息
-			System.out.println("总共有"+announcements.size()+"个公告");
 			return SUCCESS;
 		}else{
 			return ERROR;

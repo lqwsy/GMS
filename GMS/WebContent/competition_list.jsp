@@ -117,9 +117,9 @@
               </tr>
                </s:iterator>
             </table>
-            <s:if test="actionName=='searchAll'">
+            <s:if test="actionName=='searchAll'||actionName=='my'">
             	<div><ul class="pages-ul pagination"></ul></div>
-            	<span class="hidden" id="cur-page-span"><s:property value="page"/></span>
+            	<span class="hidden ${actionName}" id="cur-page-span"><s:property value="page"/></span>
             	<span class="hidden" id="spage-span"><s:property value="spage"/></span>
             </s:if>
         </div>
