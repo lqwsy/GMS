@@ -45,36 +45,65 @@
 	    </global-results>
 	</package>
 	
-	<package name="login-regist" extends="struts-default">
+	<package name="login-regist" extends="my-default">
     	<action name="login" class="com.gms.action.UserinfoAction" method="login">
     		<result name="success">index.jsp</result>
     		<result name="error">login.jsp</result>    		    	
     		<result name="input">login.jsp</result>
-
 		</action>
-		
+		<!-- 用户注册 -->
     	<action name="regist" class="com.gms.action.UserinfoAction" method="regist">
     		<result name="success">login.jsp</result>    
     		<result name="error">regist.jsp</result>     			
-    		<result name="input">index.jsp</result>
+    		<result name="input">regist.jsp</result>
 		</action>
-		
+		<!-- 更改密码 -->
     	<action name="updatepassword" class="com.gms.action.UserinfoAction" method="updatePassword">
     		<result name="success">usermanger_changepassword.jsp</result>    
     		<result name="error">usermanger_changepassword.jsp</result>     			
     		<result name="input">usermanger_changepassword.jsp</result>
 		</action>
-			
+		<!-- 查找用户 -->	
 		<action name="searchuser" class="com.gms.action.UserinfoAction"
 	        method="searchUser">
+    		<interceptor-ref name="superAdmin"></interceptor-ref>
 	        <result name="success">usermanger_manage.jsp</result>
 	    </action>	
-	    
+	    <!-- 更新用户 -->
 		<action name="updateuser" class="com.gms.action.UserinfoAction"
 	        method="updateUser">
 	        <result name="success">usermanger_apply.jsp</result>
+	        <result name="input">usermanger_apply.jsp</result>
 	    </action>	
-	    
+	    <!-- 修改用户状态和角色 -->
+		<action name="updateuserstateandrole" class="com.gms.action.UserinfoAction"
+	        method="updateUserStateAndRole">
+	        <interceptor-ref name="superAdmin"></interceptor-ref>
+	        <result name="success">usermanger_manage_changeuser.jsp</result>
+	        <result name="error">usermanger_manage_changeuser.jsp</result>
+	    </action>	
+	    <!-- 添加用户 -->
+		<action name="adduser" class="com.gms.action.UserinfoAction"
+	        method="addUser">
+	        <interceptor-ref name="superAdmin"></interceptor-ref>
+	        <result name="success">usermanger_adduser.jsp</result>
+	        <result name="input">usermanger_adduser.jsp</result>
+	    </action>	
+	    <!-- 修改用户 -->
+		<action name="changeuser" class="com.gms.action.UserinfoAction"
+	        method="changeUser">
+	        <result name="success">usermanger_manage_changeuser.jsp</result>
+	        <result name="input">usermanger_manage.jsp</result> 
+	        <result name="error">usermanger_manage</result>
+	    </action>	
+	    <!-- 删除用户 -->
+		<action name="deleteuser" class="com.gms.action.UserinfoAction"
+	        method="deleteUser">
+	        <interceptor-ref name="superAdmin"></interceptor-ref>
+	        <result name="success">usermanger_manage.jsp</result>
+	        <result name="input">usermanger_manage.jsp</result>
+	    </action>	
+	    <!-- 退出登录 -->
 		<action name="exit" class="com.gms.action.UserinfoAction"
 	        method="exit">
 	        <result name="success">index.jsp</result>

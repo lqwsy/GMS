@@ -280,6 +280,7 @@ public class UserinfoAction extends ActionSupport {
 	//修改用户
 	public String changeUser(){
 		if(user==null){
+			this.setStr_result("请重新操作");
 			return INPUT;
 		}
 		if(user.getIuserId()!=0){
@@ -288,8 +289,10 @@ public class UserinfoAction extends ActionSupport {
 			map.remove("change_user");
 			map.put("change_user", change_user);
 			return SUCCESS;
+		}else{
+			return ERROR;
 		}
-		return ERROR;
+		
 	}
 	
 	//删除用户

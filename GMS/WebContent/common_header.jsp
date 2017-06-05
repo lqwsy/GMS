@@ -74,6 +74,15 @@
         	</s:if>
           </ul>
         </li>
+        <s:if test="#session.cur_user.roleinfo.iroleId==1">
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户管理<span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+					<li><a href="usermanger_adduser.jsp">添加用户</a></li>
+					<li><a href="usermanger_manage.jsp">管理用户</a></li>
+	          </ul>
+	        </li>
+        </s:if>
       </ul>
 <!--       <form class="navbar-form navbar-left">
         <div class="form-group">

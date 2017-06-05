@@ -15,7 +15,7 @@
 <div class="container">
 	<div class="row">
     	<!--jsp包含用户管理左侧导航栏-->
-    	<jsp:include page="usermanger_navi.jsp"/>
+    	<jsp:include page="common_navi.jsp"/>
     	
     	<!-- 个人资料模块-->
         <div class="col-sm-10" id="userinfopage">
