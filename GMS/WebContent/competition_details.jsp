@@ -155,7 +155,6 @@
             <jsp:include page="competition_comment_module.jsp"/>
 		</div>
     </div>
-    <jsp:include page="competition_operation_tips.jsp"/>
     <jsp:include page="common_footer.jsp"/>
 </div>
 <script src="js/jquery-2.2.1.min.js"></script>

@@ -67,9 +67,9 @@ $(function(){
 				competitionResultId:id
 			},
 			success:function(data){
-				if(data!="0"){
+				//if(data!="0"){
 					obj.html(data);
-				}
+				//}
 			}
 		});
 	}
