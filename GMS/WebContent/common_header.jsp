@@ -53,7 +53,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">赛事<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="addCompetition.action">申请完整</a></li>
+            <li><a href="addCompetition.action">申请赛事</a></li>
             <li><a href="liveComeptitions.action">查看直播</a></li>
             <li><a href="searchCompetitions.action">搜索赛事</a></li>
             <li role="separator" class="divider"></li>

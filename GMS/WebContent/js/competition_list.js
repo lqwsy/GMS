@@ -25,8 +25,8 @@ $(function(){
 			}
 		});
 	});
-	var pageGenerate=function(spage,cur,count){
-		var url="searchAllCompetitions.action?page=";
+	var pageGenerate=function(urllist,spage,cur,count){
+		var url=urllist+"?page=";
 		var curPage=cur;
 		var maxPages=Math.ceil(count/10);
 		var sPage=spage;
@@ -36,14 +36,14 @@ $(function(){
 			pagesUlObj.append("<li><a class='last-btn' href='javascript:void(0);'>&laquo;</a></li>");
 			if(sPage+4<maxPages){
 				for(var i=0;i<4;i++){
-					pagesUlObj.append("<li class='pagenum'><a href='searchAllCompetitions.action?page="+(sPage+i)+"&spage="+sPage+"'>"+(sPage+i)+"</a></li>");
+					pagesUlObj.append("<li class='pagenum'><a href='"+urllist+"?page="+(sPage+i)+"&spage="+sPage+"'>"+(sPage+i)+"</a></li>");
 				}
 				pagesUlObj.append("<li class='more-points pagenum'><a href='javascript:void(0);'>...</a></li>");
-				pagesUlObj.append("<li class='pagenum'><a href='searchAllCompetitions.action?page="+maxPages+"&spage="+sPage+"'>"+maxPages+"</a></li>");
+				pagesUlObj.append("<li class='pagenum'><a href='"+urllist+"?page="+maxPages+"&spage="+sPage+"'>"+maxPages+"</a></li>");
 			}
 			else{
 				for(var j=0;j<=maxPages-sPage;j++){
-					pagesUlObj.append("<li class='pagenum'><a href='searchAllCompetitions.action?page="+parseInt(sPage+j)+"&spage="+sPage+"'>"+(sPage+j)+"</a></li>");
+					pagesUlObj.append("<li class='pagenum'><a href='"+urllist+"?page="+parseInt(sPage+j)+"&spage="+sPage+"'>"+(sPage+j)+"</a></li>");
 				}
 			}
 			pagesUlObj.append("<li><a class='next-btn' href='javascript:void(0);'>&raquo;</a></li>");
@@ -130,12 +130,15 @@ $(function(){
 	}
 	$(document).ready(function(){
 		var url;
+		var urllist;
 		var curSpan=$("#cur-page-span");
 		if(curSpan){
 			if(curSpan.hasClass("my")){
+				urllist="myCompetitions.action";
 				url="getMyCompetitionsCount.action";
 			}
 			else if(curSpan.hasClass("searchAll")){
+				urllist="searchAllCompetitions.action";
 				url="getAllCopetitionsCount.action";
 			}
 			$.ajax({
@@ -149,7 +152,7 @@ $(function(){
 						}
 						var cur=curSpan.html();
 						var spage=$("#spage-span").html();
-						pageGenerate(parseInt(spage),parseInt(cur),data);
+						pageGenerate(urllist,parseInt(spage),parseInt(cur),data);
 					}
 				}
 			});
