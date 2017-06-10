@@ -37,7 +37,7 @@ $(function(){
 				if(data==="1"){
 					location.reload();
 				}
-				else if(data=="0"){
+				else if(data==="0"){
 					$(".operation-tips").html("出错啦！");
 				}
 				else{
@@ -67,9 +67,9 @@ $(function(){
 				competitionResultId:id
 			},
 			success:function(data){
-				if(data!="0"){
+				//if(data!="0"){
 					obj.html(data);
-				}
+				//}
 			}
 		});
 	}

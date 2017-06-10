@@ -31,7 +31,7 @@
               		</s:else>
               	 </s:elseif>
               	<s:if test="keyword==null&&actionName=='search'"><small>条件输入</small></s:if>
-              	<s:if test="actionName=='searchAll'"><small>所有赛事</small></s:if>
+              	<s:elseif test="actionName=='searchAll'"><small>所有赛事</small></s:elseif>
               	<s:else><small>赛事列表</small></s:else>
               </h1>
             </div>
@@ -108,7 +108,7 @@
                         <s:elseif test="#competition.vcompetitionState=='0010'||actionName=='live'">
                         	<li><a href="competitionLive.action?ci=<s:property value='#competition.bcompetitionId'/>">查看直播</a></li>
                         </s:elseif>
-                        <s:if test="#competition.vcompetitionState!='0100'&&actionName=='my'">
+                        <s:if test="actionName=='my'">
                         	<li><a href="updateCompetition.action?ci=<s:property value='#competition.bcompetitionId'/>">更新赛事</a></li>
                         </s:if>
                       </ul>

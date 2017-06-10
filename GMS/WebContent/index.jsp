@@ -18,7 +18,6 @@
     	<div class="col-sm-9">
         	<div class="col-sm-4 col-xs-6">
                 <div class="thumbnail">
-                  <img src="..." alt="...">
                   <div class="caption">
                     <h3>器材管理</h3>
                     <p>...</p>
@@ -28,27 +27,24 @@
            </div>
         	<div class="col-sm-4 col-xs-6">
                 <div class="thumbnail">
-                  <img src="..." alt="...">
                   <div class="caption">
-                    <h3>场地租借</h3>
+                    <h3>场地查询</h3>
                     <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">进入</a></p>
+                    <p><a href="FieldinfoQ-query.action" class="btn btn-primary" role="button">进入</a></p>
                   </div>
                 </div>
            </div>
         	<div class="col-sm-4 col-xs-6">
                 <div class="thumbnail">
-                  <img src="..." alt="...">
                   <div class="caption">
-                    <h3>赛事申请</h3>
+                    <h3>赛事查询</h3>
                     <p>...</p>
-                    <p><a href="addCompetition.action" class="btn btn-primary" role="button">进入</a></p>
+                    <p><a href="searchCompetitions.action" class="btn btn-primary" role="button">进入</a></p>
                   </div>
                 </div>
            </div>
         	<div class="col-sm-4 col-xs-6">
                 <div class="thumbnail">
-                  <img src="..." alt="...">
                   <div class="caption">
                     <h3>公告详情</h3>
                     <p>...</p>
@@ -58,7 +54,6 @@
            </div>
         	<div class="col-sm-4 col-xs-6">
                 <div class="thumbnail">
-                  <img src="..." alt="...">
                   <div class="caption">
                     <h3>其他</h3>
                     <p>...</p>
