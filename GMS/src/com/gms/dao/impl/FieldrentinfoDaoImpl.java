@@ -79,12 +79,14 @@ public class FieldrentinfoDaoImpl extends HibernateDaoSupport implements IFieldr
 	}
 	
 	public List queryFieldrent(String rentDate,String status,String fieldId,String userName) {
+		Date date = DateUtil.setHms0(new Date());
+		String sDate = DateUtil.getStringFromDate(date);
 		String statusHQL = "";
 		StringBuffer sb = new StringBuffer("from Fieldrentinfo fr LEFT OUTER JOIN FETCH fr.fieldinfo LEFT OUTER JOIN FETCH fr.userinfo where ");
 		if("true".equals(status)) {
-			statusHQL = "fr.status = true";
+			statusHQL = "(fr.status = true AND fr.rentDate >= '" + sDate + "')";
 		}else if("false".equals(status)) {
-			statusHQL = "fr.status = false";
+			statusHQL = "(fr.status = false OR fr.rentDate < '" + sDate + "')";
 		}
 		if(!("--".equals(rentDate))) {
 			rentDate += " 00:00:00";

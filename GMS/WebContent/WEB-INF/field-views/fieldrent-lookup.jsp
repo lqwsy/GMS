@@ -23,7 +23,10 @@
 <jsp:include page="/common_header.jsp"/>
 <div class="container">
 	<div class="row">
-    
+    	<%
+    		String status = (String)request.getAttribute("status");
+    		pageContext.setAttribute("mstatus", status);
+    	%>
     	<!--jsp包含导航栏-->
     	<jsp:include page="/common_navi.jsp"/>
         <div class="col-sm-10">
@@ -156,7 +159,7 @@
 						<td>${rentTime}</td>
 						<td>${rent }元</td>
 						<td>
-							<s:if test='#frs.status == false'>
+							<s:if test='#attr.mstatus == "false"'>
 								<p style="color: red;">无效/过期</p>
 							</s:if>
 							<s:else>
@@ -164,9 +167,9 @@
 							</s:else>
 						</td>
 						<td>
-							<s:if test='#request.status == false'>
+							<s:if test='#attr.mstatus == "false"'>
 								<button type="button" class="btn btn-danger delete-btn btn-sm">
-									  彻底删除
+									  彻底删除 
 								</button>
 								<input type="hidden" value="${fieldrentId}"  /> <!-- 隐藏域 -->
 								<input type="hidden" value="${fieldinfo.fieldName }" />
@@ -176,7 +179,7 @@
 								<input type="hidden" value="${rent} " />
 							</s:if>
 							<s:else>
-								<mark>订单为有效状态，不可删除</mark>
+								<mark>订单为有效状态，不可删除 </mark>
 							</s:else>
 						</td>
 					</tr>

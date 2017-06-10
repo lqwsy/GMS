@@ -11,7 +11,6 @@ public class DateUtil {
 	public static void main(String[] args) {  
         Date date = new Date();  
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
-        String specifiedDay = sdf.format(date);  
     }  
       
     /** 
@@ -93,6 +92,15 @@ public class DateUtil {
     	calendar.set(Calendar.DATE, day - beforeDay);
     	String dayBefore = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime());
     	return dayBefore;
+    }
+    
+    public static Date setHms0(Date date) {
+    	Calendar calendar = Calendar.getInstance();
+    	calendar.setTime(date);
+    	calendar.set(Calendar.HOUR_OF_DAY, 0);
+    	calendar.set(Calendar.MINUTE, 0);
+    	calendar.set(Calendar.SECOND, 0);
+    	return calendar.getTime();
     }
     
 }

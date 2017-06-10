@@ -10,7 +10,7 @@
 	    <property name="driverClass" value="com.mysql.jdbc.Driver"/>
 	    <property name="jdbcUrl" value="jdbc:mysql:///gms"/>
 	    <property name="user" value="root"/>
-	    <property name="password" value="mysql"/>
+	    <property name="password" value="123456"/>
 	    <property name="maxPoolSize" value="40"/>
 	    <property name="minPoolSize" value="1"/>
 	    <property name="initialPoolSize" value="1"/>

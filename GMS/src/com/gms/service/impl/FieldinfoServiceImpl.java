@@ -46,6 +46,7 @@ public class FieldinfoServiceImpl implements IFieldinfoService {
 		return fieldinfoDao.getByFieldtypeId(fieldtypeId);
 	}
 
+	//查询满足条件，仍未被租用的场地
 	public List getByTypeIdWithoutFieldId(long fieldTypeId, List<Long> fieldIds) {
 		return fieldinfoDao.getByTypeIdWithoutFieldId(fieldTypeId, fieldIds);
 	}

@@ -193,6 +193,7 @@ public class FieldrentAction extends ActionSupport {
 		return "ajax";
 	}
 
+	//查询场地租用记录前的处理方法
 	public String lookup() {
 		ActionContext actionContext = ActionContext.getContext();
 		Map<String,Object> request = (Map<String,Object>)actionContext.get("request");
