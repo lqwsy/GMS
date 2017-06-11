@@ -97,18 +97,18 @@ public class FieldinfoAction extends ActionSupport {
 
 	public String addFieldinfo() {
 		String fieldName = fieldinfo.getFieldName();
-		int num = fieldinfoService.getFieldinfoByName(fieldName).size();
-		if(num != 0) {
-			ActionContext actionContext = ActionContext.getContext();
-			Map<String,Object> request = (Map<String,Object>)actionContext.get("request");
-			request.put("repeat", true);
-			return "to-input";
-		}
 		long id = fieldinfo.getFieldId();
-		fieldinfoService.saveOrUpdateFieldinfo(fieldinfo);
 		if(id != 0) { //如果是修改操作
+			fieldinfoService.saveOrUpdateFieldinfo(fieldinfo);
 			return "query-to";
-		}else {
+		}else {	//添加操作
+			int num = fieldinfoService.getFieldinfoByName(fieldName).size();
+			if(num != 0) {
+				ActionContext actionContext = ActionContext.getContext();
+				Map<String,Object> request = (Map<String,Object>)actionContext.get("request");
+				request.put("repeat", true);
+				return "to-input";
+			}
 			return "no-to-input";
 		}
 	}

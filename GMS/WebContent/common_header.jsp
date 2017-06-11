@@ -35,7 +35,7 @@
             <li><a href="Fieldtype-input.action">添加场地类型</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="Fieldrent-query.action">我的租用记录</a></li>
-            <li><a href="Fieldrent-lookup.action">场地租用记录管理</a></li>
+            <li><a href="Fieldrent-lookup.action">管理租用记录</a></li>
           </ul>
         </li>
         <li class="dropdown">
